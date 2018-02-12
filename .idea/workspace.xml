@@ -10,45 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="1.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Data Preparation/1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="132" column="25" lean-forward="false" selection-start-line="132" selection-start-column="25" selection-end-line="132" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#110#601#0" expanded="false" />
-                <element signature="e#644#1149#0" expanded="false" />
-                <element signature="e#1179#1601#0" expanded="false" />
-                <element signature="e#1631#2030#0" expanded="false" />
-                <element signature="e#2076#3093#0" expanded="false" />
-                <element signature="e#3140#3874#0" expanded="false" />
-                <element signature="e#3919#4152#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateNC.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../MST/4-CreateNcFile/Diacritics and Un Diacritized Letter Approach/CreateNC.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2369">
-              <caret line="214" column="39" lean-forward="false" selection-start-line="214" selection-start-column="14" selection-end-line="214" selection-end-column="39" />
-              <folding>
-                <element signature="e#24#56#0" expanded="true" />
-                <element signature="e#266#757#0" expanded="false" />
-                <element signature="e#832#1916#0" expanded="false" />
-                <element signature="e#1960#2936#0" expanded="false" />
-                <element signature="e#2970#3690#0" expanded="false" />
-                <element signature="e#3738#4252#0" expanded="false" />
-                <element signature="e#4286#6299#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -133,6 +95,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -140,11 +103,21 @@
               <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
               <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
+              <item name="MST" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
+              <item name="MST" type="462c0819:PsiDirectoryNode" />
+              <item name="7-TensorFlowTraining" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -153,17 +126,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Repos\TensorFlowRepo\MST" />
-      <recent name="D:\Repos\TensorFlowRepo\Encoding" />
-      <recent name="D:\Repos\TensorFlowRepo\HelperMethods" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Repos\TensorFlowRepo\MST\7-TensorFlowTraining" />
       <recent name="D:\Repos\TensorFlowRepo\NN" />
       <recent name="D:\Repos\TensorFlowRepo\NLSTM" />
       <recent name="D:\Repos\TensorFlowRepo\HelperMethods" />
       <recent name="D:\Repos\TensorFlowRepo\Test" />
-      <recent name="D:\Repos\TensorFlowRepo\NLSTMMaster" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Repos\TensorFlowRepo\MST" />
+      <recent name="D:\Repos\TensorFlowRepo\Encoding" />
+      <recent name="D:\Repos\TensorFlowRepo\HelperMethods" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -191,7 +164,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TensorFlowRepo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Data Preparation/1.py" />
+      <option name="SCRIPT_NAME" value="D:\Repos\TensorFlowRepo\MST\7-TensorFlowTraining\DataPreprocessing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -308,7 +281,6 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31381217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -321,6 +293,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -346,7 +319,7 @@
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Data Preparation/1.py</url>
+          <url>file://$PROJECT_DIR$/MST/7-TensorFlowTraining/DataPreprocessing.py</url>
           <line>142</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
@@ -601,13 +574,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HelperMethods/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/HelperMethods/__init__.py" />
     <entry file="file://$PROJECT_DIR$/../MST/HelperMethods/DBHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -615,13 +582,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HelperMethods/DBHelperMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/HelperMethods/DBHelperMethod.py" />
     <entry file="file://$PROJECT_DIR$/../MST/3-PreprocessingAndEncoding/CreatingOneHot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1403">
@@ -629,13 +590,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Encoding/CreatingOneHot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="76" column="37" lean-forward="false" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Encoding/CreatingOneHot.py" />
     <entry file="file://D:/anaconda/envs/py35env/Lib/site-packages/MySQLdb/connections.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -650,13 +605,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HelperMethods/NumpyOneHotEncoding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/HelperMethods/NumpyOneHotEncoding.py" />
     <entry file="file://$PROJECT_DIR$/../MST/3-PreprocessingAndEncoding/Atb3_PreprocessingAndEncoding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -718,14 +667,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data Preparation/1.py">
+    <entry file="file://$PROJECT_DIR$/MST/7-TensorFlowTraining/DataPreprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="132" column="25" lean-forward="false" selection-start-line="132" selection-start-column="25" selection-end-line="132" selection-end-column="25" />
+        <state relative-caret-position="180">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <element signature="e#110#601#0" expanded="false" />
