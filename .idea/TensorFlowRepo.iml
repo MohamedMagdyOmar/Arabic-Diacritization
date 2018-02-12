@@ -2,8 +2,9 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/NLSTMMaster" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/NLSTM/NLSTMMaster" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/HelperMethods" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MST/HelperMethods" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.5" jdkType="Python SDK" />
