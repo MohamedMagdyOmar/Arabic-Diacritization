@@ -1,18 +1,24 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Mohamed Magdy">
     <words>
+      <w>conv</w>
+      <w>convolutional</w>
       <w>dataset</w>
       <w>diac</w>
       <w>diacritized</w>
       <w>dtype</w>
       <w>islammega</w>
       <w>lstm</w>
+      <w>maxpool</w>
       <w>mnist</w>
       <w>mstdb</w>
       <w>ninput</w>
       <w>nlstm</w>
+      <w>nonlinearity</w>
       <w>punc</w>
+      <w>relu</w>
       <w>shadda</w>
+      <w>softmax</w>
       <w>undiacritized</w>
     </words>
   </dictionary>

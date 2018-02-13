@@ -5,6 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/NLSTM/NLSTMMaster" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/HelperMethods" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MST/HelperMethods" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs-master/HelperMethods" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CNN-text-classification-keras/CNN-text-classification-keras-master/HelperMethods" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.5" jdkType="Python SDK" />
