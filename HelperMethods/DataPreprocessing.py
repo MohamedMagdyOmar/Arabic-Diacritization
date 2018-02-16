@@ -4,7 +4,7 @@ import numpy as np
 import datetime
 import matplotlib
 from collections import Counter
-
+from itertools import chain
 
 def establish_db_connection():
     db = MySQLdb.connect(host="127.0.0.1",  # your host, usually localhost
@@ -213,14 +213,17 @@ def load_nn_labels_dataset_string(data_table):
         index_of_raw_label_data = np.where(labels_and_equiv_encoding == raw_input_data)
 
         if np.size(index_of_raw_label_data) != 0:
-            label = np.min(index_of_raw_label_data[0])
+            label = labels_and_equiv_encoding[index_of_raw_label_data[0], 2][0]
+            label = label.replace('\n', "")
+            label = list(map(int, label))
+
             nn_labels.append(label)
 
     end_time = datetime.datetime.now()
 
     print("load_nn_labels_dataset_string takes : ", end_time - start_time)
 
-    return nn_labels
+    return np.array(nn_labels)
 
 
 def load_nn_seq_lengths(data_table):
@@ -254,9 +257,11 @@ def pad_sentences(x, sent_len, req_char_index, window_size):
 
     vocabulary, vocabulary_inv = build_vocab(padded_sent)
 
+    padded_sent = build_input_data(padded_sent, vocabulary)
+
     print("pad_sentences takes : ", end_time - start_time)
 
-    return np.array(padded_sent), vocabulary, vocabulary_inv
+    return padded_sent, vocabulary, vocabulary_inv
 
 
 def padding(extracted_sent, req_char_index, window_size):
@@ -313,6 +318,12 @@ def build_vocab(sentences):
     print("build_vocab takes : ", end_time - start_time)
 
     return [vocabulary, vocabulary_inv]
+
+
+def build_input_data(sentences, vocabulary):
+    sentences = list(chain(*sentences))
+    x = np.array([[vocabulary[word] for word in sentence] for sentence in sentences])
+    return x
 
 
 if __name__ == "__main__":

@@ -4,6 +4,9 @@ from keras.layers import Reshape, Flatten, Dropout, Concatenate
 from keras.callbacks import ModelCheckpoint
 from keras.optimizers import Adam
 from keras.models import Model
+from itertools import chain
+import numpy as np
+
 
 def load_training_data():
     dp.establish_db_connection()
@@ -45,8 +48,11 @@ if __name__ == "__main__":
     X_test, y_test, vocabulary_test, vocabulary_inv_test = load_testing_data()
     check_key_exist(vocabulary_train, vocabulary_test)
 
+    # newlist = list(chain(*X_train))
+    # X_train = np.array(newlist)
+
     # sequence_length = x.shape[1]  # 56
-    sequence_length = 681
+    sequence_length = 10 #681
     vocabulary_size = len(vocabulary_inv_train)
     embedding_dim = 256
     filter_sizes = [3, 4, 5]
@@ -58,7 +64,7 @@ if __name__ == "__main__":
 
     # this returns a tensor
     print("Creating Model...")
-    inputs = Input(shape=(sequence_length,), dtype='int32')
+    inputs = Input(shape=(sequence_length,10), dtype='int32')
     embedding = Embedding(input_dim=vocabulary_size, output_dim=embedding_dim, input_length=sequence_length)(inputs)
     reshape = Reshape((sequence_length, embedding_dim, 1))(embedding)
 
@@ -85,7 +91,7 @@ if __name__ == "__main__":
                                  save_best_only=True, mode='auto')
     adam = Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 
-    model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=['accuracy'])
     print("Traning Model...")
     model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, callbacks=[checkpoint],
               validation_data=(X_test, y_test))  # starts training
