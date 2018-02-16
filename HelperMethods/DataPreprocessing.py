@@ -2,8 +2,9 @@ import MySQLdb
 import MySQLdb.cursors
 import numpy as np
 import datetime
+import matplotlib
+import itertools
 from collections import Counter
-
 
 def establish_db_connection():
     db = MySQLdb.connect(host="127.0.0.1",  # your host, usually localhost
@@ -18,7 +19,24 @@ def establish_db_connection():
     cur = db.cursor()
 
 
-def load_dataset_table(data_type):
+def load_data_set():
+    start_time = datetime.datetime.now()
+
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location from ParsedDocument order by SentenceNumber asc"
+
+    cur.execute(query)
+
+    data = cur.fetchall()
+    data = np.array(data)
+
+    end_time = datetime.datetime.now()
+    print("load_data_set takes : ", end_time - start_time)
+
+    return data
+
+
+def load_dataset_by_type(data_type):
 
     start_time = datetime.datetime.now()
 
@@ -32,7 +50,7 @@ def load_dataset_table(data_type):
     data = np.array(data)
 
     end_time = datetime.datetime.now()
-    print("load_db_training_table takes : ", end_time - start_time)
+    print("load_dataset_by_type takes : ", end_time - start_time)
 
     return data
 
@@ -217,46 +235,84 @@ def load_nn_seq_lengths(data_table):
     return sent_num, sen_len
 
 
-def prepare_for_padding(x, sent_num, sent_len):
-
-    for each_len in sent_len:
-        extracted_sent = x[0: sent_len[0]]
-        updated_sent_len = np.delete(sent_len, 0)
-        updated_x = np.delete(x, np.s_[0: sent_len[0]], axis=0)
-
-        padding(extracted_sent)
-        v = 1
-
-def padding(x):
+def pad_sentences(x, sent_len, req_char_index, window_size):
     start_time = datetime.datetime.now()
-    all_list = []
 
-    req_char_index = 4
-    for index in range(0, len(x)):
-        new_list = [None] * 10
-        new_list[req_char_index] = x[index]
+    padded_sent = []
+    start_range = 0
+    end_range = 0
 
-        for before_selected_index in range(0, req_char_index):
-            before = req_char_index - before_selected_index - 1
-            if (index - before_selected_index) > 0:
-                new_list[before] = x[(index - before_selected_index - 1)]
-            else:
-                new_list[before] = 'PAD'
+    for each_sent in range(0, len(sent_len)):
 
-        for after_selected_index in range(0, (req_char_index + 1)):
-            after = req_char_index + after_selected_index + 1
-            if after < len(x):
-                new_list[after] = x[(index + after_selected_index + 1)]
-            else:
-                new_list[after] = 'PAD'
-
-        all_list.append(new_list)
+        end_range = sent_len[each_sent] + end_range
+        extracted_sent = x[start_range: end_range]
+        padded_sent.append(padding(extracted_sent, req_char_index, window_size))
+        start_range = end_range
 
     end_time = datetime.datetime.now()
 
-    print("padding takes : ", end_time - start_time)
+    vocabulary, vocabulary_inv = build_vocab(padded_sent)
 
-    return all_list
+    print("pad_sentences takes : ", end_time - start_time)
+
+    return np.array(padded_sent), vocabulary, vocabulary_inv
+
+
+def padding(extracted_sent, req_char_index, window_size):
+
+    padded_sent = []
+
+    for index in range(0, len(extracted_sent)):
+        new_list = ['pad'] * window_size
+        new_list[req_char_index] = extracted_sent[index]
+
+        # before req index
+        end_range = index - 1
+
+        start_range = index - req_char_index
+        if start_range < 0:
+            start_range = 0
+
+        if start_range >= 0 and end_range >= 0:
+            extracted_chars_in_cert_range = extracted_sent[start_range: (end_range + 1)]
+            num_of_elem = np.size(extracted_chars_in_cert_range)
+            new_list[(req_char_index - num_of_elem): req_char_index] = extracted_chars_in_cert_range
+
+        # after req index
+        start_range = index + 1
+
+        end_range = index + req_char_index + 1
+        if end_range >= np.size(extracted_sent):
+            end_range = np.size(extracted_sent) - 1
+
+        if start_range <= (np.size(extracted_sent) - 1) and end_range <= (np.size(extracted_sent) - 1):
+            extracted_chars_in_cert_range = extracted_sent[start_range: (end_range + 1)]
+            num_of_elem = np.size(extracted_chars_in_cert_range)
+            new_list[(req_char_index + 1): (req_char_index + num_of_elem + 1)] = extracted_chars_in_cert_range
+
+        padded_sent.append(new_list)
+
+    return padded_sent
+
+
+def build_vocab(sentences):
+    start_time = datetime.datetime.now()
+    all_chars = list(matplotlib.cbook.flatten(sentences))
+    chars_counts = Counter(all_chars)
+
+    # Mapping from index to char
+    vocabulary_inv = [x[0] for x in chars_counts.most_common()]
+    vocabulary_inv = list(sorted(vocabulary_inv))
+
+    # Mapping from char to index
+    vocabulary = {x: i for i, x in enumerate(vocabulary_inv)}
+
+    end_time = datetime.datetime.now()
+
+    print("build_vocab takes : ", end_time - start_time)
+
+    return [vocabulary, vocabulary_inv]
+
 
 if __name__ == "__main__":
 
