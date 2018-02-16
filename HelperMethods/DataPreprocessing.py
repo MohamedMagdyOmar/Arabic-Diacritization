@@ -3,8 +3,8 @@ import MySQLdb.cursors
 import numpy as np
 import datetime
 import matplotlib
-import itertools
 from collections import Counter
+
 
 def establish_db_connection():
     db = MySQLdb.connect(host="127.0.0.1",  # your host, usually localhost
@@ -33,13 +33,14 @@ def load_data_set():
     end_time = datetime.datetime.now()
     print("load_data_set takes : ", end_time - start_time)
 
+    cur.close()
     return data
 
 
 def load_dataset_by_type(data_type):
 
     start_time = datetime.datetime.now()
-
+    establish_db_connection()
     query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
             "location from ParsedDocument where LetterType=" + \
             "'%s'" % data_type + " order by SentenceNumber asc"
@@ -51,7 +52,7 @@ def load_dataset_by_type(data_type):
 
     end_time = datetime.datetime.now()
     print("load_dataset_by_type takes : ", end_time - start_time)
-
+    cur.close()
     return data
 
 
@@ -74,7 +75,7 @@ def load_cnn_blstm_table(data_type):
 
 def get_input_table():
     start_time = datetime.datetime.now()
-
+    establish_db_connection()
     query = "select UnDiacritizedCharacter, UnDiacritizedCharacterOneHotEncoding from UnDiacOneHotEncoding"
     cur.execute(query)
 
@@ -83,13 +84,13 @@ def get_input_table():
 
     end_time = datetime.datetime.now()
     print("get_db_input_table takes : ", end_time - start_time)
-
+    cur.close()
     return input_and_equiv_encoding
 
 
 def get_label_table():
     start_time = datetime.datetime.now()
-
+    establish_db_connection()
     query = "select * from diacritics_and_undiacritized_letter_one_hot_encoding"
     cur.execute(query)
 
@@ -98,7 +99,7 @@ def get_label_table():
 
     end_time = datetime.datetime.now()
     print("get_db_label_table takes : ", end_time - start_time)
-
+    cur.close()
     return labels_and_equiv_encoding
 
 
@@ -317,7 +318,7 @@ def build_vocab(sentences):
 if __name__ == "__main__":
 
     establish_db_connection()
-    dataset = load_dataset_table('training')
+    dataset = load_dataset_by_type('training')
     load_nn_input_dataset_numpy(dataset[:, [0, 8]])
     load_nn_labels_dataset_numpy(dataset[:, [0, 1]])
     load_nn_seq_lengths(dataset[:, [3]])
