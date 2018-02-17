@@ -77,7 +77,7 @@ if __name__ == "__main__":
     maxpool_1 = MaxPool2D(pool_size=(sequence_length - filter_sizes[1] + 1, 1), strides=(1, 1), padding='valid')(conv_1)
     maxpool_2 = MaxPool2D(pool_size=(sequence_length - filter_sizes[2] + 1, 1), strides=(1, 1), padding='valid')(conv_2)
 
-    concatenated_tensor = Concatenate(axis=1)([maxpool_0, maxpool_1, maxpool_2])
+    concatenated_tensor = Concatenate(axicategorical_crossentropys=1)([maxpool_0, maxpool_1, maxpool_2])
     flatten = Flatten()(concatenated_tensor)
     dropout = Dropout(drop)(flatten)
     output = Dense(units=49, activation='softmax')(dropout)
@@ -89,7 +89,7 @@ if __name__ == "__main__":
                                  save_best_only=True, mode='auto')
     adam = Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 
-    model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=adam, loss='', metrics=['accuracy'])
     print("Training Model...")
     model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, callbacks=[checkpoint],
               validation_data=(X_test, y_test))  # starts training
