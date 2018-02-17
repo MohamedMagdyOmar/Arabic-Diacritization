@@ -6,6 +6,7 @@ import matplotlib
 from collections import Counter
 from itertools import chain
 
+
 def establish_db_connection():
     db = MySQLdb.connect(host="127.0.0.1",  # your host, usually localhost
                          user="root",  # your username

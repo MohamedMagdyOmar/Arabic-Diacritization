@@ -138,4 +138,4 @@ print("Dev-Data: Prec: %.3f, Rec: %.3f, F1: %.3f" % (pre_dev, rec_dev, f1_dev))
 #   Performance on test dataset       
 predLabels, correctLabels = tag_dataset(test_batch)        
 pre_test, rec_test, f1_test= compute_f1(predLabels, correctLabels, idx2Label)
-print("Test-Data: Prec: %.3f, Rec: %.3f, F1: %.3f" % (pre_test, rec_test, f1_test))
+print("tfMST-Data: Prec: %.3f, Rec: %.3f, F1: %.3f" % (pre_test, rec_test, f1_test))

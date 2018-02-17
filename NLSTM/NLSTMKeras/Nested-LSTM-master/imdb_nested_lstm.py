@@ -53,5 +53,5 @@ model.load_weights('weights/imdb_nlstm.h5')
 
 score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)
-print('Test score:', score)
-print('Test accuracy:', acc)
+print('tfMST score:', score)
+print('tfMST accuracy:', acc)
