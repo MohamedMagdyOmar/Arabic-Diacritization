@@ -97,7 +97,7 @@ def fatha_correction(list_of_objects_of_chars_and_its_location):
 
 
 def remove_diacritics(character):
-    nkfd_form = unicodedata2.normalize('NFKD', unicode(character))
+    nkfd_form = unicodedata2.normalize('NFKD', str(character))
     char = u"".join([c for c in nkfd_form if not unicodedata2.combining(c) or c == u'ٓ' or c == u'ٔ' or c == u'ٕ'])
     return char
 

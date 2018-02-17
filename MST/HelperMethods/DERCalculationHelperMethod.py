@@ -48,7 +48,7 @@ def get_diacritization_error(rnn_op_chars, expected_letters, sentence):
 
     total_error += number_of_diacritization_errors
 
-    print 'total error in this sentence', number_of_diacritization_errors
+    print('total error in this sentence', number_of_diacritization_errors)
 
     return list_of_object_error
 
@@ -87,7 +87,7 @@ def get_diacritization_error_without_counting_last_letter(actual_letters, expect
 
     total_error_without_last_letter += number_of_diacritization_errors
 
-    print 'total error in this sentence (without Last Letter):', number_of_diacritization_errors
+    print('total error in this sentence (without Last Letter):', number_of_diacritization_errors)
 
     return list_of_object_error
 

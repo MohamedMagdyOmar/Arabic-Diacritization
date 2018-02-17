@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import functools
 import unicodedata
 import locale
 from copy import deepcopy
@@ -56,7 +57,7 @@ def get_location_of_each_char(list_of_chars, chars_count_for_each_word):
 
 
 def remove_diacritics_from_this(character):
-    nkfd_form = unicodedata.normalize('NFKD', unicode(character))
+    nkfd_form = unicodedata.normalize('NFKD', str(character))
     char = u"".join([c for c in nkfd_form if not unicodedata.combining(c) or c == u'ٓ' or c == u'ٔ' or c == u'ٕ'])
     return char
 
@@ -121,7 +122,7 @@ def decompose_diac_char_into_char_and_diacritics(diac_char):
 def normalize(word):
     locale.setlocale(locale.LC_ALL, "")
     for x in range(0, len(word)):
-        word[x].sort(cmp=locale.strcoll)
+        word[x].sort(key=locale.strxfrm)
 
     return word
 

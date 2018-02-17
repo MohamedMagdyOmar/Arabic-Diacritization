@@ -9,6 +9,8 @@ from keras.layers import LSTM
 from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
+from keras.callbacks import EarlyStopping
+from keras.callbacks import ModelCheckpoint
 import os
 # fix random seed for reproducibility
 numpy.random.seed(7)
@@ -70,8 +72,19 @@ if __name__ == "__main__":
     model.add(LSTM(100, dropout=0.2, recurrent_dropout=0.2))
     model.add(Dense(49, activation='sigmoid'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+    # file_path = "weights.best.hdf5"
+    checkpoint = ModelCheckpoint('weights.{epoch:03d}-{val_acc:.4f}.hdf5', monitor='val_acc', verbose=1,
+                                 save_best_only=True, mode='max')
+
+    # check 5 epochs
+    early_stop = EarlyStopping(monitor='val_acc', patience=10, mode='max')
+    callbacks_list = [checkpoint, early_stop]
+
     print(model.summary())
-    model.fit(X_train, y_train, epochs=3, batch_size=64)
+    model.fit(X_train, y_train, validation_data=(X_test, y_test),
+              callbacks=callbacks_list, epochs=3, batch_size=64, verbose=1)
+
     # Final evaluation of the model
     scores = model.evaluate(X_test, y_test, verbose=0)
     print("Accuracy: %.2f%%" % (scores[1]*100))

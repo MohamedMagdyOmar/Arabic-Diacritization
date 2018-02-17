@@ -28,7 +28,7 @@ def get_list_of_sentence_numbers_by(sentence_type):
     sentence_numbers = (cur.fetchall())
     sentence_numbers = [each_number[0] for each_number in sentence_numbers]
     sentence_numbers = list(map(int, sentence_numbers))
-
+    cur.close()
     return sentence_numbers
 
 
@@ -42,7 +42,7 @@ def get_sentence_by(sentence_number):
 
     current_sentence = cur.fetchall()
     current_sentence = [eachTuple[0] for eachTuple in current_sentence]
-
+    cur.close()
     return current_sentence
 
 
@@ -55,7 +55,7 @@ def get_all_diacritics():
 
     distinct_diacritics = cur.fetchall()
     distinct_diacritics = [eachTuple[0] for eachTuple in distinct_diacritics]
-
+    cur.close()
     return distinct_diacritics
 
 
@@ -69,7 +69,7 @@ def get_un_diacritized_chars_by(sentence_number, sentence_type):
 
     un_diacritized_chars = cur.fetchall()
     un_diacritized_chars = [eachTuple[0] for eachTuple in un_diacritized_chars]
-
+    cur.close()
     return un_diacritized_chars
 
 
@@ -83,7 +83,7 @@ def get_diacritized_chars_by(sentence_number, sentence_type):
 
     diacritized_chars = cur.fetchall()
     diacritized_chars = [eachTuple[0] for eachTuple in diacritized_chars]
-
+    cur.close()
     return diacritized_chars
 
 
@@ -96,7 +96,7 @@ def get_available_diacritized_chars():
 
     diacritized_chars = cur.fetchall()
     diacritized_chars = [eachTuple[0] for eachTuple in diacritized_chars]
-
+    cur.close()
     return diacritized_chars
 
 
@@ -109,7 +109,7 @@ def get_available_diacritics_and_un_diacritized_chars():
 
     diacritized_chars = cur.fetchall()
     diacritized_chars = [eachTuple[0] for eachTuple in diacritized_chars]
-
+    cur.close()
     return diacritized_chars
 
 
@@ -130,18 +130,19 @@ def get_un_diacritized_words_from(sentence_number, sentence_type):
         nfkd_form = unicodedata.normalize('NFKD', each_word)
         undiacritized_word = u"".join([c for c in nfkd_form if not unicodedata.combining(c) or c == u'ٓ' or c == u'ٔ' or c == u'ٕ'])
         list_of_un_diacritized_word.append(undiacritized_word)
-
+    cur.close()
     return list_of_un_diacritized_word
 
 
 def get_dictionary_all_diacritized_version_of(un_diacritized_word):
+    connect_to_db()
     selected_sentence_query = "select DiacritizedWord from dictionary where  UnDiacritizedWord = " + "'" \
                               + un_diacritized_word + "'"
 
     cur.execute(selected_sentence_query)
     corresponding_diacritized_words = cur.fetchall()
     corresponding_diacritized_words = [each_word[0] for each_word in corresponding_diacritized_words]
-
+    cur.close()
     return corresponding_diacritized_words
 
 

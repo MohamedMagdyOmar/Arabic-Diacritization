@@ -43,7 +43,7 @@ def load_dataset_by_type(data_type):
     start_time = datetime.datetime.now()
     establish_db_connection()
     query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
-            "location from ParsedDocument where LetterType=" + \
+            "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
             "'%s'" % data_type + " order by SentenceNumber asc"
 
     cur.execute(query)

@@ -7,6 +7,7 @@
       <w>crossentropy</w>
       <w>dataset</w>
       <w>diac</w>
+      <w>diacritization</w>
       <w>diacritized</w>
       <w>dtype</w>
       <w>islammega</w>
@@ -21,6 +22,8 @@
       <w>relu</w>
       <w>shadda</w>
       <w>softmax</w>
+      <w>sukun</w>
+      <w>undiac</w>
       <w>undiacritized</w>
     </words>
   </dictionary>
