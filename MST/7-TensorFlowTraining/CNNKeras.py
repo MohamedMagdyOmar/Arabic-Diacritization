@@ -1,6 +1,6 @@
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, MaxPooling2D, Dropout, Flatten
-import DataPreprocessing as dp
+import data_helper as dp
 
 
 def createModel(nClasses, input_shape):
