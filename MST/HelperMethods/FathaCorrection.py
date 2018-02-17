@@ -24,7 +24,7 @@ def fatha_correction(list_of_objects_of_chars_and_its_location):
 
             if (counter - 1) >= 0:
                 prev_char_object = list_of_objects_of_chars_and_its_location[counter - 1]
-                prev_char_object.letter = unicodedata2.normalize('NFC', prev_char_object.letter)
+                prev_char_object.letter = unicodedata2.normalize('NFC', str(prev_char_object.letter))
             if (counter - 2) >= 0:
                 prev_prev_char_object = list_of_objects_of_chars_and_its_location[counter - 2]
                 prev_prev_char_object.letter = unicodedata2.normalize('NFC', prev_prev_char_object.letter)

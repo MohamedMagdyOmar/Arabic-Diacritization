@@ -5,7 +5,18 @@ import datetime
 import matplotlib
 from collections import Counter
 from itertools import chain
+import unicodedata2
+import chardet
 
+class LetterPosition:
+    letter = "",
+    location = "",
+    value = ""
+
+    def __init__(self):
+        self.letter = ""
+        self.location = ""
+        self.value = ""
 
 def establish_db_connection():
     db = MySQLdb.connect(host="127.0.0.1",  # your host, usually localhost
@@ -325,6 +336,32 @@ def build_input_data(sentences, vocabulary):
     sentences = list(chain(*sentences))
     x = np.array([[vocabulary[word] for word in sentence] for sentence in sentences])
     return x
+
+
+def create_letter_location_object(nn_labels, loc):
+    list_of_chars_with_its_location = []
+    for each_label, each_loc in zip(nn_labels, loc):
+        letter_position_object = LetterPosition()
+
+        letter_position_object.letter = each_label
+        letter_position_object.location = each_loc
+
+        list_of_chars_with_its_location.append(letter_position_object)
+
+    return list_of_chars_with_its_location
+
+
+def concatenate_char_and_diacritization(ip_letters, nn_labels):
+    nn_diacritized_letters = []
+
+    for ip_each_letter, each_nn_labels in zip(ip_letters, nn_labels):
+
+            if ip_each_letter == each_nn_labels:
+                nn_diacritized_letters.append(ip_each_letter)
+            else:
+                nn_diacritized_letters.append(ip_each_letter + each_nn_labels)
+
+    return nn_diacritized_letters
 
 
 if __name__ == "__main__":

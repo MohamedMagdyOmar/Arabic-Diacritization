@@ -4,6 +4,9 @@
 import numpy as np
 import data_helper as dp
 from keras.models import load_model
+import SukunCorrection
+import FathaCorrection
+from copy import deepcopy
 import os
 # fix random seed for reproducibility
 
@@ -31,10 +34,6 @@ def load_testing_data():
            sent_num, letters_loc, undiac_word
 
 
-def create_nn_op_words(letters, location):
-    x = 1
-
-
 if __name__ == "__main__":
 
     X_test, y_test, vocabulary_test, vocabulary_inv_test, words, ip_letters, op_letters, sentences_num, loc, \
@@ -59,9 +58,14 @@ if __name__ == "__main__":
     else:
         raise Exception("mismatch in number of elements in the array")
 
-    nn_op_letters = np.core.defchararray.add(ip_letters, nn_labels)
+    nn_op_letters = dp.concatenate_char_and_diacritization(ip_letters, nn_labels)
+    # nn_op_letters = np.core.defchararray.add(ip_letters, nn_labels)
     expected_op_letters = op_letters
-    create_nn_op_words(nn_op_letters, loc)
+
+    RNN_Predicted_Chars_And_Its_Location = dp.create_letter_location_object(nn_op_letters, loc)
+    RNN_Predicted_Chars_After_Sukun = SukunCorrection.sukun_correction(deepcopy(RNN_Predicted_Chars_And_Its_Location))
+    RNN_Predicted_Chars_After_Fatha = FathaCorrection.fatha_correction(deepcopy(RNN_Predicted_Chars_After_Sukun))
+
     g = 1
 
 

@@ -3,7 +3,6 @@ import DBHelperMethod
 import SukunCorrection
 
 
-
 def get_diac_version_with_smallest_dist(list_of_objects, sentence_number):
 
     list_of_actual_words_after_dictionary_correction = []
