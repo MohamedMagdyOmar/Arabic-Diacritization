@@ -62,6 +62,15 @@ def remove_diacritics_from_this(character):
     return char
 
 
+def remove_diacritics_from(list_of_char_objects):
+    undiacr_chars = []
+    for each_object in list_of_char_objects:
+        nkfd_form = unicodedata.normalize('NFKD', str(each_object.letter))
+        each_object.letter = u"".join([c for c in nkfd_form if not unicodedata.combining(c) or c == u'ٓ' or c == u'ٔ' or c == u'ٕ'])
+        undiacr_chars.append(each_object)
+    return undiacr_chars
+
+
 def reform_word_from(list_of_objects_of_chars_and_its_location):
     list_of_words = []
     word = ""

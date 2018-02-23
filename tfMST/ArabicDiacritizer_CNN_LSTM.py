@@ -63,13 +63,16 @@ if __name__ == "__main__":
     # input dim
     vocabulary_size = len(vocabulary_inv_train)
     # output dim
-    embedding_vector_length = 32
+    embedding_vector_length = 220
 
     model = Sequential()
     model.add(Embedding(vocabulary_size, embedding_vector_length, input_length=max_review_length))
-    model.add(Conv1D(filters=32, kernel_size=3, padding='same', activation='relu'))
+    model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
-    model.add(LSTM(100, dropout=0.2, recurrent_dropout=0.2))
+    model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
+    model.add(MaxPooling1D(pool_size=2))
+    model.add(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True))
+    model.add(LSTM(350, dropout=0.2, recurrent_dropout=0.2))
     model.add(Dense(49, activation='sigmoid'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
@@ -83,7 +86,7 @@ if __name__ == "__main__":
 
     print(model.summary())
     model.fit(X_train, y_train, validation_data=(X_test, y_test),
-              callbacks=callbacks_list, epochs=3, batch_size=64, verbose=1)
+              callbacks=callbacks_list, epochs=30, batch_size=64, verbose=1)
 
     # Final evaluation of the model
     scores = model.evaluate(X_test, y_test, verbose=0)

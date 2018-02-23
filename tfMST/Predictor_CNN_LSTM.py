@@ -6,6 +6,8 @@ import data_helper as dp
 from keras.models import load_model
 import SukunCorrection
 import FathaCorrection
+import DictionaryCorrectionWithoutSentNum
+import DERCalculationHelperMethod
 from copy import deepcopy
 import os
 # fix random seed for reproducibility
@@ -15,7 +17,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 def load_testing_data():
     dp.establish_db_connection()
-    testing_dataset = dp.load_dataset_by_type("testing")
+    testing_dataset = dp.load_testing_dataset()
 
     x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
@@ -39,7 +41,7 @@ if __name__ == "__main__":
     X_test, y_test, vocabulary_test, vocabulary_inv_test, words, ip_letters, op_letters, sentences_num, loc, \
     undiac_word = load_testing_data()
 
-    model = load_model('weights.003-0.6761.hdf5')
+    model = load_model('weights.020-0.7411.hdf5')
     print(model.summary())
     prediction = model.predict(X_test, verbose=1)
 
@@ -59,16 +61,22 @@ if __name__ == "__main__":
         raise Exception("mismatch in number of elements in the array")
 
     nn_op_letters = dp.concatenate_char_and_diacritization(ip_letters, nn_labels)
-    # nn_op_letters = np.core.defchararray.add(ip_letters, nn_labels)
     expected_op_letters = op_letters
 
     RNN_Predicted_Chars_And_Its_Location = dp.create_letter_location_object(nn_op_letters, loc)
     RNN_Predicted_Chars_After_Sukun = SukunCorrection.sukun_correction(deepcopy(RNN_Predicted_Chars_And_Its_Location))
     RNN_Predicted_Chars_After_Fatha = FathaCorrection.fatha_correction(deepcopy(RNN_Predicted_Chars_After_Sukun))
+    RNN_Predicted_Chars_After_Dictionary = DictionaryCorrectionWithoutSentNum.get_diac_version_with_smallest_dist(RNN_Predicted_Chars_After_Fatha)
 
-    g = 1
+    Expected_Chars_And_Its_Location = dp.create_letter_location_object(expected_op_letters, loc)
+    Expected_Chars_After_Sukun = SukunCorrection.sukun_correction(deepcopy(Expected_Chars_And_Its_Location))
 
+    # DER Calculation
+    error = DERCalculationHelperMethod.get_diacritization_error_without_sentence \
+        (RNN_Predicted_Chars_After_Dictionary, Expected_Chars_After_Sukun)
 
+    error_without_last_letter = DERCalculationHelperMethod.get_diacritization_error_without_counting_last_letter_without_sent \
+        (RNN_Predicted_Chars_After_Dictionary, Expected_Chars_After_Sukun)
 
     print(prediction)
 

@@ -5,6 +5,7 @@ import datetime
 import matplotlib
 from collections import Counter
 from itertools import chain
+import unicodedata
 import unicodedata2
 import chardet
 
@@ -64,6 +65,25 @@ def load_dataset_by_type(data_type):
 
     end_time = datetime.datetime.now()
     print("load_dataset_by_type takes : ", end_time - start_time)
+    cur.close()
+    return data
+
+
+def load_testing_dataset():
+
+    start_time = datetime.datetime.now()
+    establish_db_connection()
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
+            "'%s'" % "testing"
+
+    cur.execute(query)
+
+    data = cur.fetchall()
+    data = np.array(data)
+
+    end_time = datetime.datetime.now()
+    print("load_testing_dataset takes : ", end_time - start_time)
     cur.close()
     return data
 
@@ -353,13 +373,22 @@ def create_letter_location_object(nn_labels, loc):
 
 def concatenate_char_and_diacritization(ip_letters, nn_labels):
     nn_diacritized_letters = []
+    counter = 1
 
     for ip_each_letter, each_nn_labels in zip(ip_letters, nn_labels):
+        counter += 1
+        if counter == 198:
+            b = 1
+        try:
+            if len(list(each_nn_labels)) > 1:
+                nn_diacritized_letters.append(ip_each_letter + each_nn_labels)
 
-            if ip_each_letter == each_nn_labels:
+            elif not unicodedata2.combining(each_nn_labels):
                 nn_diacritized_letters.append(ip_each_letter)
             else:
                 nn_diacritized_letters.append(ip_each_letter + each_nn_labels)
+        except:
+            c = 1
 
     return nn_diacritized_letters
 
