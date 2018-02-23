@@ -6,13 +6,13 @@ import data_helper as dp
 from keras.models import load_model
 import SukunCorrection
 import FathaCorrection
-import DictionaryCorrectionWithoutSentNum
 import DictionaryCorrection
 import DERCalculationHelperMethod
 import WordLetterProcessingHelperMethod
 import ExcelHelperMethod
 from copy import deepcopy
 import DBHelperMethod
+import itertools
 import os
 # fix random seed for reproducibility
 
@@ -21,6 +21,7 @@ current_row_1 = 0
 current_row_2 = 0
 Total_Error = 0
 Total_Error_without_last_char = 0
+
 
 def load_testing_data():
     dp.establish_db_connection()
@@ -43,10 +44,38 @@ def load_testing_data():
            sent_num, letters_loc, undiac_word
 
 
+def get_all_undiac_words():
+    return DBHelperMethod.get_all_un_diacritized_words_in_sentences()
+
+
+def get_undiac_words_for_selected_sentence(list_of_all_words_and_sent_num, sentence_number):
+
+    list_of_undiac_words_and_sent = list_of_all_words_and_sent_num[
+        list(np.where(list_of_all_words_and_sent_num == str(sentence_number))[0])]
+
+    return list_of_undiac_words_and_sent[:, 0].tolist()
+
+
+def get_all_dic_words():
+    return DBHelperMethod.get_dictionary()
+
+
+def get_dic_words_for_selected_sentence(dic, undiac_words):
+
+    dictionary = dic[:, 1]
+    list_of_indices = []
+    for each_word in undiac_words:
+        list_of_indices.append([i for i, x in enumerate(dictionary) if x == each_word])
+
+    indices = list(itertools.chain(*list_of_indices))
+    return dic[indices]
+
+
 if __name__ == "__main__":
 
     X_test, y_test, vocabulary_test, vocabulary_inv_test, words, ip_letters, op_letters, sentences_num, loc, \
     undiac_word = load_testing_data()
+    dictionary = get_all_dic_words()
 
     model = load_model('weights.020-0.7411.hdf5')
     print(model.summary())
@@ -70,16 +99,20 @@ if __name__ == "__main__":
     nn_op_letters = dp.concatenate_char_and_diacritization(ip_letters, nn_labels)
     expected_op_letters = op_letters
 
-    type = 'testing'
-    list_of_sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by(type)
+    list_of_sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by('testing')
+    list_of_all_words_and_sent_num = get_all_undiac_words()
+
     current_sentence_counter = 0
     counter = 0
     start_range = 0
     end_range = 0
     for sentence_number in list_of_sentence_numbers:
-        selected_sentence = DBHelperMethod.get_sentence_by(sentence_number)
 
-        rnn_input = DBHelperMethod.get_un_diacritized_chars_by(sentence_number, type)
+        selected_sentence = DBHelperMethod.get_sentence_by(sentence_number)
+        undiac_words = get_undiac_words_for_selected_sentence(list_of_all_words_and_sent_num, sentence_number)
+
+        dic_words_for_selected_sent = get_dic_words_for_selected_sentence(dictionary, undiac_words)
+        rnn_input = DBHelperMethod.get_un_diacritized_chars_by(sentence_number, 'testing')
 
         num_of_chars_in_selected_sent = len(rnn_input)
 
@@ -90,12 +123,13 @@ if __name__ == "__main__":
         expected_letters = expected_op_letters[start_range: end_range: 1]
 
         location = loc[start_range: end_range: 1]
+
         # Post Processing
         RNN_Predicted_Chars_And_Its_Location = dp.create_letter_location_object(nn_op_letters, location)
         RNN_Predicted_Chars_After_Sukun = SukunCorrection.sukun_correction(deepcopy(RNN_Predicted_Chars_And_Its_Location))
         RNN_Predicted_Chars_After_Fatha = FathaCorrection.fatha_correction(deepcopy(RNN_Predicted_Chars_After_Sukun))
-        RNN_Predicted_Chars_After_Dictionary = DictionaryCorrection.get_diac_version_with_smallest_dist(
-            RNN_Predicted_Chars_After_Fatha, sentence_number)
+        RNN_Predicted_Chars_After_Dictionary = DictionaryCorrection.get_diac_version_with_smallest_dist_no_db_access(
+            RNN_Predicted_Chars_After_Fatha, undiac_words, dic_words_for_selected_sent)
 
         # Expected OP
         OP_Diac_Chars_Count = WordLetterProcessingHelperMethod.get_chars_count_for_each_word_in_this(

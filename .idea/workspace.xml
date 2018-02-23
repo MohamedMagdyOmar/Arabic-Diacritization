@@ -9,35 +9,63 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="DER.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="528">
-                    <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="Predictor_CNN_LSTM.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-93">
-              <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state relative-caret-position="-29">
+              <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
               <folding>
                 <element signature="e#167#185#0" expanded="true" />
+                <element signature="e#692#1573#0" expanded="false" />
+                <element signature="e#1608#1673#0" expanded="false" />
+                <element signature="e#2009#2047#0" expanded="false" />
+                <element signature="e#2115#2364#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DictionaryCorrection.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="88" column="68" lean-forward="false" selection-start-line="88" selection-start-column="68" selection-end-line="88" selection-end-column="68" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DBHelperMethod.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="170" column="27" lean-forward="false" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="27" />
+              <folding>
+                <element signature="e#24#42#0" expanded="true" />
+                <element signature="e#3803#4562#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_helper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="152" column="55" lean-forward="false" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
+              <folding>
+                <element signature="e#418#909#0" expanded="false" />
+                <element signature="e#937#1369#0" expanded="false" />
+                <element signature="e#6797#7553#0" expanded="false" />
+                <element signature="e#7598#7848#0" expanded="false" />
+                <element signature="e#7916#8548#0" expanded="false" />
+                <element signature="e#8614#9881#0" expanded="false" />
+                <element signature="e#9916#10431#0" expanded="false" />
+                <element signature="e#10483#10617#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -54,10 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cnn_model_fn</find>
-      <find>INFO:tensorflow:step</find>
-      <find>probabilities</find>
-      <find>word2vec</find>
       <find>init_word2vec</find>
       <find>feature_initializer</find>
       <find>zero</find>
@@ -83,6 +107,11 @@
       <find>nor</find>
       <find>load_dataset_by_type</find>
       <find>reform_word_from</find>
+      <find>map</find>
+      <find>take</find>
+      <find>.take</find>
+      <find>where</find>
+      <find>axis</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -112,16 +141,16 @@
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritized_CNN.py" />
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritized_LSTM.py" />
         <option value="$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py" />
-        <option value="$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py" />
-        <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py" />
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/WordLetterProcessingHelperMethod.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrectionWithoutSentNum.py" />
-        <option value="$PROJECT_DIR$/HelperMethods/data_helper.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py" />
+        <option value="$PROJECT_DIR$/HelperMethods/data_helper.py" />
+        <option value="$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py" />
         <option value="$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py" />
+        <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py" />
       </list>
     </option>
   </component>
@@ -320,7 +349,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Predictor_CNN_LSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Predictor_CNN_LSTM" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -339,19 +368,18 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.ArabicDiacritized_LSTM" />
-      <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_LSTM" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Predictor_CNN_LSTM" />
+      <item index="0" class="java.lang.String" itemvalue="Python.Predictor_CNN_LSTM" />
+      <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritized_LSTM" />
+      <item index="2" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_LSTM" />
       <item index="3" class="java.lang.String" itemvalue="Python.DER" />
       <item index="4" class="java.lang.String" itemvalue="Python.ExcelHelperMethod" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Predictor_CNN_LSTM" />
-        <item index="1" class="java.lang.String" itemvalue="Python.DER" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_LSTM" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ExcelHelperMethod" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ArabicDiacritized_LSTM" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.DER" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_LSTM" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ExcelHelperMethod" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ArabicDiacritized_LSTM" />
       </list>
     </recent_temporary>
   </component>
@@ -384,7 +412,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40331492" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30165747" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -492,8 +520,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
-          <line>83</line>
+          <line>152</line>
           <option name="timeStamp" value="259" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="265" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -506,9 +539,23 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="264" />
+      <option name="time" value="296" />
     </breakpoint-manager>
     <watches-manager />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>dic[10188]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>dic</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../MST/3-PreprocessingAndEncoding/CreatingOneHot.py">
@@ -774,13 +821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="125" column="67" lean-forward="false" selection-start-line="125" selection-start-column="67" selection-end-line="125" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
@@ -853,10 +893,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1219">
-          <caret line="73" column="38" lean-forward="false" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="38" />
+        <state relative-caret-position="170">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -869,44 +909,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py">
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="367">
+          <caret line="170" column="27" lean-forward="false" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="27" />
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+            <element signature="e#3803#4562#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="364" column="0" lean-forward="true" selection-start-line="364" selection-start-column="0" selection-end-line="364" selection-end-column="0" />
+        <state relative-caret-position="247">
+          <caret line="152" column="55" lean-forward="false" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#416#907#0" expanded="false" />
-            <element signature="e#935#1367#0" expanded="false" />
-            <element signature="e#2547#2938#0" expanded="false" />
-            <element signature="e#2968#3434#0" expanded="false" />
-            <element signature="e#3464#3907#0" expanded="false" />
-            <element signature="e#3959#4983#0" expanded="false" />
-            <element signature="e#5036#5942#0" expanded="false" />
-            <element signature="e#5995#6741#0" expanded="false" />
-            <element signature="e#6795#7551#0" expanded="false" />
-            <element signature="e#7596#7846#0" expanded="false" />
-            <element signature="e#7914#8546#0" expanded="false" />
-            <element signature="e#8612#9879#0" expanded="false" />
-            <element signature="e#9914#10429#0" expanded="false" />
-            <element signature="e#10481#10615#0" expanded="false" />
+            <element signature="e#418#909#0" expanded="false" />
+            <element signature="e#937#1369#0" expanded="false" />
+            <element signature="e#6797#7553#0" expanded="false" />
+            <element signature="e#7598#7848#0" expanded="false" />
+            <element signature="e#7916#8548#0" expanded="false" />
+            <element signature="e#8614#9881#0" expanded="false" />
+            <element signature="e#9916#10431#0" expanded="false" />
+            <element signature="e#10483#10617#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="88" column="68" lean-forward="false" selection-start-line="88" selection-start-column="68" selection-end-line="88" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-93">
-          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state relative-caret-position="-29">
+          <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
           <folding>
             <element signature="e#167#185#0" expanded="true" />
+            <element signature="e#692#1573#0" expanded="false" />
+            <element signature="e#1608#1673#0" expanded="false" />
+            <element signature="e#2009#2047#0" expanded="false" />
+            <element signature="e#2115#2364#0" expanded="false" />
           </folding>
         </state>
       </provider>
