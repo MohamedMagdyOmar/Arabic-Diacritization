@@ -9,49 +9,36 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="DER.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="528">
+                    <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="Predictor_CNN_LSTM.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="53" column="45" lean-forward="true" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+            <state relative-caret-position="-93">
+              <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding>
                 <element signature="e#167#185#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DERCalculationHelperMethod.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="114" column="47" lean-forward="true" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
-              <folding>
-                <element signature="e#1948#3594#0" expanded="false" />
-                <element signature="e#5212#6858#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DER.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="69" column="56" lean-forward="true" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DictionaryCorrection.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -125,7 +112,6 @@
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritized_CNN.py" />
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritized_LSTM.py" />
         <option value="$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py" />
-        <option value="$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py" />
@@ -134,11 +120,12 @@
         <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrectionWithoutSentNum.py" />
         <option value="$PROJECT_DIR$/HelperMethods/data_helper.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py" />
+        <option value="$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py" />
         <option value="$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="336" />
     <option name="y" value="-20" />
     <option name="width" value="996" />
@@ -385,7 +372,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -393,7 +380,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31381217" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31381217" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31381217" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -484,19 +471,29 @@
           <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py</url>
-          <line>80</line>
-          <option name="timeStamp" value="189" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py</url>
-          <line>172</line>
-          <option name="timeStamp" value="249" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py</url>
           <line>116</line>
           <option name="timeStamp" value="250" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="252" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="254" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
+          <line>69</line>
+          <option name="timeStamp" value="255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="259" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -509,7 +506,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="251" />
+      <option name="time" value="264" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -770,13 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/anaconda/envs/py35env/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -788,13 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-18">
           <caret line="125" column="67" lean-forward="false" selection-start-line="125" selection-start-column="67" selection-end-line="125" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -830,31 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="380" column="0" lean-forward="false" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#416#907#0" expanded="false" />
-            <element signature="e#935#1367#0" expanded="false" />
-            <element signature="e#2547#2938#0" expanded="false" />
-            <element signature="e#2968#3434#0" expanded="false" />
-            <element signature="e#3464#3907#0" expanded="false" />
-            <element signature="e#3959#4983#0" expanded="false" />
-            <element signature="e#5036#5942#0" expanded="false" />
-            <element signature="e#5995#6741#0" expanded="false" />
-            <element signature="e#6795#7551#0" expanded="false" />
-            <element signature="e#7596#7846#0" expanded="false" />
-            <element signature="e#7914#8546#0" expanded="false" />
-            <element signature="e#8612#9879#0" expanded="false" />
-            <element signature="e#9914#10429#0" expanded="false" />
-            <element signature="e#10481#10615#0" expanded="false" />
-            <element signature="e#10673#11031#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MST/HelperMethods/WordLetterProcessingHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -876,26 +834,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="69" column="56" lean-forward="true" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+        <state relative-caret-position="184">
+          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="114" column="47" lean-forward="true" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
+        <state relative-caret-position="-70">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="e#1948#3594#0" expanded="false" />
             <element signature="e#5212#6858#0" expanded="false" />
@@ -903,10 +853,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1219">
+          <caret line="73" column="38" lean-forward="false" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="364" column="0" lean-forward="true" selection-start-line="364" selection-start-column="0" selection-end-line="364" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#416#907#0" expanded="false" />
+            <element signature="e#935#1367#0" expanded="false" />
+            <element signature="e#2547#2938#0" expanded="false" />
+            <element signature="e#2968#3434#0" expanded="false" />
+            <element signature="e#3464#3907#0" expanded="false" />
+            <element signature="e#3959#4983#0" expanded="false" />
+            <element signature="e#5036#5942#0" expanded="false" />
+            <element signature="e#5995#6741#0" expanded="false" />
+            <element signature="e#6795#7551#0" expanded="false" />
+            <element signature="e#7596#7846#0" expanded="false" />
+            <element signature="e#7914#8546#0" expanded="false" />
+            <element signature="e#8612#9879#0" expanded="false" />
+            <element signature="e#9914#10429#0" expanded="false" />
+            <element signature="e#10481#10615#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="53" column="45" lean-forward="true" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+        <state relative-caret-position="-93">
+          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding>
             <element signature="e#167#185#0" expanded="true" />
           </folding>
