@@ -6,6 +6,7 @@ from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.callbacks import ModelCheckpoint
 from keras.utils import np_utils
+
 # load ascii text and covert to lowercase
 filename = "wonderland.txt"
 raw_text = open(filename).read()
@@ -22,6 +23,7 @@ print("Total Vocab: ", n_vocab)
 seq_length = 100
 dataX = []
 dataY = []
+
 for i in range(0, n_chars - seq_length, 1):
     seq_in = raw_text[i:i + seq_length]
     seq_out = raw_text[i + seq_length]
@@ -36,14 +38,16 @@ X = numpy.reshape(dataX, (n_patterns, seq_length, 1))
 X = X / float(n_vocab)
 # one hot encode the output variable
 y = np_utils.to_categorical(dataY)
+print(X.shape[1])
+print(X.shape[2])
 
 # define the LSTM model
 model = Sequential()
-model.add(LSTM(256, input_shape=(X.shape[1], X.shape[2]), return_sequences=True))
+model.add(LSTM(256, input_shape=(X.shape[1], X.shape[2]), return_sequences=True, name="LSTM1"))
 model.add(Dropout(0.2))
-model.add(LSTM(256))
+model.add(LSTM(256, name="LSTM2"))
 model.add(Dropout(0.2))
-model.add(Dense(y.shape[1], activation='softmax'))
+model.add(Dense(y.shape[1], activation='softmax', name="dense"))
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 
 # define the checkpoint
@@ -52,4 +56,5 @@ checkpoint = ModelCheckpoint(file_path, monitor='loss', verbose=1, save_best_onl
 callbacks_list = [checkpoint]
 
 # fit the model
+model.summary()
 model.fit(X, y, epochs=50, batch_size=64, callbacks=callbacks_list)

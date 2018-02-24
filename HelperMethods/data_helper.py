@@ -5,9 +5,7 @@ import datetime
 import matplotlib
 from collections import Counter
 from itertools import chain
-import unicodedata
 import unicodedata2
-import chardet
 
 
 class LetterPosition:
