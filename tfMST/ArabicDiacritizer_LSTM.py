@@ -71,6 +71,8 @@ if __name__ == "__main__":
         seq_in = dataX_test[i:i + seq_length]
         X_test.append([vocabulary[char] for char in seq_in])
 
+    X_train = numpy.array(X_train)
+    X_test = numpy.array(X_test)
     Y_train = dataY_train[0: len(dataY_train) - 3]
     Y_test = dataY_test[0: len(dataY_test) - 3]
 
@@ -78,21 +80,27 @@ if __name__ == "__main__":
     n_patterns_test = len(X_test)
 
     # reshape X to be [samples, time steps, features]
-    X_train = numpy.reshape(numpy.array(X_train), (n_patterns_train, seq_length, 1))
-    X_test = numpy.reshape(numpy.array(X_test), (n_patterns_test, seq_length, 1))
+    #X_train = numpy.reshape(numpy.array(X_train), (n_patterns_train, seq_length, 1))
+    #X_test = numpy.reshape(numpy.array(X_test), (n_patterns_test, seq_length, 1))
 
     # normalize
-    X_train = X_train / float(n_vocab)
-    X_test = X_test / float(n_vocab)
+    #X_train = X_train / float(n_vocab)
+    #X_test = X_test / float(n_vocab)
+
+    # input dim
+    vocabulary_size = len(vocab_inverse)
+    # output dim
+    embedding_vector_length = 220
 
     model = Sequential()
-    model.add(LSTM(256, input_shape=(X_train.shape[1], X_train.shape[2]), return_sequences=True, name="LSTM1"))
+    model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length, input_length=seq_length))
+    model.add(LSTM(256, return_sequences=True, name="LSTM1"))
 
     model.add(Dropout(0.2))
     model.add(LSTM(256, name="LSTM2"))
     model.add(Dropout(0.2))
     model.add(Dense(Y_test.shape[1], activation='softmax', name="dense"))
-    model.compile(loss='categorical_crossentropy', optimizer='adam')
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # file_path = "weights.best.hdf5"
     checkpoint = ModelCheckpoint('weights.{epoch:03d}-{val_acc:.4f}.hdf5', monitor='val_acc', verbose=1,
