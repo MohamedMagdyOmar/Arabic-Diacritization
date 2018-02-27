@@ -9,8 +9,7 @@ from keras.layers import Dense
 from keras.layers import LSTM, Bidirectional
 from keras.layers import Dropout
 from keras.layers.embeddings import Embedding
-from keras.layers.convolutional import Conv1D
-from keras.layers.convolutional import MaxPooling1D
+from nested_lstm import NestedLSTM
 from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
 import os
@@ -95,10 +94,10 @@ if __name__ == "__main__":
     model = Sequential()
     model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length, input_length=seq_length))
 
-    model.add(Bidirectional(LSTM(256, return_sequences=True, name="BLSTM1")))
+    model.add(NestedLSTM(256, depth=2, return_sequences=True, name="NLSTM1"))
     model.add(Dropout(0.2))
 
-    model.add(Bidirectional(LSTM(256, name="BLSTM2")))
+    model.add(NestedLSTM(256, depth=2, name="NLSTM2"))
     model.add(Dropout(0.2))
 
     model.add(Dense(Y_train.shape[1], activation='softmax', name="dense"))
