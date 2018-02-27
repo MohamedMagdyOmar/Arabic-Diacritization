@@ -11,24 +11,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ArabicDiacritizer_LSTM_CNN.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM_CNN.py">
+      <file leaf-file-name="ArabicDiacritizer_BLSTM.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_BLSTM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+            <state relative-caret-position="1049">
+              <caret line="115" column="17" lean-forward="false" selection-start-line="115" selection-start-column="10" selection-end-line="115" selection-end-column="17" />
               <folding>
                 <element signature="e#167#179#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArabicDiacritizer_CNN_LSTM.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="73" column="35" lean-forward="true" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="58" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -116,6 +106,7 @@
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM_CNN.py" />
+        <option value="$PROJECT_DIR$/tfMST/ArabicDiacritizer_BLSTM.py" />
       </list>
     </option>
   </component>
@@ -217,7 +208,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ArabicDiacritizer_LSTM_CNN">
+  <component name="RunManager" selected="Python.ArabicDiacritizer_BLSTM">
+    <configuration name="ArabicDiacritizer_BLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TensorFlowRepo" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/ArabicDiacritizer_BLSTM.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="ArabicDiacritizer_CNN_LSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -308,39 +317,21 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="seqClassificationLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Sequence Classification with LSTM Recurrent Neural Networks in Python with Keras" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TensorFlowRepo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Sequence Classification with LSTM Recurrent Neural Networks in Python with Keras/seqClassificationLSTM.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.Predictor_CNN_LSTM" />
       <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_LSTM" />
       <item index="2" class="java.lang.String" itemvalue="Python.Text Generation With LSTM" />
       <item index="3" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM" />
-      <item index="4" class="java.lang.String" itemvalue="Python.seqClassificationLSTM" />
-      <item index="5" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM_CNN" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM_CNN" />
+      <item index="5" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_BLSTM" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM_CNN" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Text Generation With LSTM" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_LSTM" />
-        <item index="4" class="java.lang.String" itemvalue="Python.seqClassificationLSTM" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_BLSTM" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM_CNN" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Text Generation With LSTM" />
+        <item index="4" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_LSTM" />
       </list>
     </recent_temporary>
   </component>
@@ -369,7 +360,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31381217" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50607735" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23425414" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -564,13 +555,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/anaconda/envs/py35env/Lib/site-packages/MySQLdb/connections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="281" column="0" lean-forward="false" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/anaconda/envs/py35env/Lib/site-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -925,16 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="98" column="14" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-          <folding>
-            <element signature="e#167#179#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="461">
@@ -953,8 +927,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM_CNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+        <state relative-caret-position="256">
+          <caret line="102" column="26" lean-forward="true" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
+          <folding>
+            <element signature="e#167#179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="105" column="57" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding>
+            <element signature="e#167#179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_BLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1049">
+          <caret line="115" column="17" lean-forward="false" selection-start-line="115" selection-start-column="10" selection-end-line="115" selection-end-column="17" />
           <folding>
             <element signature="e#167#179#0" expanded="true" />
           </folding>
