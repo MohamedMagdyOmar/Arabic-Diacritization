@@ -23,7 +23,7 @@ def get_list_of_sentence_numbers_by(sentence_type):
 
     connect_to_db()
     get_sentence_number_query = "select distinct SentenceNumber from parseddocument where LetterType = " + \
-                                "'" + sentence_type + "'" + " order by idCharacterNumber asc "
+                                "'" + sentence_type + "'" + " order by SentenceNumber asc, idCharacterNumber asc "
 
     cur.execute(get_sentence_number_query)
 
@@ -212,7 +212,7 @@ def load_data_set():
     start_time = datetime.datetime.now()
 
     query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
-            "location from ParsedDocument order by SentenceNumber asc"
+            "location from ParsedDocument order by SentenceNumber asc, idCharacterNumber asc"
 
     cur.execute(query)
 
@@ -232,7 +232,7 @@ def load_dataset_by_type(data_type):
     connect_to_db()
     query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
             "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
-            "'%s'" % data_type + " order by SentenceNumber asc"
+            "'%s'" % data_type + " order by SentenceNumber asc, idCharacterNumber asc"
 
     cur.execute(query)
 
