@@ -9,38 +9,36 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="ArabicDiacritizer_CNN_LSTM.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="274">
+                    <caret line="78" column="4" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="80" selection-end-column="65" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Text Generation With LSTM.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Text Generation With LSTM/Text Generation With LSTM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding>
-                <element signature="e#63#75#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArabicDiacritizer_LSTM.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ArabicDiacritizer_LSTM.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state relative-caret-position="785">
+              <caret line="101" column="59" lean-forward="false" selection-start-line="101" selection-start-column="59" selection-end-line="101" selection-end-column="59" />
               <folding>
                 <element signature="e#167#179#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArabicDiacritizer_CNN_LSTM.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-943">
-              <caret line="29" column="4" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="58" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -380,11 +378,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31381217" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31381217" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31381217" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3480663" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3480663" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -501,44 +499,9 @@
           <option name="timeStamp" value="309" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Text Generation With LSTM/Text Generation With LSTM.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="310" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Sequence Classification with LSTM Recurrent Neural Networks in Python with Keras/seqClassificationLSTM.py</url>
           <line>17</line>
           <option name="timeStamp" value="311" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py</url>
-          <line>57</line>
-          <option name="timeStamp" value="313" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Text Generation With LSTM/Text Generation With LSTM.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="314" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py</url>
-          <line>67</line>
-          <option name="timeStamp" value="322" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py</url>
-          <line>62</line>
-          <option name="timeStamp" value="323" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Text Generation With LSTM/Text Generation With LSTM.py</url>
-          <line>35</line>
-          <option name="timeStamp" value="324" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py</url>
-          <line>59</line>
-          <option name="timeStamp" value="325" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -551,7 +514,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="327" />
+      <option name="time" value="329" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -928,6 +891,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2">
           <caret line="335" column="15" lean-forward="false" selection-start-line="335" selection-start-column="4" selection-end-line="335" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#14#0" expanded="false" />
+            <element signature="e#199#346#0" expanded="false" />
+            <element signature="e#384#875#0" expanded="false" />
+            <element signature="e#903#1335#0" expanded="false" />
+            <element signature="e#1380#1924#0" expanded="false" />
+            <element signature="e#1960#2471#0" expanded="false" />
+            <element signature="e#2515#2906#0" expanded="false" />
+            <element signature="e#2936#3402#0" expanded="false" />
+            <element signature="e#3432#3875#0" expanded="false" />
+            <element signature="e#5004#5910#0" expanded="false" />
+            <element signature="e#5963#6709#0" expanded="false" />
+            <element signature="e#6763#7519#0" expanded="false" />
+            <element signature="e#7564#7814#0" expanded="false" />
+            <element signature="e#7882#8514#0" expanded="false" />
+            <element signature="e#8580#9847#0" expanded="false" />
+            <element signature="e#10449#10583#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -951,26 +932,26 @@
         <state relative-caret-position="177">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
-            <element signature="e#63#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding>
-            <element signature="e#167#179#0" expanded="true" />
+            <element signature="e#63#75#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-943">
-          <caret line="29" column="4" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="58" />
+        <state relative-caret-position="274">
+          <caret line="78" column="4" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="80" selection-end-column="65" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="101" column="59" lean-forward="false" selection-start-line="101" selection-start-column="59" selection-end-line="101" selection-end-column="59" />
+          <folding>
+            <element signature="e#167#179#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
