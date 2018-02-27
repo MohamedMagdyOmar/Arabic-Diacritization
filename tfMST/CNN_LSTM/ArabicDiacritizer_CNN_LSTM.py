@@ -73,7 +73,7 @@ if __name__ == "__main__":
     model.add(MaxPooling1D(pool_size=2))
     model.add(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True))
     model.add(LSTM(350, dropout=0.2, recurrent_dropout=0.2))
-    model.add(Dense(49, activation='sigmoid'))
+    model.add(Dense(49, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # file_path = "weights.best.hdf5"

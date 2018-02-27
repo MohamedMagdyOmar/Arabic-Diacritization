@@ -3,6 +3,7 @@ import unicodedata
 import MySQLdb
 import MySQLdb.cursors
 import numpy as np
+import datetime
 
 
 def connect_to_db():
@@ -22,7 +23,7 @@ def get_list_of_sentence_numbers_by(sentence_type):
 
     connect_to_db()
     get_sentence_number_query = "select distinct SentenceNumber from parseddocument where LetterType = " + \
-                                "'" + sentence_type + "'" + " order by idCharacterNumber asc "
+                                "'" + sentence_type + "'" + " order by SentenceNumber asc, idCharacterNumber asc "
 
     cur.execute(get_sentence_number_query)
 
@@ -176,4 +177,89 @@ def get_dictionary():
     cur.close()
     return np.array(corresponding_diacritized_words)
 
+
+def get_input_table():
+    start_time = datetime.datetime.now()
+    connect_to_db()
+    query = "select UnDiacritizedCharacter, UnDiacritizedCharacterOneHotEncoding from UnDiacOneHotEncoding"
+    cur.execute(query)
+
+    input_and_equiv_encoding = cur.fetchall()
+    input_and_equiv_encoding = np.array(input_and_equiv_encoding)
+
+    end_time = datetime.datetime.now()
+    print("get_db_input_table takes : ", end_time - start_time)
+    cur.close()
+    return input_and_equiv_encoding
+
+
+def get_label_table():
+    start_time = datetime.datetime.now()
+    connect_to_db()
+    query = "select * from diacritics_and_undiacritized_letter_one_hot_encoding"
+    cur.execute(query)
+
+    labels_and_equiv_encoding = cur.fetchall()
+    labels_and_equiv_encoding = np.array(labels_and_equiv_encoding)
+
+    end_time = datetime.datetime.now()
+    print("get_db_label_table takes : ", end_time - start_time)
+    cur.close()
+    return labels_and_equiv_encoding
+
+
+def load_data_set():
+    start_time = datetime.datetime.now()
+
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location from ParsedDocument order by SentenceNumber asc, idCharacterNumber asc"
+
+    cur.execute(query)
+
+    data = cur.fetchall()
+    data = np.array(data)
+
+    end_time = datetime.datetime.now()
+    print("load_data_set takes : ", end_time - start_time)
+
+    cur.close()
+    return data
+
+
+def load_dataset_by_type(data_type):
+
+    start_time = datetime.datetime.now()
+    connect_to_db()
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
+            "'%s'" % data_type + " order by SentenceNumber asc, idCharacterNumber asc"
+
+    cur.execute(query)
+
+    data = cur.fetchall()
+    data = np.array(data)
+
+    end_time = datetime.datetime.now()
+    print("load_dataset_by_type takes : ", end_time - start_time)
+    cur.close()
+    return data
+
+
+def load_testing_dataset():
+
+    start_time = datetime.datetime.now()
+    connect_to_db()
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
+            "'%s'" % "testing"
+
+    cur.execute(query)
+
+    data = cur.fetchall()
+    data = np.array(data)
+
+    end_time = datetime.datetime.now()
+    print("load_testing_dataset takes : ", end_time - start_time)
+    cur.close()
+    return data
 

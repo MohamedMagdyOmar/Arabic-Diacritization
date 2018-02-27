@@ -8,6 +8,7 @@ from keras.layers import Dense
 from keras.layers import LSTM
 from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
+from keras.models import Model
 # fix random seed for reproducibility
 numpy.random.seed(7)
 # load the dataset but only keep the top n words, zero the rest
@@ -20,11 +21,18 @@ X_test = sequence.pad_sequences(X_test, maxlen=max_review_length)
 # create the model
 embedding_vecor_length = 32
 model = Sequential()
-model.add(Embedding(top_words, embedding_vecor_length, input_length=max_review_length))
-model.add(LSTM(100, dropout=0.2, recurrent_dropout=0.2))
-model.add(Dense(1, activation='sigmoid'))
+model.add(Embedding(top_words, embedding_vecor_length, input_length=max_review_length, name="EmbeddingLayer"))
+intermediate_layer_model1 = Model(inputs=model.input,
+                                 outputs=model.get_layer("EmbeddingLayer").output)
+
+model.add(LSTM(700, dropout=0.2, recurrent_dropout=0.2, name="LSTM"))
+intermediate_layer_model2 = Model(inputs=model.input,
+                                 outputs=model.get_layer("LSTM").output)
+model.add(Dense(1, activation='sigmoid', name="dense"))
+intermediate_layer_model3 = Model(inputs=model.input,
+                                 outputs=model.get_layer("dense").output)
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-print(model.summary())
+model.summary()
 model.fit(X_train, y_train, epochs=3, batch_size=64)
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
