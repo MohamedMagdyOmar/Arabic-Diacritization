@@ -9,38 +9,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="Predictor_CNN_LSTM.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="486">
-                    <caret line="154" column="83" lean-forward="false" selection-start-line="154" selection-start-column="83" selection-end-line="154" selection-end-column="83" />
-                    <folding>
-                      <element signature="e#1608#1673#0" expanded="false" />
-                      <element signature="e#1774#1977#0" expanded="false" />
-                      <element signature="e#2009#2047#0" expanded="false" />
-                      <element signature="e#2115#2364#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Predictor_NLSTM.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Predictor_NLSTM.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/Predictor_NLSTM.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="98">
-              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+              <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
               <folding>
                 <element signature="e#167#185#0" expanded="true" />
                 <element signature="e#1721#1924#0" expanded="false" />
@@ -51,35 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBHelperMethod.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py">
+      <file leaf-file-name="ArabicDiacritizer_NLSTM.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/ArabicDiacritizer_NLSTM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1941">
-              <caret line="25" column="112" lean-forward="false" selection-start-line="25" selection-start-column="112" selection-end-line="25" selection-end-column="112" />
-              <folding>
-                <element signature="e#24#42#0" expanded="true" />
-                <element signature="e#1240#1598#0" expanded="false" />
-                <element signature="e#1632#1931#0" expanded="false" />
-                <element signature="e#2004#2467#0" expanded="false" />
-                <element signature="e#2537#2977#0" expanded="false" />
-                <element signature="e#3024#3352#0" expanded="false" />
-                <element signature="e#3417#3764#0" expanded="false" />
-                <element signature="e#3839#4598#0" expanded="false" />
-                <element signature="e#4655#5228#0" expanded="false" />
-                <element signature="e#5303#5739#0" expanded="false" />
-                <element signature="e#5768#6038#0" expanded="false" />
-                <element signature="e#6068#6524#0" expanded="false" />
-                <element signature="e#6554#6987#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DictionaryCorrection.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+            <state relative-caret-position="305">
+              <caret line="60" column="14" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -448,14 +399,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1717" y="135" width="1726" height="928" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28103045" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31381217" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43949044" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5146497" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -585,6 +535,16 @@
           <line>114</line>
           <option name="timeStamp" value="330" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
+          <line>134</line>
+          <option name="timeStamp" value="339" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/NLSTM/ArabicDiacritizer_NLSTM.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="340" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -596,7 +556,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="339" />
+      <option name="time" value="341" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1031,24 +991,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/ArabicDiacritizer_NLSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="46" selection-end-column="43" />
-          <folding>
-            <element signature="e#167#179#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -1059,6 +1001,14 @@
             <element signature="e#2009#2047#0" expanded="false" />
             <element signature="e#2115#2364#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,13 +1037,21 @@
     <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/Predictor_NLSTM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
-          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
           <folding>
             <element signature="e#167#185#0" expanded="true" />
             <element signature="e#1721#1924#0" expanded="false" />
             <element signature="e#1956#1994#0" expanded="false" />
             <element signature="e#2062#2311#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/ArabicDiacritizer_NLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="60" column="14" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
