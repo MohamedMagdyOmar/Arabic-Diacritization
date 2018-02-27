@@ -7,6 +7,7 @@ import DBHelperMethod
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
+from keras.layers import Dropout
 from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
@@ -50,18 +51,38 @@ if __name__ == "__main__":
     dataX = []
     dataY = []
 
-    for i in range(0, n_chars - seq_length, 1):
+    for i in range(0, len(X_train) - seq_length, 1):
         seq_in = X_train[i:i + seq_length]
         dataX.append([vocabulary[char] for char in seq_in])
+
+    Y = Y_train[0: len(Y_train) - 3]
 
     n_patterns = len(dataX)
     print("Total Patterns: ", n_patterns)
     # reshape X to be [samples, time steps, features]
-    X = numpy.reshape(dataX, (n_patterns, seq_length, 1))
+    X = numpy.reshape(numpy.array(dataX), (n_patterns, seq_length, 1))
     # normalize
     X = X / float(n_vocab)
     # one hot encode the output variable
 
     print(X.shape[1])
+
+    model = Sequential()
+    model.add(LSTM(256, input_shape=(X.shape[1], X.shape[2]), return_sequences=True, name="LSTM1"))
+
+    model.add(Dropout(0.2))
+    model.add(LSTM(256, name="LSTM2"))
+    model.add(Dropout(0.2))
+    model.add(Dense(Y.shape[1], activation='softmax', name="dense"))
+    model.compile(loss='categorical_crossentropy', optimizer='adam')
+
+    # define the checkpoint
+    file_path = "weights-improvement-{epoch:02d}-{loss:.4f}-bigger.hdf5"
+    checkpoint = ModelCheckpoint(file_path, monitor='loss', verbose=1, save_best_only=True, mode='min')
+    callbacks_list = [checkpoint]
+
+    # fit the model
+    model.summary()
+    model.fit(X, Y, epochs=50, batch_size=64, callbacks=callbacks_list)
 
 
