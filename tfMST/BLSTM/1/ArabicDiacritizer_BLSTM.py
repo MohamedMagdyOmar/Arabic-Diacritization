@@ -59,7 +59,7 @@ if __name__ == "__main__":
     vocabulary, vocab_inverse, all_chars, dataset = create_vocab()
     n_chars, n_vocab = get_chars_and_vocab_count(vocabulary, all_chars)
 
-    seq_length = 5
+    seq_length = 3
     X_train = []
     X_test = []
 
@@ -73,8 +73,8 @@ if __name__ == "__main__":
 
     X_train = numpy.array(X_train)
     X_test = numpy.array(X_test)
-    Y_train = dataY_train[0: len(dataY_train) - 5]
-    Y_test = dataY_test[0: len(dataY_test) - 5]
+    Y_train = dataY_train[0: len(dataY_train) - 3]
+    Y_test = dataY_test[0: len(dataY_test) - 3]
 
     n_patterns_train = len(X_train)
     n_patterns_test = len(X_test)
@@ -95,10 +95,10 @@ if __name__ == "__main__":
     model = Sequential()
     model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length, input_length=seq_length))
 
-    model.add(Bidirectional(LSTM(350, return_sequences=True, name="BLSTM1")))
+    model.add(Bidirectional(LSTM(250, return_sequences=True, name="BLSTM1")))
     model.add(Dropout(0.2))
 
-    model.add(Bidirectional(LSTM(350, name="BLSTM2")))
+    model.add(Bidirectional(LSTM(250, name="BLSTM2")))
     model.add(Dropout(0.2))
 
     model.add(Dense(Y_train.shape[1], activation='softmax', name="dense"))

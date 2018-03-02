@@ -95,10 +95,10 @@ if __name__ == "__main__":
     model = Sequential()
     model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length, input_length=seq_length))
 
-    model.add(Bidirectional(LSTM(350, return_sequences=True, name="BLSTM1")))
+    model.add(Bidirectional(LSTM(250, return_sequences=True, name="BLSTM1")))
     model.add(Dropout(0.2))
 
-    model.add(Bidirectional(LSTM(350, name="BLSTM2")))
+    model.add(Bidirectional(LSTM(250, name="BLSTM2")))
     model.add(Dropout(0.2))
 
     model.add(Dense(Y_train.shape[1], activation='softmax', name="dense"))
