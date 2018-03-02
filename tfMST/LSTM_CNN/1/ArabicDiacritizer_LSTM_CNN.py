@@ -14,7 +14,6 @@ from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
 from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
-from keras import backend as K
 import os
 # fix random seed for reproducibility
 numpy.random.seed(7)
@@ -97,8 +96,8 @@ if __name__ == "__main__":
     model = Sequential()
     model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length, input_length=seq_length))
 
-    model.add(LSTM(350, recurrent_dropout=0.2, return_sequences=True, name="LSTM1"))
-    model.add(LSTM(350, recurrent_dropout=0.2, return_sequences=True, name="LSTM2"))
+    model.add(LSTM(256, recurrent_dropout=0.2, return_sequences=True, name="LSTM1"))
+    model.add(LSTM(256, recurrent_dropout=0.2, return_sequences=True, name="LSTM2"))
 
     model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
@@ -119,10 +118,10 @@ if __name__ == "__main__":
     # fit the model
     model.summary()
     model.fit(X_train, Y_train, validation_data=(X_test, Y_test),
-              callbacks=callbacks_list, epochs=30, batch_size=32, verbose=1)
+              callbacks=callbacks_list, epochs=30, batch_size=64, verbose=1)
 
     # Final evaluation of the model
     scores = model.evaluate(X_test, Y_test, verbose=0)
     print("Accuracy: %.2f%%" % (scores[1] * 100))
 
-    K.clear_session()
+
