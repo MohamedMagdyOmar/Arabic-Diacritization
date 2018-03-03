@@ -25,7 +25,8 @@ def get_training_data():
     DBHelperMethod.connect_to_db()
     training_dataset = DBHelperMethod.load_dataset_by_type("training")
 
-    x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
+    #x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
+    x = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
 
     return x, y
@@ -35,7 +36,8 @@ def get_testing_data():
     DBHelperMethod.connect_to_db()
     training_dataset = DBHelperMethod.load_dataset_by_type("testing")
 
-    x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
+    # x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
+    x = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
 
     return x, y
@@ -45,7 +47,8 @@ def create_vocab():
 
     DBHelperMethod.connect_to_db()
     dataset = DBHelperMethod.load_data_set()
-    chars = dp.load_nn_input_dataset_string(dataset[:, [0, 6]])
+    # chars = dp.load_nn_input_dataset_string(dataset[:, [0, 6]])
+    chars = dp.load_nn_input_dataset_string_space_only(dataset[:, [0, 6]])
     vocab, vocab_inv = dp.build_vocab(chars)
     return vocab, vocab_inv, chars, dataset
 
@@ -97,10 +100,13 @@ if __name__ == "__main__":
     model = Sequential()
     model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length, input_length=seq_length))
 
-    model.add(LSTM(350, recurrent_dropout=0.2, return_sequences=True, name="LSTM1"))
-    model.add(LSTM(350, recurrent_dropout=0.2, return_sequences=True, name="LSTM2"))
+    model.add(LSTM(250, recurrent_dropout=0.2, return_sequences=True, name="LSTM1"))
+    model.add(LSTM(250, recurrent_dropout=0.2, return_sequences=True, name="LSTM2"))
 
     model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
+    model.add(MaxPooling1D(pool_size=2))
+
+    model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
 
     model.summary()
@@ -119,7 +125,7 @@ if __name__ == "__main__":
     # fit the model
     model.summary()
     model.fit(X_train, Y_train, validation_data=(X_test, Y_test),
-              callbacks=callbacks_list, epochs=30, batch_size=32, verbose=1)
+              callbacks=callbacks_list, epochs=30, batch_size=64, verbose=1)
 
     # Final evaluation of the model
     scores = model.evaluate(X_test, Y_test, verbose=0)
