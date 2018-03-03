@@ -21,7 +21,8 @@ def load_training_data():
     dp.establish_db_connection()
     training_dataset = dp.load_dataset_by_type("training")
 
-    x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
+    # x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
+    x = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(training_dataset[:, [3]])
@@ -34,7 +35,8 @@ def load_testing_data():
     dp.establish_db_connection()
     testing_dataset = dp.load_dataset_by_type("testing")
 
-    x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
+    # x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
+    x = dp.load_nn_input_dataset_string_space_only(testing_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
@@ -72,8 +74,8 @@ if __name__ == "__main__":
     model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
     model.add(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True))
-    model.add(LSTM(350, dropout=0.2, recurrent_dropout=0.2))
-    model.add(Dense(49, activation='softmax'))
+    model.add(LSTM(250, dropout=0.2))
+    model.add(Dense(50, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # file_path = "weights.best.hdf5"
