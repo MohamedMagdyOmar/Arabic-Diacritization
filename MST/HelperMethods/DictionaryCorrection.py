@@ -74,12 +74,13 @@ def get_diac_version_with_smallest_dist(list_of_objects, sentence_number):
 
 def get_diac_version_with_smallest_dist_no_db_access(list_of_objects, undiac_words, dic_words):
 
+    list_of_objects = list(filter(lambda a: a.letter != 'spacespace', list_of_objects))
     list_of_actual_words_after_dictionary_correction = []
 
     diacritized_rnn_op_words = WordLetterProcessingHelperMethod.reform_word_from(list_of_objects)
     undiacritized_words = undiac_words
 
-    if len(diacritized_rnn_op_words) != len(diacritized_rnn_op_words):
+    if len(diacritized_rnn_op_words) != len(undiacritized_words):
         raise Exception("error appeared in get_diac_version_with_smallest_dist")
 
     for each_corrected_word, each_un_diacritized_word in zip(diacritized_rnn_op_words, undiacritized_words):

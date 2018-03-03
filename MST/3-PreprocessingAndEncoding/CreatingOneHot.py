@@ -75,10 +75,10 @@ Diacritics_and_letters_OneHotInNDimArrayForm = np.array(one_hot_list_for_diacrit
 Diacritics_and_letters_OneHotInNDimArrayForm = Diacritics_and_letters_OneHotInNDimArrayForm.astype(np.int8)
 
 # filling "UnDiacOneHotEncoding and DiacOneHotEncoding" Tables
-print len(one_hot_list__for_un_diacritized_characters)
-print len(one_hot_list__for_diacritized_characters)
-print len(one_hot_list_for_diacritized)
-print len(one_hot_list_for_diacritics_and_undiacritized_letters)
+print(len(one_hot_list__for_un_diacritized_characters))
+print(len(one_hot_list__for_diacritized_characters))
+print(len(one_hot_list_for_diacritized))
+print(len(one_hot_list_for_diacritics_and_undiacritized_letters))
 
 for x in range(0, len(one_hot_list__for_un_diacritized_characters)):
     cur.execute("insert into UnDiacOneHotEncoding (UnDiacritizedCharacter,UnDiacritizedCharacterOneHotEncoding, location)"

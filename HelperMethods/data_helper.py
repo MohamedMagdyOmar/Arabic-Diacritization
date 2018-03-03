@@ -201,6 +201,29 @@ def load_nn_input_dataset_string(data_table):
     return np.array(nn_input)
 
 
+def load_nn_input_dataset_string_space_only(data_table):
+    start_time = datetime.datetime.now()
+    nn_input = []
+
+    input_and_equiv_encoding = get_input_table()
+
+    for each_row in data_table:
+        raw_input_data = each_row[0]
+
+        index_of_raw_input_data = np.where(input_and_equiv_encoding == raw_input_data)
+
+        if np.size(index_of_raw_input_data) != 0:
+            one_hot_encoding = input_and_equiv_encoding[np.min(index_of_raw_input_data[0]), 1]
+
+            nn_input.append(one_hot_encoding)
+
+    end_time = datetime.datetime.now()
+
+    print("load_nn_input_dataset_string takes : ", end_time - start_time)
+
+    return np.array(nn_input)
+
+
 def load_nn_labels_dataset_numpy(data_table):
     start_time = datetime.datetime.now()
     nn_labels = []
