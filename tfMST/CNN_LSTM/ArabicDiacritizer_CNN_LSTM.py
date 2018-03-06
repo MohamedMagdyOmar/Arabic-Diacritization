@@ -5,12 +5,14 @@ import numpy
 import data_helper as dp
 from keras.models import Sequential
 from keras.layers import Dense
-from keras.layers import LSTM
+from keras.layers import LSTM, Bidirectional
 from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
 from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
+from keras import optimizers
+import DBHelperMethod
 import os
 # fix random seed for reproducibility
 numpy.random.seed(7)
@@ -19,7 +21,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 def load_training_data():
     dp.establish_db_connection()
-    training_dataset = dp.load_dataset_by_type("training")
+    training_dataset = DBHelperMethod.load_dataset_by_type("training")
 
     # x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
     x = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])
@@ -33,7 +35,7 @@ def load_training_data():
 
 def load_testing_data():
     dp.establish_db_connection()
-    testing_dataset = dp.load_dataset_by_type("testing")
+    testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
 
     # x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
     x = dp.load_nn_input_dataset_string_space_only(testing_dataset[:, [0, 6]])
@@ -73,9 +75,10 @@ if __name__ == "__main__":
     model.add(MaxPooling1D(pool_size=2))
     model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
-    model.add(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True))
-    model.add(LSTM(250, dropout=0.2))
-    model.add(Dense(50, activation='softmax'))
+    model.add((LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
+    model.add((LSTM(250, dropout=0.2, recurrent_dropout=0.2)))
+    model.add((Dense(50, activation='softmax')))
+
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # file_path = "weights.best.hdf5"

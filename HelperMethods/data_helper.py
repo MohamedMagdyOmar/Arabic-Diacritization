@@ -31,7 +31,7 @@ def establish_db_connection():
     global cur
     cur = db.cursor()
 
-
+'''
 def load_data_set():
     start_time = datetime.datetime.now()
 
@@ -49,7 +49,8 @@ def load_data_set():
     cur.close()
     return data
 
-
+'''
+'''
 def load_dataset_by_type(data_type):
 
     start_time = datetime.datetime.now()
@@ -68,7 +69,8 @@ def load_dataset_by_type(data_type):
     cur.close()
     return data
 
-
+'''
+'''
 def load_testing_dataset():
 
     start_time = datetime.datetime.now()
@@ -86,6 +88,8 @@ def load_testing_dataset():
     print("load_testing_dataset takes : ", end_time - start_time)
     cur.close()
     return data
+
+'''
 
 
 def load_cnn_blstm_table(data_type):
@@ -220,6 +224,31 @@ def load_nn_input_dataset_string_space_only(data_table):
     end_time = datetime.datetime.now()
 
     print("load_nn_input_dataset_string takes : ", end_time - start_time)
+
+    return np.array(nn_input)
+
+
+def load_nn_input_dataset_one_to_one(data_table):
+    start_time = datetime.datetime.now()
+    nn_input = []
+
+    inputs_and_equiv_encoding = get_input_table()
+
+    for each_row in data_table:
+        raw_input_data = each_row[0]
+
+        index_of_raw_label_data = np.where(inputs_and_equiv_encoding == raw_input_data)
+
+        if np.size(index_of_raw_label_data) != 0:
+            input = inputs_and_equiv_encoding[index_of_raw_label_data[0], 1][0]
+            input = input.replace('\n', "")
+            input = list(map(int, input))
+
+            nn_input.append(input)
+
+    end_time = datetime.datetime.now()
+
+    print("load_nn_input_dataset_one_to_one takes : ", end_time - start_time)
 
     return np.array(nn_input)
 
@@ -404,7 +433,10 @@ def concatenate_char_and_diacritization(ip_letters, nn_labels):
             b = 1
         try:
             if len(list(each_nn_labels)) > 1:
-                nn_diacritized_letters.append(ip_each_letter + each_nn_labels)
+                if each_nn_labels == 'space' and ip_each_letter != 'space':
+                    nn_diacritized_letters.append(ip_each_letter)
+                else:
+                    nn_diacritized_letters.append(ip_each_letter + each_nn_labels)
 
             elif not unicodedata2.combining(each_nn_labels):
                 nn_diacritized_letters.append(ip_each_letter)

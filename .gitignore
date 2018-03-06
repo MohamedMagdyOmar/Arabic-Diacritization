@@ -49,11 +49,7 @@ Temporary Items
 *.xml
 .idea/workspace.xml
 .idea/workspace.xml
-tfMST/1/ArabicDiacritizer_CNN_LSTM.py
-*.hdf5
-tfMST/2/ArabicDiacritizer_CNN_LSTM.py
 tfMST/Book1.xls
-tfMST/3/ArabicDiacritizer_CNN_LSTM.py
 tfMST/Book2.xls
 .idea/workspace.xml
 .idea/workspace.xml

@@ -25,7 +25,7 @@ Total_Error_without_last_char = 0
 
 def load_testing_data():
     dp.establish_db_connection()
-    testing_dataset = dp.load_testing_dataset()
+    testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
 
     x = dp.load_nn_input_dataset_string_space_only(testing_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
@@ -117,6 +117,8 @@ if __name__ == "__main__":
     end_range = 0
     for sentence_number in list_of_sentence_numbers:
 
+        if counter == 52:
+            b = 1
         selected_sentence = DBHelperMethod.get_sentence_by(sentence_number)
         undiac_words = get_undiac_words_for_selected_sentence(list_of_all_words_and_sent_num, sentence_number)
 
@@ -130,6 +132,7 @@ if __name__ == "__main__":
         nn_op_letters = dp.concatenate_char_and_diacritization(ip_letters[start_range: end_range: 1], nn_labels[start_range: end_range: 1])
 
         expected_letters = expected_op_letters[start_range: end_range: 1]
+        expected_letters = list(filter(lambda a: a != 'space', expected_letters))
 
         location = loc[start_range: end_range: 1]
 

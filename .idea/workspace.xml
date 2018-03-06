@@ -11,14 +11,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ArabicDiacritizer_LSTM_CNN.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tfMST/LSTM_CNN/ArabicDiacritizer_LSTM_CNN.py">
+      <file leaf-file-name="ArabicDiacritizer_CNN_BLSTM.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tfMST/CNN-BLSTM/ArabicDiacritizer_CNN_BLSTM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1183">
-              <caret line="102" column="36" lean-forward="false" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
-              <folding>
-                <element signature="e#167#179#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="368">
+              <caret line="81" column="46" lean-forward="false" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -34,15 +32,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>load_dataset_table</find>
-      <find>load_nn_seq_lengths</find>
       <find>hstack</find>
       <find>get_input_table</find>
       <find>pad_sentences</find>
       <find>load_nn_labels_dataset_string</find>
       <find>batch_size</find>
       <find>embedding_vecor_length</find>
-      <find>verbose</find>
       <find>val_acc</find>
       <find>read_rnn_op_csv_file</find>
       <find>get_dictionary_all_diacritized_version_of</find>
@@ -64,6 +59,9 @@
       <find>nn_op_letters</find>
       <find>do_we_need_to_search_in_dictionary</find>
       <find>op_letters</find>
+      <find>verbose</find>
+      <find>diacritized_rnn_op_words</find>
+      <find>filter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -92,14 +90,11 @@
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritized_CNN.py" />
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritized_LSTM.py" />
         <option value="$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py" />
-        <option value="$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/WordLetterProcessingHelperMethod.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrectionWithoutSentNum.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py" />
-        <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py" />
         <option value="$PROJECT_DIR$/Sequence Classification with LSTM Recurrent Neural Networks in Python with Keras/seqClassificationLSTM.py" />
-        <option value="$PROJECT_DIR$/HelperMethods/data_helper.py" />
         <option value="$PROJECT_DIR$/Text Generation With LSTM/Text Generation With LSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py" />
@@ -112,12 +107,24 @@
         <option value="$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py" />
         <option value="$PROJECT_DIR$/tfMST/BLSTM/ArabicDiacritizer_BLSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/BLSTM-CNN/ArabicDiacritizer_BLSTM-CNN.py" />
+        <option value="$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/CreatingOneHot.py" />
         <option value="$PROJECT_DIR$/tfMST/LSTM_CNN/ArabicDiacritizer_LSTM_CNN.py" />
+        <option value="$PROJECT_DIR$/tfMST/LSTM_CNN/Predictor_LSTM_CNN.py" />
+        <option value="$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py" />
+        <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py" />
+        <option value="$PROJECT_DIR$/tfMST/LSTM_CNN/3/Predictor_LSTM_CNN.py" />
+        <option value="$PROJECT_DIR$/tfMST/LSTM_CNN/3/ArabicDiacritizer_LSTM_CNN.py" />
+        <option value="$PROJECT_DIR$/tfMST/CNN_LSTM/1/Predictor_CNN_LSTM.py" />
+        <option value="$PROJECT_DIR$/tfMST/CNN_LSTM/ArabicDiacritizer_CNN_LSTM.py" />
+        <option value="$PROJECT_DIR$/HelperMethods/data_helper.py" />
+        <option value="$PROJECT_DIR$/tfMST/BLSTM/test.py" />
+        <option value="$PROJECT_DIR$/tfMST/CNN-NLSTM/ArabicDiacritizer_CNN_NLSTM.py" />
+        <option value="$PROJECT_DIR$/tfMST/CNN-BLSTM/ArabicDiacritizer_CNN_BLSTM.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-9" />
+    <option name="x" value="467" />
     <option name="y" value="-9" />
     <option name="width" value="996" />
     <option name="height" value="738" />
@@ -157,7 +164,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -168,53 +174,33 @@
             <path>
               <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
               <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
-              <item name="MST" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
-              <item name="NLSTM" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
-              <item name="NLSTM" type="462c0819:PsiDirectoryNode" />
-              <item name="NLSTMKeras" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
-              <item name="NLSTM" type="462c0819:PsiDirectoryNode" />
-              <item name="NLSTMKeras" type="462c0819:PsiDirectoryNode" />
-              <item name="Nested-LSTM-master" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
-              <item name="NLSTM" type="462c0819:PsiDirectoryNode" />
-              <item name="NLSTMMaster" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
               <item name="tfMST" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
               <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
               <item name="tfMST" type="462c0819:PsiDirectoryNode" />
-              <item name="BLSTM" type="462c0819:PsiDirectoryNode" />
+              <item name="CNN-BLSTM" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
               <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
               <item name="tfMST" type="462c0819:PsiDirectoryNode" />
-              <item name="LSTM_CNN" type="462c0819:PsiDirectoryNode" />
+              <item name="CNN-BLSTM" type="462c0819:PsiDirectoryNode" />
+              <item name="1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
+              <item name="tfMST" type="462c0819:PsiDirectoryNode" />
+              <item name="CNN-BLSTM" type="462c0819:PsiDirectoryNode" />
+              <item name="2" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -231,11 +217,11 @@
       <recent name="D:\Repos\TensorFlowRepo\MST\7-TensorFlowTraining" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Repos\TensorFlowRepo\tfMST\CNN-NLSTM" />
+      <recent name="D:\Repos\TensorFlowRepo\HelperMethods" />
       <recent name="D:\Repos\TensorFlowRepo\tfMST\NLSTM" />
       <recent name="D:\Repos\TensorFlowRepo" />
       <recent name="D:\Repos\TensorFlowRepo\Test\HelperMethods" />
-      <recent name="D:\Repos\TensorFlowRepo\Test" />
-      <recent name="D:\Repos\TensorFlowRepo\CNN-text-classification-keras\CNN-text-classification-keras-master" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -250,74 +236,56 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ArabicDiacritizer_LSTM_CNN (1)">
-    <configuration name="ArabicDiacritizer_BLSTM (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.ArabicDiacritizer_CNN_BLSTM">
+    <configuration name="ArabicDiacritizer_CNN_BLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/CNN-BLSTM" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TensorFlowRepo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ArabicDiacritizer_BLSTM.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/CNN-BLSTM/ArabicDiacritizer_CNN_BLSTM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="ArabicDiacritizer_BLSTM-CNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ArabicDiacritizer_CNN_NLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM-CNN" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/CNN-NLSTM" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TensorFlowRepo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM-CNN/ArabicDiacritizer_BLSTM-CNN.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/CNN-NLSTM/ArabicDiacritizer_CNN_NLSTM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="ArabicDiacritizer_LSTM_CNN (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="CreatingOneHot" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/LSTM_CNN" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MST/3-PreprocessingAndEncoding" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TensorFlowRepo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/LSTM_CNN/ArabicDiacritizer_LSTM_CNN.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="ArabicDiacritizer_NLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/NLSTM" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TensorFlowRepo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/NLSTM/ArabicDiacritizer_NLSTM.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/CreatingOneHot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -341,19 +309,37 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Predictor_NLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="data_helper" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/NLSTM" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HelperMethods" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TensorFlowRepo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/NLSTM/Predictor_NLSTM.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HelperMethods/data_helper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TensorFlowRepo" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -361,19 +347,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.Predictor_CNN_LSTM" />
-      <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_NLSTM" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Predictor_NLSTM" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_BLSTM (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM_CNN (1)" />
-      <item index="5" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_BLSTM-CNN" />
+      <item index="1" class="java.lang.String" itemvalue="Python.test" />
+      <item index="2" class="java.lang.String" itemvalue="Python.data_helper" />
+      <item index="3" class="java.lang.String" itemvalue="Python.CreatingOneHot" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_NLSTM" />
+      <item index="5" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_BLSTM" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_LSTM_CNN (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_BLSTM-CNN" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_BLSTM (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Predictor_NLSTM" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_NLSTM" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_BLSTM" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ArabicDiacritizer_CNN_NLSTM" />
+        <item index="2" class="java.lang.String" itemvalue="Python.CreatingOneHot" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.data_helper" />
       </list>
     </recent_temporary>
   </component>
@@ -405,7 +391,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38121548" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49060774" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -482,11 +468,6 @@
           <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py</url>
-          <line>116</line>
-          <option name="timeStamp" value="250" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
           <line>35</line>
           <option name="timeStamp" value="252" />
@@ -503,7 +484,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
-          <line>152</line>
+          <line>153</line>
           <option name="timeStamp" value="259" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -523,7 +504,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
-          <line>134</line>
+          <line>135</line>
           <option name="timeStamp" value="339" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -536,6 +517,41 @@
           <line>75</line>
           <option name="timeStamp" value="342" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/LSTM_CNN/ArabicDiacritizer_LSTM_CNN.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="345" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/LSTM_CNN/3/ArabicDiacritizer_LSTM_CNN.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="358" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/CNN_LSTM/ArabicDiacritizer_CNN_LSTM.py</url>
+          <line>92</line>
+          <option name="timeStamp" value="359" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="360" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/CNN_LSTM/1/Predictor_CNN_LSTM.py</url>
+          <line>120</line>
+          <option name="timeStamp" value="364" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/BLSTM/ArabicDiacritizer_BLSTM.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="373" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/BLSTM/test.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="385" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -547,7 +563,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="343" />
+      <option name="time" value="388" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -601,195 +617,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs-master/HelperMethods/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs-master/HelperMethods/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs-master/HelperMethods/prepro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="123" column="40" lean-forward="false" selection-start-line="123" selection-start-column="40" selection-end-line="123" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs-master/prepro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="107" column="17" lean-forward="false" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CNN-text-classification-keras/CNN-text-classification-keras-master/HelperMethods/prepro.py" />
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DataPreprocessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="150" column="27" lean-forward="true" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="45" />
-          <folding>
-            <element signature="e#110#601#0" expanded="false" />
-            <element signature="e#644#1149#0" expanded="false" />
-            <element signature="e#1179#1601#0" expanded="false" />
-            <element signature="e#1631#2030#0" expanded="false" />
-            <element signature="e#2076#3093#0" expanded="false" />
-            <element signature="e#3140#3874#0" expanded="false" />
-            <element signature="e#3919#4152#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/HelperMethods/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/HelperMethods/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/HelperMethods/DataPreprocessing.py" />
-    <entry file="file://$PROJECT_DIR$/CNN-text-classification-keras/CNN-text-classification-keras-master/HelperMethods/data_helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="91" column="7" lean-forward="true" selection-start-line="91" selection-start-column="7" selection-end-line="91" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CNN-text-classification-keras/CNN-text-classification-keras-master/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/CheckGPU.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/TestingNumpyFunc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/anaconda/envs/py35env/Lib/zipfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="1008" column="0" lean-forward="false" selection-start-line="1008" selection-start-column="0" selection-end-line="1008" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/RNNOPProcessingHelperMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/anaconda/envs/py35env/Lib/copy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="187" column="0" lean-forward="false" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/SukunCorrection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrectionWithoutSentNum.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-989">
-          <caret line="13" column="40" lean-forward="false" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/WordLetterProcessingHelperMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#1948#3594#0" expanded="false" />
-            <element signature="e#5212#6858#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NN/CNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="34" column="18" lean-forward="false" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs/Named-Entity-Recognition-with-Bidirectional-LSTM-CNNs-master/nn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="15" />
-          <folding>
-            <element signature="e#530#1066#0" expanded="false" />
-            <element signature="e#2008#2766#1" expanded="false" />
-            <element signature="e#4849#5152#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Sequence Classification with LSTM Recurrent Neural Networks in Python with Keras/seqClassificationLSTM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -804,60 +631,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="e#63#75#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="80" column="4" lean-forward="true" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="73" column="35" lean-forward="true" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM_CNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="102" column="26" lean-forward="true" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="105" column="57" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN.py" />
+    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_CNN_LSTM.py" />
+    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM_CNN.py" />
+    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_LSTM.py" />
     <entry file="file://$PROJECT_DIR$/NLSTM/NLSTMMaster/rnn_cell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1100">
           <caret line="141" column="41" lean-forward="false" selection-start-line="141" selection-start-column="37" selection-end-line="141" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/TestNLSTMMaster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1288">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/TestNLSTMMaster.py" />
     <entry file="file://$PROJECT_DIR$/NLSTM/NLSTMKeras/Nested-LSTM-master/imdb_nested_lstm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -870,7 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3515">
           <caret line="285" column="0" lean-forward="false" selection-start-line="285" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -878,7 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,35 +672,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_BLSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="103" column="27" lean-forward="false" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/ArabicDiacritizer_BLSTM.py" />
     <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/imdb_nested_lstm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="33" />
-          <folding>
-            <element signature="e#210#247#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/anaconda/envs/py35env/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,102 +687,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-            <element signature="e#483#1352#0" expanded="false" />
-            <element signature="e#1410#2260#0" expanded="false" />
-            <element signature="e#2297#2859#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="154" column="83" lean-forward="false" selection-start-line="154" selection-start-column="83" selection-end-line="154" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/Predictor_CNN_LSTM.py" />
     <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/Predictor_NLSTM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
           <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-          <folding>
-            <element signature="e#167#185#0" expanded="false" />
-            <element signature="e#1721#1924#0" expanded="false" />
-            <element signature="e#1956#1994#0" expanded="false" />
-            <element signature="e#2062#2311#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/ArabicDiacritizer_NLSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="94" column="6" lean-forward="false" selection-start-line="94" selection-start-column="6" selection-end-line="94" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="228" column="4" lean-forward="false" selection-start-line="228" selection-start-column="4" selection-end-line="228" selection-end-column="4" />
-          <folding>
-            <element signature="e#1240#1598#0" expanded="false" />
-            <element signature="e#1632#1931#0" expanded="false" />
-            <element signature="e#2004#2467#0" expanded="false" />
-            <element signature="e#2537#2977#0" expanded="false" />
-            <element signature="e#3024#3352#0" expanded="false" />
-            <element signature="e#3417#3764#0" expanded="false" />
-            <element signature="e#3839#4598#0" expanded="false" />
-            <element signature="e#4655#5228#0" expanded="false" />
-            <element signature="e#5303#5739#0" expanded="false" />
-            <element signature="e#5768#6038#0" expanded="false" />
-            <element signature="e#6068#6524#0" expanded="false" />
-            <element signature="e#6554#6987#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="107" column="4" lean-forward="false" selection-start-line="107" selection-start-column="4" selection-end-line="107" selection-end-column="4" />
-          <folding>
-            <element signature="e#199#346#0" expanded="false" />
-            <element signature="e#384#875#0" expanded="false" />
-            <element signature="e#903#1335#0" expanded="false" />
-            <element signature="e#1380#1924#0" expanded="false" />
-            <element signature="e#1960#2471#0" expanded="false" />
-            <element signature="e#2515#2906#0" expanded="false" />
-            <element signature="e#3432#3875#0" expanded="false" />
-            <element signature="e#5963#6709#0" expanded="false" />
-            <element signature="e#6763#7519#0" expanded="false" />
-            <element signature="e#7564#7814#0" expanded="false" />
-            <element signature="e#7882#8514#0" expanded="false" />
-            <element signature="e#8580#9847#0" expanded="false" />
-            <element signature="e#10449#10583#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ArabicDiacritizer_BLSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="97" column="4" lean-forward="false" selection-start-line="97" selection-start-column="4" selection-end-line="101" selection-end-column="27" />
-          <folding>
-            <element signature="e#167#179#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1025,19 +702,267 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="103" column="27" lean-forward="true" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/Docs_PreprocessingAndEncoding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10694">
+          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/NumpyOneHotEncoding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/Docs_PreprocessingAndEncoding_With_Randomization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10653">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HelperMethods/NumpyOneHotEncoding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="34" lean-forward="true" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/ExtractingAllDiacritics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN/ArabicDiacritizer_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1288">
+          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/anaconda/envs/py35env/Lib/copy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="187" column="0" lean-forward="false" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2622">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/LSTM_CNN/Predictor_LSTM_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-989">
+          <caret line="107" column="55" lean-forward="false" selection-start-line="107" selection-start-column="55" selection-end-line="107" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/LSTM_CNN/4/Predictor_LSTM_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/LSTM_CNN/2/ArabicDiacritizer_LSTM_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/LSTM_CNN/1/ArabicDiacritizer_LSTM_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/LSTM_CNN/3/ArabicDiacritizer_LSTM_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1462">
+          <caret line="39" column="50" lean-forward="false" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/LSTM_CNN/3/Predictor_LSTM_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1229">
+          <caret line="154" column="0" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN_LSTM/1/Predictor_CNN_LSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="125" column="18" lean-forward="false" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
           <folding>
-            <element signature="e#167#179#0" expanded="false" />
+            <element signature="e#167#185#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/LSTM_CNN/ArabicDiacritizer_LSTM_CNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1183">
-          <caret line="102" column="36" lean-forward="false" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
+        <state relative-caret-position="253">
+          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN_LSTM/ArabicDiacritizer_CNN_LSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="26" column="50" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="50" />
           <folding>
-            <element signature="e#167#179#0" expanded="true" />
+            <element signature="e#167#179#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="228" column="4" lean-forward="false" selection-start-line="228" selection-start-column="4" selection-end-line="228" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/anaconda/envs/py35env/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ArabicDiacritizer_BLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="98" column="27" lean-forward="false" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="84" column="32" lean-forward="false" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN-NLSTM/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN-NLSTM/NLSTMMaster/rnn_cell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/NLSTM/ArabicDiacritizer_NLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/CreatingOneHot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN-NLSTM/ArabicDiacritizer_CNN_NLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="916">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <element signature="e#167#179#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="207" column="4" lean-forward="false" selection-start-line="207" selection-start-column="4" selection-end-line="207" selection-end-column="4" />
+          <folding>
+            <element signature="e#199#346#0" expanded="false" />
+            <element signature="e#384#875#0" expanded="false" />
+            <element signature="e#2537#2928#0" expanded="false" />
+            <element signature="e#3454#3897#0" expanded="false" />
+            <element signature="e#3949#4973#0" expanded="false" />
+            <element signature="e#5026#5932#0" expanded="false" />
+            <element signature="e#7374#8120#0" expanded="false" />
+            <element signature="e#9293#9925#0" expanded="false" />
+            <element signature="e#9991#11258#0" expanded="false" />
+            <marker date="1520198115051" expanded="false" signature="901:1338" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN-BLSTM/2/ArabicDiacritizer_CNN_BLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1035">
+          <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN-BLSTM/1/ArabicDiacritizer_CNN_BLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1242">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN-BLSTM/ArabicDiacritizer_CNN_BLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="81" column="46" lean-forward="false" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
