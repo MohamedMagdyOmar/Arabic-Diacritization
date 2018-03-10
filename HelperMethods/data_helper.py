@@ -323,7 +323,7 @@ def load_nn_seq_lengths(data_table):
     return sent_num, sen_len
 
 
-def pad_sentences(x, sent_len, req_char_index, window_size):
+def pad_sentences1(x, sent_len, req_char_index, window_size):
     start_time = datetime.datetime.now()
 
     padded_sent = []
@@ -334,7 +334,7 @@ def pad_sentences(x, sent_len, req_char_index, window_size):
 
         end_range = sent_len[each_sent] + end_range
         extracted_sent = x[start_range: end_range]
-        padded_sent.append(padding(extracted_sent, req_char_index, window_size))
+        padded_sent.append(padding1(extracted_sent, req_char_index, window_size))
         start_range = end_range
 
     end_time = datetime.datetime.now()
@@ -348,18 +348,19 @@ def pad_sentences(x, sent_len, req_char_index, window_size):
     return padded_sent, vocabulary, vocabulary_inv
 
 
-def padding(extracted_sent, req_char_index, window_size):
+def padding1(extracted_sent, req_char_index, window_size):
 
     padded_sent = []
-
+    number_of_elements_before_target_char = req_char_index
+    number_of_elements_after_target_char = window_size - req_char_index - 1
     for index in range(0, len(extracted_sent)):
         new_list = ['pad'] * window_size
         new_list[req_char_index] = extracted_sent[index]
 
         # before req index
         end_range = index - 1
-
-        start_range = index - req_char_index
+        start_range = index - number_of_elements_before_target_char
+        #start_range = index - req_char_index
         if start_range < 0:
             start_range = 0
 
@@ -370,8 +371,8 @@ def padding(extracted_sent, req_char_index, window_size):
 
         # after req index
         start_range = index + 1
-
-        end_range = index + req_char_index + 1
+        end_range = index + number_of_elements_after_target_char
+        #end_range = index + req_char_index + 1
         if end_range >= np.size(extracted_sent):
             end_range = np.size(extracted_sent) - 1
 
@@ -380,6 +381,61 @@ def padding(extracted_sent, req_char_index, window_size):
             num_of_elem = np.size(extracted_chars_in_cert_range)
             new_list[(req_char_index + 1): (req_char_index + num_of_elem + 1)] = extracted_chars_in_cert_range
 
+        padded_sent.append(new_list)
+
+    return padded_sent
+
+
+def extract_sent_and_pad(x, sent_len, T):
+    start_time = datetime.datetime.now()
+
+    padded_sent = []
+    start_range = 0
+    end_range = 0
+
+    for each_sent in range(0, len(sent_len)):
+        end_range = sent_len[each_sent] + end_range
+        extracted_sent = x[start_range: end_range]
+        after_padding = padding2(extracted_sent, T)
+        for each_item in after_padding:
+            padded_sent.append(each_item)
+        start_range = end_range
+
+    end_time = datetime.datetime.now()
+
+    vocabulary, vocabulary_inv = build_vocab(padded_sent)
+
+    padded_sent = build_input_data2(padded_sent, vocabulary)
+
+    padded_sent = np.array(padded_sent)
+    print("extract_sent_and_pad takes : ", end_time - start_time)
+
+    return padded_sent, vocabulary, vocabulary_inv
+
+
+def padding2(extracted_sent, T):
+    padded_sent = []
+
+    if len(extracted_sent) > T:
+        division_result = int(len(extracted_sent) / T)
+        reminder = len(extracted_sent) % T
+        counter = 1
+        for selected_window in range(0, (division_result * T), T):
+            new_list = list(extracted_sent[selected_window: counter * T])
+            padded_sent.append(new_list)
+            counter += 1
+
+        if reminder != 0:
+            new_list = ['pad'] * T
+            new_list[0: reminder] = extracted_sent[(len(extracted_sent) - reminder): len(extracted_sent)]
+            padded_sent.append(list(new_list))
+
+    elif len(extracted_sent) < T:
+        new_list = ['pad'] * T
+        new_list[0: len(extracted_sent)] = extracted_sent
+        padded_sent.append(list(new_list))
+    else:
+        new_list = list(extracted_sent)
         padded_sent.append(new_list)
 
     return padded_sent
@@ -407,6 +463,11 @@ def build_vocab(sentences):
 def build_input_data(sentences, vocabulary):
     sentences = list(chain(*sentences))
     x = np.array([[vocabulary[word] for word in sentence] for sentence in sentences])
+    return x
+
+
+def build_input_data2(sentences, vocabulary):
+    x = ([[vocabulary[word] for word in sentence] for sentence in sentences])
     return x
 
 
