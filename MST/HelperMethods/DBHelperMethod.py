@@ -226,6 +226,25 @@ def load_data_set():
     return data
 
 
+def load_dataset_by_type_and_sentence_number_for_debugging(data_type, sentence_number):
+
+    start_time = datetime.datetime.now()
+    connect_to_db()
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
+            "'%s'" % data_type + " and SentenceNumber=" + "'%s'" % sentence_number + " order by idCharacterNumber asc"
+
+    cur.execute(query)
+
+    data = cur.fetchall()
+    data = np.array(data)
+
+    end_time = datetime.datetime.now()
+    print("load_dataset_by_type takes : ", end_time - start_time)
+    cur.close()
+    return data
+
+
 def load_dataset_by_type(data_type):
 
     start_time = datetime.datetime.now()
@@ -243,7 +262,6 @@ def load_dataset_by_type(data_type):
     print("load_dataset_by_type takes : ", end_time - start_time)
     cur.close()
     return data
-
 
 def load_testing_dataset():
 

@@ -20,7 +20,10 @@ worksheet.write(0, 2, 'Error Location')
 worksheet.write(0, 3, 'word contain error')
 worksheet.write(0, 4, 'location')
 worksheet.write(0, 5, 'sentence')
-worksheet.write(0, 6, 'value')
+worksheet.write(0, 6, 'sentence number')
+worksheet.write(0, 7, 'letter')
+worksheet.write(0, 8, 'expected diacritics')
+worksheet.write(0, 9, 'actual diacritics')
 workbook.close()
 
 workbook2 = xlsxwriter.Workbook(diacritization_error_without_last_letter_excel_file_path)
@@ -48,7 +51,7 @@ def read_rnn_op_csv_file(csv_complete_path):
         return rnn_op
 
 
-def write_data_into_excel_file(errors, current_sentence, current_row_in_excel_file):
+def write_data_into_excel_file(errors, current_sentence, current_row_in_excel_file, sentence_number):
         wb = open_workbook(diacritization_error_excel_file_path)
         w = copy(wb)
         worksheet = w.get_sheet(0)
@@ -79,7 +82,16 @@ def write_data_into_excel_file(errors, current_sentence, current_row_in_excel_fi
             worksheet.write(current_row_in_excel_file, column, all_sentence)
 
             column = 6
-            worksheet.write(current_row_in_excel_file, column, each_object.actual_letter.value)
+            worksheet.write(current_row_in_excel_file, column, sentence_number)
+
+            column = 7
+            worksheet.write(current_row_in_excel_file, column, each_object.letter)
+
+            column = 8
+            worksheet.write(current_row_in_excel_file, column, each_object.expected_diacritics)
+
+            column = 9
+            worksheet.write(current_row_in_excel_file, column, each_object.actual_diacritics)
 
             current_row_in_excel_file += 1
             column = 0
@@ -92,7 +104,7 @@ def write_data_into_excel_file(errors, current_sentence, current_row_in_excel_fi
         return current_row_in_excel_file
 
 
-def write_data_into_excel_file2(errors, current_sentence, current_row_in_excel_file):
+def write_data_into_excel_file2(errors, current_sentence, current_row_in_excel_file, sentence_number):
     wb = open_workbook(diacritization_error_without_last_letter_excel_file_path)
     w = copy(wb)
     worksheet2 = w.get_sheet(0)
@@ -123,7 +135,7 @@ def write_data_into_excel_file2(errors, current_sentence, current_row_in_excel_f
         worksheet2.write(current_row_in_excel_file, column, all_sentence)
 
         column = 6
-        worksheet2.write(current_row_in_excel_file, column, each_object.actual_letter.value)
+        worksheet2.write(current_row_in_excel_file, column, sentence_number)
 
         current_row_in_excel_file += 1
         column = 0

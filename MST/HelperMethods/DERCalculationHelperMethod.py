@@ -8,12 +8,18 @@ class ErrorDetails:
     expected_letter = "",
     error_location = 0,
     word = ""
+    letter = ""
+    expected_diacritics = ""
+    actual_diacritics = ""
 
     def __init__(self):
         self.actual_letter = ""
         self.expected_letter = ""
         self.error_location = 0
         self.word = ""
+        self.letter = ""
+        self.expected_diacritics = ""
+        self.actual_diacritics = ""
 
 
 def get_diacritization_error(rnn_op_chars, expected_letters, sentence):
@@ -25,13 +31,16 @@ def get_diacritization_error(rnn_op_chars, expected_letters, sentence):
     letter_location = 0
 
     if len(rnn_op_chars) != len(expected_letters):
-        raise ValueError('bug appeared in "get_diacritization_error"')
+        raise Exception('bug appeared in "get_diacritization_error"')
 
     for actual_letter, expected_letter in zip(rnn_op_chars, expected_letters):
 
         error_object = ErrorDetails()
         decomposed_expected_letter = WordLetterProcessingHelperMethod.\
             decompose_diac_char_into_char_and_diacritics(expected_letter.letter)
+
+        decomposed_actual_letter = WordLetterProcessingHelperMethod. \
+            decompose_diac_char_into_char_and_diacritics(actual_letter.letter)
 
         letter_location += 1
         total_chars_including_un_diacritized_target_letter += 1
@@ -42,6 +51,17 @@ def get_diacritization_error(rnn_op_chars, expected_letters, sentence):
                 error_object.expected_letter = expected_letter
                 error_object.error_location = letter_location
                 error_object.word = get_word_that_has_error(letter_location, sentence)
+                error_object.letter = decomposed_expected_letter[0]
+                if len(decomposed_expected_letter) > 2:
+                    error_object.expected_diacritics = decomposed_expected_letter[1] + decomposed_expected_letter[2]
+                else:
+                    error_object.expected_diacritics = decomposed_expected_letter[1]
+
+                if len(decomposed_actual_letter) > 2:
+                    error_object.actual_diacritics = decomposed_actual_letter[1] + decomposed_actual_letter[2]
+
+                elif len(decomposed_actual_letter) > 1:
+                    error_object.actual_diacritics = decomposed_actual_letter[1]
 
                 list_of_object_error.append(deepcopy(error_object))
                 number_of_diacritization_errors += 1
@@ -61,7 +81,7 @@ def get_diacritization_error_without_counting_last_letter(actual_letters, expect
     letter_location = 0
 
     if len(actual_letters) != len(expected_letters):
-        raise ValueError('bug appeared in "get_diacritization_error_without_counting_last_letter"')
+        raise Exception('bug appeared in "get_diacritization_error_without_counting_last_letter"')
 
     for actual_letter, expected_letter in zip(actual_letters, expected_letters):
         error_object = ErrorDetails()

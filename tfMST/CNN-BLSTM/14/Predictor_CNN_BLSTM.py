@@ -21,19 +21,17 @@ current_row_1 = 0
 current_row_2 = 0
 Total_Error = 0
 Total_Error_without_last_char = 0
-req_char_index = 13
-window_size = 17
 
 
 def load_testing_data():
     dp.establish_db_connection()
-    testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    testing_dataset = dp.load_testing_dataset()
 
     x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
-    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences1(x, sen_len, req_char_index, window_size)
+    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences(x, sen_len, 4, 10)
 
     testing_words = np.take(testing_dataset, 4, axis=1)
     input_testing_letters = np.take(testing_dataset, 0, axis=1)
@@ -88,7 +86,7 @@ if __name__ == "__main__":
     undiac_word = load_testing_data()
     dictionary = get_all_dic_words()
 
-    model = load_model('weights.018-0.9436.hdf5')
+    model = load_model('weights.020-0.7411.hdf5')
     print(model.summary())
     prediction = model.predict(X_test, verbose=1)
 

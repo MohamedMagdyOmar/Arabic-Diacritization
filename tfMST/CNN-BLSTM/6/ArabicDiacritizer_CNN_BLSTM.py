@@ -16,8 +16,8 @@ import os
 # fix random seed for reproducibility
 numpy.random.seed(7)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-req_char_index = 10
-window_size = 17
+req_char_index = 11
+window_size = 15
 
 
 def load_training_data():
@@ -29,7 +29,7 @@ def load_training_data():
     y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(training_dataset[:, [3]])
-    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences1(x, sen_len, req_char_index, window_size)
+    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences(x, sen_len, req_char_index, window_size)
 
     return sentences_padded, y, vocabulary, vocabulary_inv
 
@@ -43,7 +43,7 @@ def load_testing_data():
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
-    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences1(x, sen_len, req_char_index, window_size)
+    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences(x, sen_len, req_char_index, window_size)
 
     return sentences_padded, y, vocabulary, vocabulary_inv
 
@@ -62,8 +62,8 @@ if __name__ == "__main__":
     X_test, y_test, vocabulary_test, vocabulary_inv_test = load_testing_data()
     check_key_exist(vocabulary_train, vocabulary_test)
 
-    sequence_length = 17
-    max_review_length = 17
+    sequence_length = 15
+    max_review_length = 15
 
     # input dim
     vocabulary_size = len(vocabulary_inv_train)

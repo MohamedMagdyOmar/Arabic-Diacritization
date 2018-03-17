@@ -101,12 +101,13 @@ if __name__ == "__main__":
     model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length, input_length=seq_length))
 
     model.add(LSTM(250, recurrent_dropout=0.2, return_sequences=True, name="LSTM1"))
-    model.add(LSTM(250, recurrent_dropout=0.2, return_sequences=True, name="LSTM2"))
+    model.add(LSTM(350, recurrent_dropout=0.2, return_sequences=True, name="LSTM2"))
+    model.add(LSTM(250, recurrent_dropout=0.2, return_sequences=True, name="LSTM3"))
 
-    model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
+    model.add(Conv1D(filters=128, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
 
-    model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
+    model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
 
     model.summary()

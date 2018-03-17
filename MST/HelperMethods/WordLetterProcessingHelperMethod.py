@@ -16,7 +16,12 @@ class LetterPosition:
         self.value = ""
 
 
-def get_location_of_each_char(list_of_chars, chars_count_for_each_word):
+def get_location_of_each_char(list_of_chars, chars_count_for_each_word, remove_space):
+
+    if remove_space:
+        list_of_chars = list(filter(lambda a: a != 'space', list_of_chars))
+        list_of_chars = list(filter(lambda a: a != 's', list_of_chars))
+
     list_of_chars_with_its_location = []
     i = 0
 
@@ -180,6 +185,7 @@ def get_chars_count_for_each_word_in_this(sentence):
             if not unicodedata.combining(each_char) and each_char != u'﻿':
                 count += 1
         chars_count_of_each_word.append(count)
+
         count = 0
 
     return chars_count_of_each_word

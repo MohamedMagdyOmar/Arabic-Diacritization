@@ -29,7 +29,8 @@ def load_testing_data():
     dp.establish_db_connection()
     testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
 
-    x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
+    #x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
+    x = dp.load_nn_input_dataset_string_space_only(testing_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
@@ -146,7 +147,7 @@ if __name__ == "__main__":
         OP_Diac_Chars_Count = WordLetterProcessingHelperMethod.get_chars_count_for_each_word_in_this(
             selected_sentence)
         OP_Diac_Chars_And_Its_Location = WordLetterProcessingHelperMethod.get_location_of_each_char(
-            expected_letters, OP_Diac_Chars_Count)
+            expected_letters, OP_Diac_Chars_Count, True)
         OP_Diac_Chars_After_Sukun = SukunCorrection.sukun_correction(
             deepcopy(OP_Diac_Chars_And_Its_Location))
 
@@ -159,17 +160,19 @@ if __name__ == "__main__":
 
         # write error in excel file
         excel_1 = current_row_1
-        current_row_1 = ExcelHelperMethod.write_data_into_excel_file(error, selected_sentence, excel_1)
+        current_row_1 = ExcelHelperMethod.write_data_into_excel_file(error, selected_sentence, excel_1, sentence_number)
+
         Total_Error += len(error)
         print("Total Error: ", Total_Error)
 
         excel_2 = current_row_2
         current_row_2 = ExcelHelperMethod.write_data_into_excel_file2(error_without_last_letter, selected_sentence,
-                                                                      excel_2)
+                                                                      excel_2, sentence_number)
         Total_Error_without_last_char += len(error_without_last_letter)
         print("Total Error without Last Char: ", Total_Error_without_last_char)
+
         counter += 1
-        print("we are now in sentence # ", counter)
+        print("we finished sentence # ", counter)
 
         start_range = end_range
 

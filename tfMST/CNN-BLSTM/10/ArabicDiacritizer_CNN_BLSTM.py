@@ -16,7 +16,7 @@ import os
 # fix random seed for reproducibility
 numpy.random.seed(7)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-req_char_index = 10
+req_char_index = 15
 window_size = 17
 
 

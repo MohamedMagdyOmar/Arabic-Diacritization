@@ -21,15 +21,18 @@ current_row_1 = 0
 current_row_2 = 0
 Total_Error = 0
 Total_Error_without_last_char = 0
-req_char_index = 13
+req_char_index = 12
 window_size = 17
 
 
 def load_testing_data():
     dp.establish_db_connection()
-    testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
 
-    x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
+    testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    #testing_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_debugging("testing", 4514)
+
+    #x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
+    x = dp.load_nn_input_dataset_string_space_only(testing_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
@@ -88,7 +91,7 @@ if __name__ == "__main__":
     undiac_word = load_testing_data()
     dictionary = get_all_dic_words()
 
-    model = load_model('weights.018-0.9436.hdf5')
+    model = load_model('weights.010-0.9397.hdf5')
     print(model.summary())
     prediction = model.predict(X_test, verbose=1)
 
@@ -118,6 +121,8 @@ if __name__ == "__main__":
     start_range = 0
     end_range = 0
     for sentence_number in list_of_sentence_numbers:
+        #sentence_number = 4514
+        print("we start in sentence # ", sentence_number)
 
         selected_sentence = DBHelperMethod.get_sentence_by(sentence_number)
         undiac_words = get_undiac_words_for_selected_sentence(list_of_all_words_and_sent_num, sentence_number)
@@ -146,7 +151,7 @@ if __name__ == "__main__":
         OP_Diac_Chars_Count = WordLetterProcessingHelperMethod.get_chars_count_for_each_word_in_this(
             selected_sentence)
         OP_Diac_Chars_And_Its_Location = WordLetterProcessingHelperMethod.get_location_of_each_char(
-            expected_letters, OP_Diac_Chars_Count)
+            expected_letters, OP_Diac_Chars_Count, True)
         OP_Diac_Chars_After_Sukun = SukunCorrection.sukun_correction(
             deepcopy(OP_Diac_Chars_And_Its_Location))
 
@@ -159,17 +164,19 @@ if __name__ == "__main__":
 
         # write error in excel file
         excel_1 = current_row_1
-        current_row_1 = ExcelHelperMethod.write_data_into_excel_file(error, selected_sentence, excel_1)
+        current_row_1 = ExcelHelperMethod.write_data_into_excel_file(error, selected_sentence, excel_1, sentence_number)
+
         Total_Error += len(error)
         print("Total Error: ", Total_Error)
 
         excel_2 = current_row_2
         current_row_2 = ExcelHelperMethod.write_data_into_excel_file2(error_without_last_letter, selected_sentence,
-                                                                      excel_2)
+                                                                      excel_2, sentence_number)
         Total_Error_without_last_char += len(error_without_last_letter)
         print("Total Error without Last Char: ", Total_Error_without_last_char)
+
+        print("we finished sentence # ", counter, sentence_number)
         counter += 1
-        print("we are now in sentence # ", counter)
 
         start_range = end_range
 
