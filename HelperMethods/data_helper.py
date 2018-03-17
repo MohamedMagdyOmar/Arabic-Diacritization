@@ -486,23 +486,21 @@ def create_letter_location_object(nn_labels, loc):
 
 def concatenate_char_and_diacritization(ip_letters, nn_labels):
     nn_diacritized_letters = []
-    counter = 1
 
     for ip_each_letter, each_nn_labels in zip(ip_letters, nn_labels):
-        counter += 1
-        if counter == 198:
-            b = 1
+
         try:
-            if len(list(each_nn_labels)) > 1:
-                if each_nn_labels == 'space' and ip_each_letter != 'space':
+            if each_nn_labels == 'space' or ip_each_letter == 'space':
+                nn_diacritized_letters.append(ip_each_letter)
+            else:
+
+                if len(list(each_nn_labels)) > 1:
+                    nn_diacritized_letters.append(ip_each_letter + each_nn_labels)
+
+                elif not unicodedata2.combining(each_nn_labels):
                     nn_diacritized_letters.append(ip_each_letter)
                 else:
                     nn_diacritized_letters.append(ip_each_letter + each_nn_labels)
-
-            elif not unicodedata2.combining(each_nn_labels):
-                nn_diacritized_letters.append(ip_each_letter)
-            else:
-                nn_diacritized_letters.append(ip_each_letter + each_nn_labels)
         except:
             c = 1
 
