@@ -6,20 +6,18 @@ import data_helper as dp
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM, Bidirectional
-from keras.layers import Dropout
 from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Conv1D
 from keras.layers.convolutional import MaxPooling1D
 from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
-from nested_lstm import NestedLSTM
-from keras import optimizers
 import DBHelperMethod
 import os
-
+# fix random seed for reproducibility
+numpy.random.seed(7)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-req_char_index = 13
-window_size = 17
+req_char_index = 15
+window_size = 19
 
 
 def load_training_data():
@@ -64,8 +62,8 @@ if __name__ == "__main__":
     X_test, y_test, vocabulary_test, vocabulary_inv_test = load_testing_data()
     check_key_exist(vocabulary_train, vocabulary_test)
 
-    sequence_length = 17
-    max_review_length = 17
+    sequence_length = 19
+    max_review_length = 19
 
     # input dim
     vocabulary_size = len(vocabulary_inv_train)
@@ -80,18 +78,10 @@ if __name__ == "__main__":
     model.add(MaxPooling1D(pool_size=2))
     model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
-
-    model.add(NestedLSTM(250, depth=5, return_sequences=True, name="NLSTM1"))
-    model.add(Dropout(0.2))
-
-    model.add(NestedLSTM(350, depth=5, return_sequences=True, name="NLSTM2"))
-    model.add(Dropout(0.2))
-
-    model.add(NestedLSTM(250, depth=3, name="NLSTM3"))
-    model.add(Dropout(0.2))
-
-    model.add((Dense(50, activation='softmax')))
-
+    model.add(Bidirectional(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
+    model.add(Bidirectional(LSTM(350, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
+    model.add(Bidirectional(LSTM(250, dropout=0.2)))
+    model.add(Dense(50, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # file_path = "weights.best.hdf5"
@@ -99,12 +89,12 @@ if __name__ == "__main__":
                                  save_best_only=True, mode='max')
 
     # check 5 epochs
-    early_stop = EarlyStopping(monitor='val_acc', patience=10, mode='max')
+    early_stop = EarlyStopping(monitor='val_acc', patience=5, mode='max')
     callbacks_list = [checkpoint, early_stop]
 
     print(model.summary())
     model.fit(X_train, y_train, validation_data=(X_test, y_test),
-              callbacks=callbacks_list, epochs=50, batch_size=32, verbose=1)
+              callbacks=callbacks_list, epochs=40, batch_size=64, verbose=1)
 
     # Final evaluation of the model
     scores = model.evaluate(X_test, y_test, verbose=0)
