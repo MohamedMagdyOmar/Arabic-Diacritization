@@ -466,6 +466,11 @@ def build_input_data(sentences, vocabulary):
     return x
 
 
+def build_input_data_without_flattening(sentences, vocabulary):
+    x = [[vocabulary[word] for word in sentence] for sentence in sentences]
+    return x
+
+
 def build_input_data2(sentences, vocabulary):
     x = ([[vocabulary[word] for word in sentence] for sentence in sentences])
     return x
@@ -505,6 +510,23 @@ def concatenate_char_and_diacritization(ip_letters, nn_labels):
             c = 1
 
     return nn_diacritized_letters
+
+
+def create_3d_output_y_tensor(y, sent_len, T):
+
+    padded_sent = []
+    start_range = 0
+    end_range = 0
+
+    for each_sent in range(0, len(sent_len)):
+        end_range = sent_len[each_sent] + end_range
+        extracted_sent = y[start_range: end_range]
+        after_padding = padding2(extracted_sent, T)
+        for each_item in after_padding:
+            padded_sent.append(each_item)
+        start_range = end_range
+
+    return padded_sent
 
 
 if __name__ == "__main__":
