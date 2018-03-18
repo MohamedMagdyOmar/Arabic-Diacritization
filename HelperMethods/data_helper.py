@@ -347,6 +347,31 @@ def pad_sentences1(x, sent_len, req_char_index, window_size):
 
     return padded_sent, vocabulary, vocabulary_inv
 
+'''
+def pad_sentences1(x, sent_len, window_size):
+    start_time = datetime.datetime.now()
+
+    padded_sent = []
+    start_range = 0
+    end_range = 0
+
+    for each_sent in range(0, len(sent_len)):
+
+        end_range = sent_len[each_sent] + end_range
+        extracted_sent = x[start_range: end_range]
+        padded_sent.append(padding1(extracted_sent, window_size))
+        start_range = end_range
+
+    end_time = datetime.datetime.now()
+
+    vocabulary, vocabulary_inv = build_vocab(padded_sent)
+
+    padded_sent = build_input_data(padded_sent, vocabulary)
+
+    print("pad_sentences takes : ", end_time - start_time)
+
+    return padded_sent, vocabulary, vocabulary_inv
+'''
 
 def padding1(extracted_sent, req_char_index, window_size):
 
@@ -411,6 +436,34 @@ def extract_sent_and_pad(x, sent_len, T):
     print("extract_sent_and_pad takes : ", end_time - start_time)
 
     return padded_sent, vocabulary, vocabulary_inv
+
+
+def extract_sent_and_pad_output(y, sent_len, T):
+    start_time = datetime.datetime.now()
+
+    padded_sent = []
+    start_range = 0
+    end_range = 0
+    pad_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+    for each_sent in range(0, len(sent_len)):
+        end_range = sent_len[each_sent] + end_range
+        extracted_sent = y[start_range: end_range]
+        extracted_sent = np.insert(extracted_sent, 49, values=0, axis=1)
+        after_padding = padding2(extracted_sent, T)
+        for each_seq in range(0, len(after_padding)):
+            for each_chars in range(0, len(after_padding[each_seq])):
+                if after_padding[each_seq][each_chars] == 'pad':
+                    after_padding[each_seq][each_chars] = np.array(pad_array)
+
+        for each_item in after_padding:
+            padded_sent.append(each_item)
+
+        start_range = end_range
+
+    padded_sent = np.array(padded_sent)
+
+    return padded_sent
 
 
 def padding2(extracted_sent, T):
