@@ -371,7 +371,7 @@ def pad_sentences1(x, sent_len, window_size):
     print("pad_sentences takes : ", end_time - start_time)
 
     return padded_sent, vocabulary, vocabulary_inv
-'''
+
 
 def padding1(extracted_sent, req_char_index, window_size):
 
@@ -380,7 +380,7 @@ def padding1(extracted_sent, req_char_index, window_size):
     number_of_elements_after_target_char = window_size - req_char_index - 1
     for index in range(0, len(extracted_sent)):
         new_list = ['pad'] * window_size
-        new_list[req_char_index] = extracted_sent[index]
+        new_list[req_char_index - 1] = extracted_sent[index]
 
         # before req index
         end_range = index - 1
@@ -405,6 +405,70 @@ def padding1(extracted_sent, req_char_index, window_size):
             extracted_chars_in_cert_range = extracted_sent[start_range: (end_range + 1)]
             num_of_elem = np.size(extracted_chars_in_cert_range)
             new_list[(req_char_index + 1): (req_char_index + num_of_elem + 1)] = extracted_chars_in_cert_range
+
+        padded_sent.append(new_list)
+
+    return padded_sent
+'''
+
+def padding1(extracted_sent, req_char_index_non_zero_index, window_size):
+
+    padded_sent = []
+    extracted_chars_in_cert_range = ""
+    number_of_elements_before_target_char = req_char_index_non_zero_index - 1
+    number_of_elements_after_target_char = window_size - req_char_index_non_zero_index
+    num_of_elem = 0
+    for index in range(0, len(extracted_sent)):
+        new_list = ['pad'] * window_size
+        new_list[req_char_index_non_zero_index - 1] = extracted_sent[index]
+
+        # before req index
+        end_range_for_extracted_sent = index - 1
+        start_range_for_extracted_sent = index - number_of_elements_before_target_char
+
+        if start_range_for_extracted_sent < 0:
+            start_range_for_extracted_sent = 0
+
+        if end_range_for_extracted_sent >= 0 and number_of_elements_before_target_char > 0:
+            extracted_chars_in_cert_range = extracted_sent[
+                                            start_range_for_extracted_sent: (end_range_for_extracted_sent + 1)]
+            num_of_elem = np.size(extracted_chars_in_cert_range)
+
+        end_range_for_new_list = req_char_index_non_zero_index - 1
+        start_range_for_new_list = end_range_for_new_list - num_of_elem
+        if start_range_for_new_list < 0:
+            start_range_for_new_list = 0
+
+        if end_range_for_new_list > 0 and num_of_elem > 0 and number_of_elements_before_target_char > 0:
+            new_list[start_range_for_new_list: (end_range_for_new_list)] = extracted_chars_in_cert_range
+
+        # after req index
+        start_range_for_extracted_sent = index + 1
+        if start_range_for_extracted_sent == len(extracted_sent):
+            number_of_elements_after_target_char = 0
+
+        end_range_for_extracted_sent = index + number_of_elements_after_target_char
+
+        if number_of_elements_after_target_char > 0 and end_range_for_extracted_sent >= len(extracted_sent):
+            extracted_chars_in_cert_range = extracted_sent[
+                                            start_range_for_extracted_sent:]
+            num_of_elem = np.size(extracted_chars_in_cert_range)
+
+        elif number_of_elements_after_target_char > 0:
+            extracted_chars_in_cert_range = extracted_sent[
+                                            start_range_for_extracted_sent: (end_range_for_extracted_sent + 1)]
+            num_of_elem = np.size(extracted_chars_in_cert_range)
+
+        start_range_for_new_list = req_char_index_non_zero_index
+        end_range_for_new_list = start_range_for_new_list + num_of_elem
+        if end_range_for_new_list > window_size:
+            end_range_for_new_list = window_size - 1
+
+        if num_of_elem > 0 and number_of_elements_after_target_char > 0 and end_range_for_new_list == window_size:
+            new_list[start_range_for_new_list:] = extracted_chars_in_cert_range
+
+        elif num_of_elem > 0 and number_of_elements_after_target_char > 0:
+            new_list[start_range_for_new_list: end_range_for_new_list] = extracted_chars_in_cert_range
 
         padded_sent.append(new_list)
 
