@@ -22,7 +22,7 @@ window_size = 17
 
 def load_training_data():
     dp.establish_db_connection()
-    training_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    training_dataset = DBHelperMethod.load_dataset_by_type("training")
 
     # x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
     x = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])
@@ -77,7 +77,8 @@ if __name__ == "__main__":
     model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
     model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
-    model.add(MaxPooling1D(pool_size=2))
+    # print(model.summary())
+    model.add(MaxPooling1D(pool_size=1))
     model.add(Bidirectional(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(350, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(250, dropout=0.2)))
