@@ -51,9 +51,9 @@ class DbObject:
 def get_all_files():
     list_of_files_paths = []
     list_of_doc_name = []
-    for file_name in os.listdir("D:\MasterRepo\MSTRepo\PaperCorpus\Doc"):
+    for file_name in os.listdir("D:\Atb3\Testing"):
         if file_name.endswith(".txt"):
-            list_of_files_paths.append(os.path.join("D:\MasterRepo\MSTRepo\PaperCorpus\Doc", file_name))
+            list_of_files_paths.append(os.path.join("D:\Atb3\Testing", file_name))
             list_of_doc_name.append(file_name)
 
     return list_of_files_paths, list_of_doc_name
@@ -61,7 +61,7 @@ def get_all_files():
 
 def read_doc(each_doc, list_of_paths, list_of_docs):
 
-    f = open(list_of_paths[each_doc], 'r')
+    f = open(list_of_paths[each_doc], 'r', encoding="utf8")
     document_name = list_of_docs[each_doc]
     data = f.readlines()
     f.close()
@@ -74,7 +74,7 @@ def extract_and_clean_words_from_doc(data):
         splitted_data = data.split()
         for word in splitted_data:
 
-            word = word.decode('utf-8', 'ignore')
+            #word = word.decode('utf-8', 'ignore')
             word = re.sub(u'[-;}()/]', '', word)
             word = re.sub(u'[-;}()0123456789/]', '', word)
             word = re.sub(u'["{"]', '', word)
@@ -414,4 +414,4 @@ if __name__ == "__main__":
 
         push_data_into_db(selected_doc, data, listOfWordsAndCorrespondingSentenceNumber)
 
-        print doc_name
+        print(doc_name)
