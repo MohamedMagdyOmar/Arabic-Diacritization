@@ -1,6 +1,7 @@
 # this code comes from below website with some modification
 # https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/
-
+# in this example there is no padding but you concatenate all sentences in one sentence
+# and began to take 5 chars by 5 chars, but as you read in github it is not recommened to do that
 import numpy
 import data_helper as dp
 import SequenceProcessing as sqp
@@ -78,9 +79,9 @@ if __name__ == "__main__":
     X_test, y_test, vocabulary_test, vocabulary_inv_test = load_testing_data()
     check_key_exist(vocabulary_train, vocabulary_test)
 
-    y_train = y_train.reshape(len(y_train), 5, 50)
+    y_train = y_train.reshape(len(y_train), 5, 49)
 
-    y_test = y_test.reshape(len(y_test), 5, 50)
+    y_test = y_test.reshape(len(y_test), 5, 49)
     # input dim
     vocabulary_size = len(vocabulary_inv_train)
     # output dim
@@ -94,7 +95,7 @@ if __name__ == "__main__":
     model.add(Bidirectional(LSTM(256, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(256, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
 
-    model.add(TimeDistributed(Dense(50)))
+    model.add(TimeDistributed(Dense(49, activation='softmax')))
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     print(model.summary())

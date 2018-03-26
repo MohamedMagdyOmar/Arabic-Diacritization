@@ -16,13 +16,13 @@ import os
 # fix random seed for reproducibility
 numpy.random.seed(7)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-req_char_index = 13
-window_size = 17
+req_char_index = 5
+window_size = 5
 
 
 def load_training_data():
     dp.establish_db_connection()
-    training_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    training_dataset = DBHelperMethod.load_dataset_by_type("training")
 
     # x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
     x = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])
@@ -62,8 +62,8 @@ if __name__ == "__main__":
     X_test, y_test, vocabulary_test, vocabulary_inv_test = load_testing_data()
     check_key_exist(vocabulary_train, vocabulary_test)
 
-    sequence_length = 17
-    max_review_length = 17
+    sequence_length = 5
+    max_review_length = 5
 
     # input dim
     vocabulary_size = len(vocabulary_inv_train)
@@ -77,11 +77,12 @@ if __name__ == "__main__":
     model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
     model.add(MaxPooling1D(pool_size=2))
     model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
-    model.add(MaxPooling1D(pool_size=2))
+    print(model.summary())
+    model.add(MaxPooling1D(pool_size=1))
     model.add(Bidirectional(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(350, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(250, dropout=0.2)))
-    model.add(Dense(50, activation='softmax'))
+    model.add(Dense(49, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # file_path = "weights.best.hdf5"
