@@ -310,6 +310,22 @@ def load_nn_labels_dataset_string(data_table):
     return np.array(nn_labels)
 
 
+def load_nn_labels(data_table):
+    start_time = datetime.datetime.now()
+    labels = []
+    for each_row in data_table:
+        if each_row[1] != '':
+            labels.append(each_row[1])
+        else:
+            labels.append(each_row[0])
+
+    end_time = datetime.datetime.now()
+
+    print("load_nn_labels_dataset_string takes : ", end_time - start_time)
+
+    return np.array(labels)
+
+
 def load_nn_seq_lengths(data_table):
 
     start_time = datetime.datetime.now()
@@ -347,6 +363,15 @@ def pad_sentences1(x, sent_len, req_char_index, window_size):
 
     return padded_sent, vocabulary, vocabulary_inv
 
+
+def build_one_to_one_input_data(x, sent_len, req_char_index, window_size):
+    start_time = datetime.datetime.now()
+
+    vocabulary, vocabulary_inv = build_vocab(x)
+
+    padded_sent = build_input_data_for_one_to_one(x, vocabulary)
+
+    return padded_sent, vocabulary, vocabulary_inv
 '''
 def pad_sentences1(x, sent_len, window_size):
     start_time = datetime.datetime.now()
@@ -410,6 +435,7 @@ def padding1(extracted_sent, req_char_index, window_size):
 
     return padded_sent
 '''
+
 
 def padding1(extracted_sent, req_char_index_non_zero_index, window_size):
 
@@ -585,6 +611,12 @@ def build_input_data(sentences, vocabulary):
 
 def build_input_data_without_flattening(sentences, vocabulary):
     x = [[vocabulary[word] for word in sentence] for sentence in sentences]
+    return x
+
+
+def build_input_data_for_one_to_one(chars, vocabulary):
+
+    x = [vocabulary[each_char] for each_char in chars]
     return x
 
 
