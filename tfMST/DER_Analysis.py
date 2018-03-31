@@ -5,6 +5,11 @@ import matplotlib.pyplot as plt
 from collections import Counter
 import numpy
 import itertools
+from collections import OrderedDict
+import xlsxwriter
+from xlrd import open_workbook
+from xlutils.copy import copy
+from openpyxl import load_workbook
 # A -> 0 -> RNN OP
 # B -> 1 -> Required Target
 # C -> 2 -> Error Location
@@ -16,6 +21,7 @@ import itertools
 # I -> 8 -> expected diacritics
 # J -> 9 -> actual diacritics
 
+sheet_counter = 0
 
 class diacritics_position_error_count:
     diacritic = "",
@@ -106,7 +112,8 @@ def calculate_num_errors_in_each_diac(df):
                 new_instance.diacritic = each_diac
                 new_instance.position = each_key
                 new_instance.error_count = b[each_key]
-                result.append(new_instance)
+
+                result.append(new_instance.__dict__)
 
     return result
 
@@ -117,17 +124,18 @@ def calculate_num_errors_in_each_word(df):
     all_words = f[:, 0]
     all_locations = f[:, 1]
 
+    total_error = 0
     has_one_error = 0
     has_one_error_and_include_last = 0
-    has_one_error_and_not_include_last = 0
+    has_one_error_and_last_letter_ok = 0
 
     has_two_error = 0
     has_two_error_and_include_last = 0
-    has_two_error_and_not_include_last = 0
+    has_two_error_and_last_letter_ok = 0
 
     has_three_or_more_error = 0
     has_three_or_more_error_and_include_last = 0
-    has_three_or_more_error_and_not_include_last = 0
+    has_three_or_more_error_and_last_letter_ok = 0
 
     start_range = 0
 
@@ -147,7 +155,7 @@ def calculate_num_errors_in_each_word(df):
             if 'last' in selected_locations:
                 has_one_error_and_include_last += 1
             else:
-                has_one_error_and_not_include_last += 1
+                has_one_error_and_last_letter_ok += 1
 
         elif len(groups) == 2:
             has_two_error += 1
@@ -156,7 +164,7 @@ def calculate_num_errors_in_each_word(df):
             if 'last' in selected_locations:
                 has_two_error_and_include_last += 1
             else:
-                has_two_error_and_not_include_last += 1
+                has_two_error_and_last_letter_ok += 1
 
         elif len(groups) >= 3:
             has_three_or_more_error += 1
@@ -164,30 +172,51 @@ def calculate_num_errors_in_each_word(df):
             if 'last' in selected_locations:
                 has_three_or_more_error_and_include_last += 1
             else:
-                has_three_or_more_error_and_not_include_last += 1
+                has_three_or_more_error_and_last_letter_ok += 1
 
         start_range = end_range
 
-    list1, list2 = ['number_of_words_has_one_error',
-                    'number_of_words_has_one_error_and_include_last',
-                    'number_of_words_has_one_error_and_not_include_last',
-                    'number_of_words_has_2_error',
-                    'number_of_words_has_2_error_and_include_last',
-                    'number_of_words_has_2_error_and_not_include_last',
-                    'number_of_words_has_3_error',
-                    'number_of_words_has_3_error_and_include_last',
-                    'number_of_words_has_3_error_and_not_include_last'], \
-                   [has_one_error,
-                    has_one_error_and_include_last,
-                    has_one_error_and_not_include_last,
-                    has_two_error,
-                    has_two_error_and_include_last,
-                    has_two_error_and_not_include_last,
-                    has_three_or_more_error,
-                    has_three_or_more_error_and_include_last,
-                    has_three_or_more_error_and_not_include_last]
+    total_error = has_one_error + has_two_error + has_three_or_more_error
 
-    result = dict(zip(list1, list2))
+    list1, list2 = ['0_total_error',
+                    '1_number_of_words_has_one_error',
+                    '2_number_of_words_has_one_error_and_include_last',
+                    '3_number_of_words_has_one_error_and_include_last_per',
+                    '4_number_of_words_has_one_error_and_last_letter_ok',
+                    '5_number_of_words_has_one_error_and_last_letter_ok_per',
+
+                    '6_number_of_words_has_2_error',
+                    '7_number_of_words_has_2_error_and_include_last',
+                    '8_number_of_words_has_2_error_and_include_last_per',
+                    '9_number_of_words_has_2_error_and_last_letter_ok',
+                    '10_number_of_words_has_2_error_and_last_letter_ok_per',
+
+
+                    '11_number_of_words_has_3_error',
+                    '12_number_of_words_has_3_error_and_include_last',
+                    '13_number_of_words_has_3_or_more_error_and_include_last_per',
+                    '14_number_of_words_has_3_error_and_last_letter_ok',
+                    '15_number_of_words_has_3_or_more_error_and_last_letter_ok_per'], \
+                   [float(total_error),
+                    float(has_one_error),
+                    float(has_one_error_and_include_last),
+                    ((has_one_error_and_include_last / total_error)*100),
+                    float(has_one_error_and_last_letter_ok),
+                    ((has_one_error_and_last_letter_ok / total_error) * 100),
+
+                    float(has_two_error),
+                    float(has_two_error_and_include_last),
+                    ((has_two_error_and_include_last / total_error) * 100),
+                    float(has_two_error_and_last_letter_ok),
+                    ((has_two_error_and_last_letter_ok / total_error) * 100),
+
+                    float(has_three_or_more_error),
+                    float(has_three_or_more_error_and_include_last),
+                    ((has_three_or_more_error_and_include_last / total_error) * 100),
+                    float(has_three_or_more_error_and_last_letter_ok),
+                    ((has_three_or_more_error_and_last_letter_ok / total_error) * 100)]
+
+    result = OrderedDict(zip(list1, list2))
     return result
 
 
@@ -204,14 +233,32 @@ def draw_confusion_matrix(df):
     plt.show()
 
 
+def write_data(df, sheet_name):
+    data = pd.read_excel("Book1.xls")
+
+    writer = pd.ExcelWriter('der_analysis.xlsx', engine='xlsxwriter')
+
+    data.to_excel(writer, "Main", index=False)
+    df.to_excel(writer, sheet_name, index=False)
+    writer.save()
+
+
 if __name__ == "__main__":
 
     xl = pd.ExcelFile("Book1.xls")
     sheet1_df = pd.read_excel("Book1.xls", sheetname=0)
 
-    calculate_num_errors_in_each_pos(sheet1_df)
-    calculate_num_errors_in_each_diac(sheet1_df)
-    calculate_num_errors_in_each_word(sheet1_df)
+    errors_per_pos_result_df = pd.DataFrame(list(calculate_num_errors_in_each_pos(sheet1_df).items()),
+                                         columns=['error location', 'number of error'])
+
+    errors_per_diac_result = pd.DataFrame(list(calculate_num_errors_in_each_diac(sheet1_df)))
+
+
+
+    v = list(calculate_num_errors_in_each_word(sheet1_df))
+    errors_per_word_result = pd.DataFrame(list(calculate_num_errors_in_each_word(sheet1_df).items()),
+                                          columns=['description', 'number of error'])
+    write_data(errors_per_word_result, 'error_location')
     draw_confusion_matrix(sheet1_df)
 
 
