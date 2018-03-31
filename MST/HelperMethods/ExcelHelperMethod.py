@@ -24,6 +24,8 @@ worksheet.write(0, 6, 'sentence number')
 worksheet.write(0, 7, 'letter')
 worksheet.write(0, 8, 'expected diacritics')
 worksheet.write(0, 9, 'actual diacritics')
+worksheet.write(0, 10, 'expected diacritics english')
+worksheet.write(0, 11, 'actual diacritics english')
 workbook.close()
 
 workbook2 = xlsxwriter.Workbook(diacritization_error_without_last_letter_excel_file_path)
@@ -35,7 +37,15 @@ worksheet2.write(0, 3, 'word contain error')
 worksheet2.write(0, 4, 'location')
 worksheet2.write(0, 5, 'sentence')
 worksheet2.write(0, 6, 'value')
+worksheet2.write(0, 10, 'expected diacritics english')
+worksheet2.write(0, 11, 'actual diacritics english')
 workbook2.close()
+
+list1 = ['ُ', 'َ', 'ِ', 'ُّ', 'َّ', 'ِّ', 'ٌ', 'ً', 'ٍ', 'ٌّ', 'ًّ', 'ٍّ']
+list2 = ['damma', 'fatha', 'kasra', 'sh+damma', 'sh+fatha', 'sh+kasra', 'tan+dam', 'tan+fat', 'tan+kas',
+         'sh+tan+da', 'sh+tan+fa', 'sh+tan+kas']
+
+dic = dict(zip(list1, list2))
 
 
 def read_rnn_op_csv_file(csv_complete_path):
@@ -92,6 +102,12 @@ def write_data_into_excel_file(errors, current_sentence, current_row_in_excel_fi
 
             column = 9
             worksheet.write(current_row_in_excel_file, column, each_object.actual_diacritics)
+
+            column = 10
+            worksheet.write(current_row_in_excel_file, column, dic[each_object.expected_diacritics])
+
+            column = 11
+            worksheet.write(current_row_in_excel_file, column, dic[each_object.actual_diacritics])
 
             current_row_in_excel_file += 1
             column = 0

@@ -6,10 +6,7 @@ from collections import Counter
 import numpy
 import itertools
 from collections import OrderedDict
-import xlsxwriter
-from xlrd import open_workbook
-from xlutils.copy import copy
-from openpyxl import load_workbook
+
 # A -> 0 -> RNN OP
 # B -> 1 -> Required Target
 # C -> 2 -> Error Location
@@ -22,6 +19,9 @@ from openpyxl import load_workbook
 # J -> 9 -> actual diacritics
 
 sheet_counter = 0
+total_number_of_letters = 100
+total_number_of_words = 100
+
 
 class diacritics_position_error_count:
     diacritic = "",
@@ -70,8 +70,40 @@ def print_confusion_matrix(confusion_matrix, class_names, figsize=(10, 7), fonts
     return fig
 
 
+def calculate_der(df):
+    cols = (df.filter(items=['location']))
+    f = (cols.get_values())[:, 0]
+    del_arr = numpy.delete(f, numpy.where(f == 'last'), axis=0)
+    list1, list2 = ['DER',
+                    'DER_without_last'], \
+                   [((len(f) / total_number_of_letters) * 100),
+                    ((len(del_arr) / total_number_of_letters) * 100)]
+
+    result = dict(zip(list1, list2))
+
+    return result
+
+
+def calculate_wer(df):
+    cols = (df.filter(items=['word contain error', 'location']))
+    f = cols.get_values()
+    words_with_last = set(list(f[:, 0]))
+
+    a = [x for x in f if x[1] != 'last']
+    a = numpy.array(a)
+    words_without_last = set(list(a[:, 0]))
+    list1, list2 = ['WER',
+                    'WER_without_last'], \
+                   [((len(words_with_last) / total_number_of_words) * 100),
+                    ((len(words_without_last) / total_number_of_words) * 100)]
+
+    result = dict(zip(list1, list2))
+
+    return result
+
+
 def calculate_num_errors_in_each_pos(df):
-    locations = list(sheet1_df['location'])
+    locations = list(df['location'])
     loc_and_number_of_error = Counter(locations)
     number_of_error_in_first_letter = loc_and_number_of_error['first']
     number_of_error_in_middle_letter = loc_and_number_of_error['middle']
@@ -124,7 +156,6 @@ def calculate_num_errors_in_each_word(df):
     all_words = f[:, 0]
     all_locations = f[:, 1]
 
-    total_error = 0
     has_one_error = 0
     has_one_error_and_include_last = 0
     has_one_error_and_last_letter_ok = 0
@@ -230,16 +261,21 @@ def draw_confusion_matrix(df):
     cm_numpy = confusion_matrix(expected_diacritics, actual_diacritics, labels=labels)
     print_confusion_matrix(cm_numpy, labels)
 
-    plt.show()
+    plt.savefig('confusion matrix')
 
 
-def write_data(df, sheet_name):
+def write_data(df0, df1, df2, df3, df4):
     data = pd.read_excel("Book1.xls")
 
     writer = pd.ExcelWriter('der_analysis.xlsx', engine='xlsxwriter')
 
     data.to_excel(writer, "Main", index=False)
-    df.to_excel(writer, sheet_name, index=False)
+    df0.to_excel(writer, 'DER', index=False)
+    df1.to_excel(writer, 'WER', index=False)
+    df2.to_excel(writer, 'error_position', index=False)
+    df3.to_excel(writer, 'error_diac', index=False)
+    df4.to_excel(writer, 'error_word', index=False)
+
     writer.save()
 
 
@@ -248,17 +284,21 @@ if __name__ == "__main__":
     xl = pd.ExcelFile("Book1.xls")
     sheet1_df = pd.read_excel("Book1.xls", sheetname=0)
 
+    der_result_df = pd.DataFrame(list(calculate_der(sheet1_df).items()),
+                                            columns=['description', 'DER'])
+
+    wer_result_df = pd.DataFrame(list(calculate_wer(sheet1_df).items()),
+                                 columns=['description', 'WER'])
+
     errors_per_pos_result_df = pd.DataFrame(list(calculate_num_errors_in_each_pos(sheet1_df).items()),
-                                         columns=['error location', 'number of error'])
+                                            columns=['error location', 'number of error'])
 
-    errors_per_diac_result = pd.DataFrame(list(calculate_num_errors_in_each_diac(sheet1_df)))
+    errors_per_diac_result_df = pd.DataFrame(list(calculate_num_errors_in_each_diac(sheet1_df)))
 
+    errors_per_word_result_df = pd.DataFrame(list(calculate_num_errors_in_each_word(sheet1_df).items()),
+                                             columns=['description', 'number of error'])
 
+    write_data(der_result_df, wer_result_df, errors_per_pos_result_df, errors_per_diac_result_df, errors_per_word_result_df)
 
-    v = list(calculate_num_errors_in_each_word(sheet1_df))
-    errors_per_word_result = pd.DataFrame(list(calculate_num_errors_in_each_word(sheet1_df).items()),
-                                          columns=['description', 'number of error'])
-    write_data(errors_per_word_result, 'error_location')
     draw_confusion_matrix(sheet1_df)
-
 
