@@ -24,17 +24,19 @@ def get_training_data():
     training_dataset = DBHelperMethod.load_dataset_by_type("training")
 
     x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
-    y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
+    #y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
+    y = dp.load_nn_labels_dataset_diacritics_only_string(training_dataset[:, [1]])
 
     return x, y
 
 
 def get_testing_data():
     DBHelperMethod.connect_to_db()
-    training_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
 
-    x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
-    y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
+    x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
+    #y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
+    y = dp.load_nn_labels_dataset_diacritics_only_string(testing_dataset[:, [1]])
 
     return x, y
 
@@ -109,13 +111,13 @@ if __name__ == "__main__":
                                  save_best_only=True, mode='max')
 
     # check 5 epochs
-    early_stop = EarlyStopping(monitor='val_acc', patience=10, mode='max')
+    early_stop = EarlyStopping(monitor='val_acc', patience=3, mode='max')
     callbacks_list = [checkpoint, early_stop]
 
     # fit the model
     model.summary()
     model.fit(X_train, Y_train, validation_data=(X_test, Y_test),
-              callbacks=callbacks_list, epochs=30, batch_size=64, verbose=1)
+              callbacks=callbacks_list, epochs=30, batch_size=128, verbose=1)
 
     # Final evaluation of the model
     scores = model.evaluate(X_test, Y_test, verbose=0)

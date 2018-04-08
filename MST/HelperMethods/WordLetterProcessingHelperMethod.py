@@ -103,6 +103,33 @@ def reform_word_from(list_of_objects_of_chars_and_its_location):
     return list_of_words
 
 
+def reform_word_from_version_2(master):
+    list_of_words = []
+    word = ""
+    isPrevWasLast = False
+    for each_char_object in master:
+        if each_char_object.location_in_word == 'firstOneLetter':
+            list_of_words.append(each_char_object.rnn_diac_char)
+
+        elif each_char_object.location_in_word != 'last':
+            word += each_char_object.rnn_diac_char
+            isPrevWasLast = False
+
+        elif isPrevWasLast and each_char_object.location_in_word == 'last':
+            word = each_char_object.rnn_diac_char
+            list_of_words.append(word)
+            isPrevWasLast = True
+            word = ""
+
+        elif each_char_object.location_in_word == 'last':
+            word += each_char_object.rnn_diac_char
+            list_of_words.append(word)
+            isPrevWasLast = True
+            word = ""
+
+    return list_of_words
+
+
 def decompose_word_into_letters(word):
     decomposed_word = []
     inter_med_list = []
@@ -148,6 +175,30 @@ def convert_list_of_words_to_list_of_chars(list_of_words):
     final_list_of_actual_letters = []
     for each_word in list_of_words:
         for each_letter in each_word:
+            x = unicodedata.combining(each_letter)
+            if not unicodedata.combining(each_letter):
+                if found_flag and comp != u'﻿':
+                    final_list_of_actual_letters.append(comp)
+
+                overall = each_letter
+                found_flag = True
+                comp = unicodedata.normalize('NFC', overall)
+            elif found_flag:
+                overall += each_letter
+                comp = unicodedata.normalize('NFC', overall)
+
+    final_list_of_actual_letters.append(comp)
+
+    return final_list_of_actual_letters
+
+
+def convert_list_of_words_to_list_of_chars_version2(master_object):
+    found_flag = False
+    overall = ""
+    comp = ""
+    final_list_of_actual_letters = []
+    for each_object in master_object:
+        for each_letter in each_object.rnn_diac_word:
             x = unicodedata.combining(each_letter)
             if not unicodedata.combining(each_letter):
                 if found_flag and comp != u'﻿':

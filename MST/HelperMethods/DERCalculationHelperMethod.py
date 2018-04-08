@@ -6,18 +6,26 @@ import WordLetterProcessingHelperMethod
 class ErrorDetails:
     actual_letter = "",
     expected_letter = "",
-    error_location = 0,
-    word = ""
-    letter = ""
+    undiac_letter = ""
+    error_location_in_word = 0,
+    error_location_in_sentence = 0,
+    act_word = ""
+    exp_word = ""
+    sentence_number = 0
+    sentence = ''
     expected_diacritics = ""
     actual_diacritics = ""
 
     def __init__(self):
-        self.actual_letter = ""
-        self.expected_letter = ""
-        self.error_location = 0
-        self.word = ""
-        self.letter = ""
+        self.actual_letter = "",
+        self.expected_letter = "",
+        self.undiac_letter = ""
+        self.error_location_in_word = 0,
+        self.error_location_in_sentence = 0,
+        self.act_word = ""
+        self.exp_word = ""
+        self.sentence_number = 0
+        self.sentence = ''
         self.expected_diacritics = ""
         self.actual_diacritics = ""
 
@@ -73,6 +81,36 @@ def get_diacritization_error(rnn_op_chars, expected_letters, sentence):
     return list_of_object_error
 
 
+def get_diacritization_error_version_2(master_object, sentence_number, sentence):
+    list_of_object_error = []
+    number_of_diacritization_errors = 0
+
+    for each_object in master_object:
+
+        error_object = ErrorDetails()
+        # if = 1, this means that char is not diacritized, so do not consider it (as per paper)
+        if each_object.exp_diac != '' and each_object.exp_diac != each_object.rnn_diac:
+                error_object.actual_letter = each_object.rnn_diac_char
+                error_object.expected_letter = each_object.exp_diac_char
+                error_object.undiac_letter = each_object.undiac_char
+                error_object.error_location_in_word = each_object.location_in_word
+                error_object.error_location_in_sentence = each_object.location_in_sent
+                error_object.exp_word = each_object.exp_diac_word
+                error_object.act_word = each_object.rnn_diac_word
+
+                error_object.expected_diacritics = each_object.exp_diac
+                error_object.actual_diacritics = each_object.rnn_diac
+                error_object.sentence_number = sentence_number
+                error_object.sentence = sentence
+
+                list_of_object_error.append(deepcopy(error_object))
+                number_of_diacritization_errors += 1
+
+    print('total error in this sentence', number_of_diacritization_errors)
+
+    return list_of_object_error
+
+
 def get_diacritization_error_without_counting_last_letter(actual_letters, expected_letters, sentence):
     list_of_object_error = []
     total_error_without_last_letter = 0
@@ -106,6 +144,33 @@ def get_diacritization_error_without_counting_last_letter(actual_letters, expect
                 raise ValueError('bug appeared in "get_diacritization_error_without_counting_last_letter"')
 
     total_error_without_last_letter += number_of_diacritization_errors
+
+    print('total error in this sentence (without Last Letter):', number_of_diacritization_errors)
+
+    return list_of_object_error
+
+
+def get_diacritization_error_without_counting_last_letter_version_2(master_object, sentence_number, sentence):
+    list_of_object_error = []
+    number_of_diacritization_errors = 0
+
+    for each_object in master_object:
+        error_object = ErrorDetails()
+        if each_object.location_in_word != 'last':
+                    if each_object.exp_diac != '' and each_object.exp_diac != each_object.rnn_diac:
+                        error_object.actual_letter = each_object.rnn_diac_char
+                        error_object.expected_letter = each_object.exp_diac_char
+                        error_object.error_location = each_object.location_in_word
+                        error_object.exp_word = each_object.exp_diac_word
+                        error_object.act_word = each_object.rnn_diac_word
+                        error_object.letter = each_object.undiac_char
+                        error_object.expected_diacritics = each_object.exp_diac
+                        error_object.actual_diacritics = each_object.rnn_diac
+                        error_object.sentence_number = sentence_number
+                        error_object.sentence = sentence
+
+                        list_of_object_error.append(deepcopy(error_object))
+                        number_of_diacritization_errors += 1
 
     print('total error in this sentence (without Last Letter):', number_of_diacritization_errors)
 

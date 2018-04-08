@@ -5,9 +5,11 @@ import numpy as np
 import DBHelperMethod
 import data_helper as dp
 import datetime
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 batch_size = 64  # Batch size for training.
-epochs = 3  # Number of epochs to train for.
+epochs = 35  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
 
 input_characters = set()
@@ -15,13 +17,13 @@ target_characters = set()
 
 dp.establish_db_connection()
 
-training_dataset = DBHelperMethod.load_dataset_by_type("testing")
+training_dataset = DBHelperMethod.load_dataset_by_type("training")
 all_training_sentences_numbers = training_dataset[:, 3]
 
 testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
 all_testing_sentences_numbers = training_dataset[:, 3]
 
-list_of_training_sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("testing")
+list_of_training_sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("training")
 list_of_testing_sentences_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("testing")
 
 input_texts = training_dataset[:, 0]
@@ -29,7 +31,7 @@ target_texts = dp.load_nn_labels(training_dataset[:, [0, 1]])
 
 new_input_text = []
 new_target_text = []
-window_size = 5
+window_size = 13
 
 start_range = 0
 end_range = 0
@@ -55,7 +57,11 @@ for each_sentence_number in list_of_training_sentence_numbers:
         counter1 = 1
         for selected_window in range(0, (int(division_result) * window_size), window_size):
             window_input_text.append(list(extracted_input_text[selected_window: counter1 * window_size]))
-            window_target_text.append(list(extracted_target_text[selected_window: counter1 * window_size]))
+
+            j = list(extracted_target_text[selected_window: counter1 * window_size])
+            j.append('\n')
+            j = ['\t'] + j
+            window_target_text.append(j)
             counter1 += 1
         if reminder != 0:
             number_of_missing_item = window_size - reminder
@@ -80,6 +86,8 @@ for char in target_texts:
         target_characters.add(char)
 
 input_characters = sorted(list(input_characters))
+target_characters.add('\n')
+target_characters.add('\t')
 target_characters = sorted(list(target_characters))
 num_encoder_tokens = len(input_characters)
 num_decoder_tokens = len(target_characters)
@@ -112,7 +120,7 @@ counter = 0
 
 for (each_input_sent, each_target) in zip(window_input_text, window_target_text):
 
-    print("we are processing sentence number:", each_sentence_number)
+    print("we are processing sentence number:", counter)
     for t, (input_char, target_char) in enumerate(zip(each_input_sent, each_target)):
         try:
             encoder_input_data[counter, t, input_token_index[input_char]] = 1.
@@ -120,15 +128,9 @@ for (each_input_sent, each_target) in zip(window_input_text, window_target_text)
             if t > 0:
                 decoder_target_data[counter, t - 1, target_token_index[target_char]] = 1.
         except:
-            print(each_sentence_number)
+            print(counter)
 
     counter += 1
-
-
-
-
-
-
 
 # Define an input sequence and process it.
 encoder_inputs = Input(shape=(None, num_encoder_tokens))
@@ -170,6 +172,7 @@ model.save('s2s.h5')
 # 3) Repeat with the current target token and current states
 
 # Define sampling models
+
 encoder_model = Model(encoder_inputs, encoder_states)
 
 decoder_state_input_h = Input(shape=(latent_dim,))

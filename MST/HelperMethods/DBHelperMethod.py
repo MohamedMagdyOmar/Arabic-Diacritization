@@ -34,11 +34,11 @@ def get_list_of_sentence_numbers_by(sentence_type):
     return sentence_numbers
 
 
-def get_sentence_by(sentence_number):
+def get_sentence_by(sentence_number, word_type):
 
     connect_to_db()
     get_sentence_query = "select Word from listofwordsandsentencesineachdoc where SentenceNumber = " + \
-                         str(sentence_number)
+                         str(sentence_number) + " and wordtype=" + "'" + word_type + "'"
 
     cur.execute(get_sentence_query)
 
@@ -46,6 +46,19 @@ def get_sentence_by(sentence_number):
     current_sentence = [eachTuple[0] for eachTuple in current_sentence]
     cur.close()
     return current_sentence
+
+
+def get_all_sentences_by(word_type):
+
+    connect_to_db()
+    get_sentence_query = "select Word, SentenceNumber from listofwordsandsentencesineachdoc where wordtype=" + "'" + word_type + "'"
+
+    cur.execute(get_sentence_query)
+
+    current_sentence = cur.fetchall()
+
+    cur.close()
+    return np.array(current_sentence)
 
 
 def get_all_diacritics():
@@ -136,10 +149,11 @@ def get_un_diacritized_words_from(sentence_number, sentence_type):
     return list_of_un_diacritized_word
 
 
-def get_all_un_diacritized_words_in_sentences():
+def get_all_un_diacritized_words_in_sentences(word_type):
 
     connect_to_db()
-    get_un_diacritized_words_query = "select word, SentenceNumber from listofwordsandsentencesineachdoc "
+    get_un_diacritized_words_query = "select word, SentenceNumber from listofwordsandsentencesineachdoc " \
+                                     "where wordtype=" + "'" + word_type + "'"
 
     cur.execute(get_un_diacritized_words_query)
 
@@ -262,6 +276,46 @@ def load_dataset_by_type(data_type):
     print("load_dataset_by_type takes : ", end_time - start_time)
     cur.close()
     return data
+
+
+def load_dataset_by_type_for_testing_purpose(data_type):
+
+    start_time = datetime.datetime.now()
+    connect_to_db()
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
+            "'%s'" % data_type + " order by SentenceNumber asc, idCharacterNumber asc limit 1000"
+
+    cur.execute(query)
+
+    data = cur.fetchall()
+    data = np.array(data)
+
+    end_time = datetime.datetime.now()
+    print("load_dataset_by_type takes : ", end_time - start_time)
+    cur.close()
+    return data
+
+
+def load_dataset_by_type_and_sentence_number_for_testing_purpose(data_type, sentence_number):
+
+    start_time = datetime.datetime.now()
+    connect_to_db()
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
+            "'%s'" % data_type + " and SentenceNumber=" + "'%s'" % sentence_number + \
+            " order by SentenceNumber asc, idCharacterNumber asc limit 1000"
+
+    cur.execute(query)
+
+    data = cur.fetchall()
+    data = np.array(data)
+
+    end_time = datetime.datetime.now()
+    print("load_dataset_by_type takes : ", end_time - start_time)
+    cur.close()
+    return data
+
 
 def load_testing_dataset():
 

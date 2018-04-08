@@ -8,7 +8,7 @@ import WordLetterProcessingHelperMethod
 
 # 1 for atb3
 
-listOfPunctuationSymbols = [u' .', u'.', u' :', u'«', u'»', u'،', u'؛', u'؟', u'.(', u').', u':(', u'):', u'» .', u'».']
+listOfPunctuationSymbols = [u' .', u'.', u' :', u'«', u'»', u'،', u'؛', u'؟', u'.(', u').', u':(', u'):', u'» .', u'».', u'،', u' ،']
 listOfArabicDiacriticsUnicode = [["064b", "064c", "064d", "064e", "064f", "0650", "0651", "0652", "0670"],
                                  [1, 2, 3, 4, 5, 6, 8, 7, 9]]
 sentenceCount = 0
@@ -97,8 +97,10 @@ def extract_and_clean_words_from_doc(data):
             word = re.sub(u'[t]', '', word)
             word = re.sub(u'ٰ', '', word)
             word = re.sub(u'ـ', '', word)
+            word = re.sub(u'،', '', word)
             if not (word == u''):
                 list_of_words.append(word)
+
 
         return list_of_words
 
@@ -383,11 +385,12 @@ def push_data_into_db(doc, data_chars, list_of_words_and_corresponding_sentence_
 
     for each_word in list_of_words_and_corresponding_sentence_number:
         cur.execute(
-            "INSERT INTO ListOfWordsAndSentencesInEachDoc(word,SentenceNumber,DocName) VALUES (%s,%s,%s)",
-            (each_word[0], each_word[1], doc))
+            "INSERT INTO ListOfWordsAndSentencesInEachDoc(word,SentenceNumber,DocName, wordtype) VALUES (%s,%s,%s,%s)",
+            (each_word[0], each_word[1], doc, 'testing'))
 
     db.commit()
     db.close()
+
 
 if __name__ == "__main__":
 
@@ -398,6 +401,7 @@ if __name__ == "__main__":
         selected_doc, raw_data = read_doc(eachDoc, listOfFilesPaths, ListOfDocs)
         # cleaned_data = extract_and_clean_words_from_doc(raw_data)
         listOfWordsAndCorrespondingSentenceNumber = bind_words_with_sentence_number_in_this_doc(raw_data)
+
         WordLetterProcessingHelperMethod.clean_data_from_shadda_only(listOfWordsAndCorrespondingSentenceNumber)
 
         listOfUndiacritizedWords = get_list_of_undiacritized_word_from_diacritized_word(

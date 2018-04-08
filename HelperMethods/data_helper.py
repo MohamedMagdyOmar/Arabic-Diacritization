@@ -139,6 +139,21 @@ def get_label_table():
     return labels_and_equiv_encoding
 
 
+def get_label_table_diacritics_only():
+    start_time = datetime.datetime.now()
+    establish_db_connection()
+    query = "select * from distinctdiacritics"
+    cur.execute(query)
+
+    labels_and_equiv_encoding = cur.fetchall()
+    labels_and_equiv_encoding = np.array(labels_and_equiv_encoding)
+
+    end_time = datetime.datetime.now()
+    print("get_db_label_table takes : ", end_time - start_time)
+    cur.close()
+    return labels_and_equiv_encoding
+
+
 def load_nn_input_dataset_numpy(data_table):
     start_time = datetime.datetime.now()
     nn_input = []
@@ -293,6 +308,34 @@ def load_nn_labels_dataset_string(data_table):
             raw_input_data = each_row[1]
         else:
             raw_input_data = each_row[0]
+
+        index_of_raw_label_data = np.where(labels_and_equiv_encoding == raw_input_data)
+
+        if np.size(index_of_raw_label_data) != 0:
+            label = labels_and_equiv_encoding[index_of_raw_label_data[0], 2][0]
+            label = label.replace('\n', "")
+            label = list(map(int, label))
+
+            nn_labels.append(label)
+
+    end_time = datetime.datetime.now()
+
+    print("load_nn_labels_dataset_string takes : ", end_time - start_time)
+
+    return np.array(nn_labels)
+
+
+def load_nn_labels_dataset_diacritics_only_string(data_table):
+    start_time = datetime.datetime.now()
+    nn_labels = []
+
+    labels_and_equiv_encoding = get_label_table_diacritics_only()
+
+    for each_row in data_table:
+        if each_row[0] != '':
+            raw_input_data = each_row[0]
+        else:
+            raw_input_data = ''
 
         index_of_raw_label_data = np.where(labels_and_equiv_encoding == raw_input_data)
 

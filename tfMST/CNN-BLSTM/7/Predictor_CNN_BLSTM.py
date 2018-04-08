@@ -120,7 +120,7 @@ if __name__ == "__main__":
     end_range = 0
     for sentence_number in list_of_sentence_numbers:
 
-        selected_sentence = DBHelperMethod.get_sentence_by(sentence_number)
+        selected_sentence = DBHelperMethod.get_sentence_by(sentence_number, 'testing')
         undiac_words = get_undiac_words_for_selected_sentence(list_of_all_words_and_sent_num, sentence_number)
 
         dic_words_for_selected_sent = get_dic_words_for_selected_sentence(dictionary, undiac_words)

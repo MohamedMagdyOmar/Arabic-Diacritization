@@ -167,7 +167,8 @@ def load_testing_data():
     #testing_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("testing", 1)
 
     x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
-    y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
+    #y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
+    y = dp.load_nn_labels_dataset_diacritics_only_string(testing_dataset[:, [1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
     sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences1(x, sen_len, req_char_index, window_size)
@@ -225,7 +226,7 @@ if __name__ == "__main__":
     undiac_word = load_testing_data()
     dictionary = get_all_dic_words()
 
-    model = load_model('weights.004-0.9141.hdf5')
+    model = load_model('weights.004-0.9224.hdf5')
     print(model.summary())
     prediction = model.predict(X_test, verbose=1)
 

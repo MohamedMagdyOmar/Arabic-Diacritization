@@ -16,8 +16,8 @@ import os
 # fix random seed for reproducibility
 numpy.random.seed(7)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-req_char_index = 3
-window_size = 5
+req_char_index = 13
+window_size = 17
 
 
 def load_training_data():
@@ -26,7 +26,7 @@ def load_training_data():
 
     # x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
     x = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])
-    y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
+    y = dp.load_nn_labels_dataset_diacritics_only_string(training_dataset[:, [1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(training_dataset[:, [3]])
     sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences1(x, sen_len, req_char_index, window_size)
@@ -40,7 +40,7 @@ def load_testing_data():
 
     # x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
     x = dp.load_nn_input_dataset_string_space_only(testing_dataset[:, [0, 6]])
-    y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
+    y = dp.load_nn_labels_dataset_diacritics_only_string(testing_dataset[:, [1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
     sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences1(x, sen_len, req_char_index, window_size)
@@ -62,23 +62,27 @@ if __name__ == "__main__":
     X_test, y_test, vocabulary_test, vocabulary_inv_test = load_testing_data()
     check_key_exist(vocabulary_train, vocabulary_test)
 
-    sequence_length = 5
-    max_review_length = 5
+    sequence_length = 17
+    max_review_length = 17
 
     # input dim
     vocabulary_size = len(vocabulary_inv_train)
     # output dim
-    embedding_vector_length = 20
+    embedding_vector_length = 220
 
     model = Sequential()
     model.add(Embedding(vocabulary_size, embedding_vector_length, input_length=max_review_length))
-    model.add(Conv1D(filters=150, kernel_size=20, padding='same', activation='relu'))
-    #print(model.summary())
-
+    model.add(Conv1D(filters=128, kernel_size=3, padding='same', activation='relu'))
+    model.add(MaxPooling1D(pool_size=2))
+    model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
+    model.add(MaxPooling1D(pool_size=2))
+    model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
+    # print(model.summary())
+    model.add(MaxPooling1D(pool_size=1))
     model.add(Bidirectional(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(350, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(250, dropout=0.2)))
-    model.add(Dense(50, activation='softmax'))
+    model.add(Dense(14, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # file_path = "weights.best.hdf5"
