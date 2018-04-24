@@ -158,13 +158,24 @@ def get_diac_version_with_smallest_dist_no_db_access(list_of_objects, undiac_wor
 
 
 def get_diac_version_with_smallest_dist_no_db_access_version_2(master_object, dic_words):
-    rnn_diac_words = []
-    rnn_diac_words = [each_object.rnn_diac_word for each_object in master_object]
-    rnn_diac_words = [x[0] for x in groupby(rnn_diac_words)]
 
+    # rnn_diac_words = [each_object.rnn_diac_word for each_object in master_object]
+    # rnn_diac_words = [x[0] for x in groupby(rnn_diac_words1)]
+    # rnn_diac_words = master_object[0].sentence
     undiac_words = []
-    undiac_words = [each_object.undiac_word for each_object in master_object]
-    undiac_words = [x[0] for x in groupby(undiac_words)]
+    rnn_diac_words = []
+    for each_word in master_object[0].sentence:
+        undiac_words.append(WordLetterProcessingHelperMethod.remove_diacritics_from_this_word(each_word))
+
+    for each_word in undiac_words:
+        for each_object in master_object:
+            if each_object.undiac_word == each_word:
+                rnn_diac_words.append(each_object.rnn_diac_word)
+                break
+
+    #undiac_words = [each_object.undiac_word for each_object in master_object]
+    #undiac_words = [x[0] for x in groupby(undiac_words)]
+
     selected_dictionary_word = ''
     selected_norm_dictionary_word = ''
     output = []
@@ -203,12 +214,12 @@ def get_diac_version_with_smallest_dist_no_db_access_version_2(master_object, di
                     norm_dic_word[-1] = norm_act_word[-1]
 
                     for each_dic_letter, each_act_letter in zip(norm_dic_word, norm_act_word):
-                        for each_dict_item, each_act_item in zip(each_dic_letter, each_act_letter):
-                            if each_dict_item != each_act_item:
-                                error_count += 1
+                        if each_dic_letter[0] != each_act_letter[0] or each_dic_letter[1] != each_act_letter[1]:
+                            error_count += 1
 
                     if error_count < minimum_error:
                         minimum_error = error_count
+
                         selected_norm_dictionary_word = norm_dic_word
                         selected_dictionary_word = each_dic_word
 

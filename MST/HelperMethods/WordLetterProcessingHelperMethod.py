@@ -61,6 +61,15 @@ def get_location_of_each_char(list_of_chars, chars_count_for_each_word, remove_s
     return list_of_chars_with_its_location
 
 
+def remove_diacritics_from_this_word(word):
+    new_word = ''
+    for each_char in word:
+        nkfd_form = unicodedata.normalize('NFKD', str(each_char))
+        char = u"".join([c for c in nkfd_form if not unicodedata.combining(c) or c == u'ٓ' or c == u'ٔ' or c == u'ٕ'])
+        new_word += char
+    return new_word
+
+
 def remove_diacritics_from_this(character):
     nkfd_form = unicodedata.normalize('NFKD', str(character))
     char = u"".join([c for c in nkfd_form if not unicodedata.combining(c) or c == u'ٓ' or c == u'ٔ' or c == u'ٕ'])
@@ -134,17 +143,45 @@ def decompose_word_into_letters(word):
     decomposed_word = []
     inter_med_list = []
     found_flag = False
-
+    prev_letter = ''
+    prev_symbol = 'kjshfkjshdfjhsdkjfhksdhkfhsalflasjdflkasdlkfsalkdjf'
+    hamza_flag = False
+    inter_med_list = ['', '', '']
+    counter = 0
     for each_letter in word:
+
         if not unicodedata.combining(each_letter):
+            prev_letter = each_letter
+            counter = 0
+            if prev_symbol == 'ٔ' or prev_symbol == 'ٕ' or prev_symbol == '':
+                pass
             if found_flag:
                 decomposed_word.append(inter_med_list)
-            inter_med_list = []
-            inter_med_list.append(each_letter)
+                inter_med_list = ['', '', '']
+            #inter_med_list.append(each_letter)
+            inter_med_list[0] = each_letter
+            counter += 1
             found_flag = True
 
-        elif found_flag:
-            inter_med_list.append(each_letter)
+        elif found_flag and each_letter != 'ٔ' and each_letter != 'ٕ':
+            #inter_med_list.append(each_letter)
+            inter_med_list[counter] = each_letter
+            counter += 1
+
+        elif each_letter == 'ٔ' or each_letter == 'ٕ':
+            hamza_flag = True
+            each_letter = prev_letter + each_letter
+            #inter_med_list.pop()
+            #inter_med_list.append(each_letter)
+            inter_med_list[0] = each_letter
+            counter += 1
+
+        if hamza_flag:
+            hamza_flag = False
+            prev_symbol = 'ٔ'
+
+        else:
+            prev_symbol = each_letter
     # required because last character will not be added above, but here
     decomposed_word.append(inter_med_list)
 
