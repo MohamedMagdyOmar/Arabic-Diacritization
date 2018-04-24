@@ -48,10 +48,39 @@ def get_sentence_by(sentence_number, word_type):
     return current_sentence
 
 
+def get_chars_by_sentence(sentence_number, data_type):
+
+    connect_to_db()
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
+            "location, UnDiacritizedWord from ParsedDocument where LetterType=" + \
+            "'%s'" % data_type + " and SentenceNumber=" + "'%i'" % sentence_number +" order by SentenceNumber asc, idCharacterNumber asc"
+
+    cur.execute(query)
+
+    current_sentence = cur.fetchall()
+    current_sentence = np.array(current_sentence)
+
+    cur.close()
+    return current_sentence
+
+
 def get_all_sentences_by(word_type):
 
     connect_to_db()
     get_sentence_query = "select Word, SentenceNumber from listofwordsandsentencesineachdoc where wordtype=" + "'" + word_type + "'"
+
+    cur.execute(get_sentence_query)
+
+    current_sentence = cur.fetchall()
+
+    cur.close()
+    return np.array(current_sentence)
+
+
+def get_all_sentences():
+
+    connect_to_db()
+    get_sentence_query = "select * from listofwordsandsentencesineachdoc"
 
     cur.execute(get_sentence_query)
 
@@ -224,7 +253,7 @@ def get_label_table():
 
 def load_data_set():
     start_time = datetime.datetime.now()
-
+    connect_to_db()
     query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, DiacritizedCharacter, " \
             "location from ParsedDocument order by SentenceNumber asc, idCharacterNumber asc"
 

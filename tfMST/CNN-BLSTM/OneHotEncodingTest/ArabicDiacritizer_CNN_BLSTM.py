@@ -16,6 +16,8 @@ import os
 # fix random seed for reproducibility
 numpy.random.seed(7)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+req_char_index = 3
+window_size = 5
 
 
 def load_training_data():
@@ -27,7 +29,7 @@ def load_training_data():
     y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(training_dataset[:, [3]])
-    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences(x, sen_len, 4, 10)
+    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences1(x, sen_len, req_char_index, window_size)
 
     return sentences_padded, y, vocabulary, vocabulary_inv
 
@@ -41,7 +43,7 @@ def load_testing_data():
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
-    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences(x, sen_len, 4, 10)
+    sentences_padded, vocabulary, vocabulary_inv = dp.pad_sentences1(x, sen_len, req_char_index, window_size)
 
     return sentences_padded, y, vocabulary, vocabulary_inv
 
@@ -57,27 +59,19 @@ def check_key_exist(vocab_training, vocab_testing):
 if __name__ == "__main__":
 
     X_train, y_train, vocabulary_train, vocabulary_inv_train = load_training_data()
+    X_train = (numpy.arange(X_train.max()) == X_train[..., None] - 1).astype(int)
+
     X_test, y_test, vocabulary_test, vocabulary_inv_test = load_testing_data()
+    X_test = (numpy.arange(X_test.max()) == X_test[..., None] - 1).astype(int)
+
     check_key_exist(vocabulary_train, vocabulary_test)
 
-    sequence_length = 10
-    max_review_length = 10
-
-    # input dim
-    vocabulary_size = len(vocabulary_inv_train)
-    # output dim
-    embedding_vector_length = 220
-
     model = Sequential()
-    model.add(Embedding(vocabulary_size, embedding_vector_length, input_length=max_review_length))
 
-    model.add(Conv1D(filters=96, kernel_size=3, padding='same', activation='relu'))
-    model.add(MaxPooling1D(pool_size=2))
-
-    model.add(Conv1D(filters=64, kernel_size=3, padding='same', activation='relu'))
-    model.add(MaxPooling1D(pool_size=2))
-
-    model.add(Bidirectional(LSTM(250, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
+    #model.add(Conv1D(filters=200, kernel_size=5, padding='same', activation='relu', input_shape=(window_size, 37)))
+    #model.add(MaxPooling1D(pool_size=2))
+    model.add(Bidirectional(LSTM(250, dropout=0.2, return_sequences=True), input_shape=(window_size, 37)))
+    model.add(Bidirectional(LSTM(350, dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(250, dropout=0.2)))
     model.add(Dense(50, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -87,12 +81,12 @@ if __name__ == "__main__":
                                  save_best_only=True, mode='max')
 
     # check 5 epochs
-    early_stop = EarlyStopping(monitor='val_acc', patience=10, mode='max')
+    early_stop = EarlyStopping(monitor='val_acc', patience=5, mode='max')
     callbacks_list = [checkpoint, early_stop]
 
     print(model.summary())
     model.fit(X_train, y_train, validation_data=(X_test, y_test),
-              callbacks=callbacks_list, epochs=30, batch_size=64, verbose=1)
+              callbacks=callbacks_list, epochs=40, batch_size=79, verbose=1)
 
     # Final evaluation of the model
     scores = model.evaluate(X_test, y_test, verbose=0)

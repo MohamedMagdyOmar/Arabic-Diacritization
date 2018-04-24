@@ -60,7 +60,7 @@ current_row_2 = 0
 Total_Error = 0
 Total_Error_without_last_char = 0
 req_char_index = 3
-window_size = 15
+window_size = 5
 error = []
 error_without_last_letter = []
 
@@ -152,8 +152,11 @@ def prepare_master_object(selected_sentence, rnn_op, exp_op, location, undiac_wo
         en_range = each_number
 
         for index in range(st_range, en_range):
-            list_of_master_object[index].rnn_diac_word = list_of_rnn_words[0]
-            list_of_master_object[index].exp_diac_word = selected_sentence[0]
+            try:
+                list_of_master_object[index].rnn_diac_word = list_of_rnn_words[0]
+                list_of_master_object[index].exp_diac_word = selected_sentence[0]
+            except:
+                x = 1
         del list_of_rnn_words[0]
         del selected_sentence[0]
         st_range = en_range
@@ -164,9 +167,9 @@ def prepare_master_object(selected_sentence, rnn_op, exp_op, location, undiac_wo
 def load_testing_data():
     dp.establish_db_connection()
     testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
-    #testing_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("testing", 3062)
+    #testing_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("testing", 2838)
 
-    x = dp.load_nn_input_dataset_string_space_only(testing_dataset[:, [0, 6]])
+    x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
     y = dp.load_nn_labels_dataset_string(testing_dataset[:, [0, 1]])
 
     sent_num, sen_len = dp.load_nn_seq_lengths(testing_dataset[:, [3]])
@@ -225,10 +228,10 @@ if __name__ == "__main__":
     undiac_word = load_testing_data()
     dictionary = get_all_dic_words()
 
-    model = load_model('weights.012-0.9289.hdf5')
+    model = load_model('weights.010-0.8941.hdf5')
     print(model.summary())
     prediction = model.predict(X_test, verbose=1)
-
+    prediction = prediction[:, 36:49]
     nn_indices = prediction.argmax(axis=1)
     expected_indices = y_test.argmax(axis=1)
 
@@ -256,11 +259,10 @@ if __name__ == "__main__":
     end_range = 0
     all_sentences = DBHelperMethod.get_all_sentences_by('testing')
     for sentence_number in list_of_sentence_numbers:
-        #sentence_number = 3062
+        #sentence_number = 2838
         print("we will begin processing in sentence number:", sentence_number)
         indices_of_selected_sentence = np.where(all_sentences == str(sentence_number))
         selected_sentence1 = list(all_sentences[indices_of_selected_sentence[0], 0])
-        print(selected_sentence1)
         #selected_sentence1 = DBHelperMethod.get_sentence_by(sentence_number, 'testing')
         if len(selected_sentence1) == 0:
             start_range += 1
@@ -283,7 +285,6 @@ if __name__ == "__main__":
 
         # Post Processing
         RNN_Predicted_Chars_After_Fatha = FathaCorrection.fatha_correction_version_2(deepcopy(master_object))
-
         RNN_Predicted_Chars_After_Dictionary = DictionaryCorrection.\
             get_diac_version_with_smallest_dist_no_db_access_version_2\
             (RNN_Predicted_Chars_After_Fatha, dic_words_for_selected_sent)
