@@ -61,6 +61,15 @@ def get_location_of_each_char(list_of_chars, chars_count_for_each_word, remove_s
     return list_of_chars_with_its_location
 
 
+def remove_diacritics_from_this_word(word):
+    new_word = ''
+    for each_char in word:
+        nkfd_form = unicodedata.normalize('NFKD', str(each_char))
+        char = u"".join([c for c in nkfd_form if not unicodedata.combining(c) or c == u'ٓ' or c == u'ٔ' or c == u'ٕ'])
+        new_word += char
+    return new_word
+
+
 def remove_diacritics_from_this(character):
     nkfd_form = unicodedata.normalize('NFKD', str(character))
     char = u"".join([c for c in nkfd_form if not unicodedata.combining(c) or c == u'ٓ' or c == u'ٔ' or c == u'ٕ'])
@@ -103,21 +112,76 @@ def reform_word_from(list_of_objects_of_chars_and_its_location):
     return list_of_words
 
 
+def reform_word_from_version_2(master):
+    list_of_words = []
+    word = ""
+    isPrevWasLast = False
+    for each_char_object in master:
+        if each_char_object.location_in_word == 'firstOneLetter':
+            list_of_words.append(each_char_object.rnn_diac_char)
+
+        elif each_char_object.location_in_word != 'last':
+            word += each_char_object.rnn_diac_char
+            isPrevWasLast = False
+
+        elif isPrevWasLast and each_char_object.location_in_word == 'last':
+            word = each_char_object.rnn_diac_char
+            list_of_words.append(word)
+            isPrevWasLast = True
+            word = ""
+
+        elif each_char_object.location_in_word == 'last':
+            word += each_char_object.rnn_diac_char
+            list_of_words.append(word)
+            isPrevWasLast = True
+            word = ""
+
+    return list_of_words
+
+
 def decompose_word_into_letters(word):
     decomposed_word = []
     inter_med_list = []
     found_flag = False
-
+    prev_letter = ''
+    prev_symbol = 'kjshfkjshdfjhsdkjfhksdhkfhsalflasjdflkasdlkfsalkdjf'
+    hamza_flag = False
+    inter_med_list = ['', '', '']
+    counter = 0
     for each_letter in word:
+
         if not unicodedata.combining(each_letter):
+            prev_letter = each_letter
+            counter = 0
+            if prev_symbol == 'ٔ' or prev_symbol == 'ٕ' or prev_symbol == '':
+                pass
             if found_flag:
                 decomposed_word.append(inter_med_list)
-            inter_med_list = []
-            inter_med_list.append(each_letter)
+                inter_med_list = ['', '', '']
+            #inter_med_list.append(each_letter)
+            inter_med_list[0] = each_letter
+            counter += 1
             found_flag = True
 
-        elif found_flag:
-            inter_med_list.append(each_letter)
+        elif found_flag and each_letter != 'ٔ' and each_letter != 'ٕ':
+            #inter_med_list.append(each_letter)
+            inter_med_list[counter] = each_letter
+            counter += 1
+
+        elif each_letter == 'ٔ' or each_letter == 'ٕ':
+            hamza_flag = True
+            each_letter = prev_letter + each_letter
+            #inter_med_list.pop()
+            #inter_med_list.append(each_letter)
+            inter_med_list[0] = each_letter
+            counter += 1
+
+        if hamza_flag:
+            hamza_flag = False
+            prev_symbol = 'ٔ'
+
+        else:
+            prev_symbol = each_letter
     # required because last character will not be added above, but here
     decomposed_word.append(inter_med_list)
 
@@ -148,6 +212,30 @@ def convert_list_of_words_to_list_of_chars(list_of_words):
     final_list_of_actual_letters = []
     for each_word in list_of_words:
         for each_letter in each_word:
+            x = unicodedata.combining(each_letter)
+            if not unicodedata.combining(each_letter):
+                if found_flag and comp != u'﻿':
+                    final_list_of_actual_letters.append(comp)
+
+                overall = each_letter
+                found_flag = True
+                comp = unicodedata.normalize('NFC', overall)
+            elif found_flag:
+                overall += each_letter
+                comp = unicodedata.normalize('NFC', overall)
+
+    final_list_of_actual_letters.append(comp)
+
+    return final_list_of_actual_letters
+
+
+def convert_list_of_words_to_list_of_chars_version2(master_object):
+    found_flag = False
+    overall = ""
+    comp = ""
+    final_list_of_actual_letters = []
+    for each_object in master_object:
+        for each_letter in each_object.rnn_diac_word:
             x = unicodedata.combining(each_letter)
             if not unicodedata.combining(each_letter):
                 if found_flag and comp != u'﻿':

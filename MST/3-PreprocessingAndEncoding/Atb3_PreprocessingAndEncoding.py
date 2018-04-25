@@ -8,7 +8,7 @@ import WordLetterProcessingHelperMethod
 
 # 1 for atb3
 
-listOfPunctuationSymbols = [u' .', u'.', u' :', u'«', u'»', u'،', u'؛', u'؟', u'.(', u').', u':(', u'):', u'» .', u'».']
+listOfPunctuationSymbols = [u' .', u'.', u' :', u'«', u'»', u'،', u'؛', u'؟', u'.(', u').', u':(', u'):', u'» .', u'».', u'،', u' ،']
 listOfArabicDiacriticsUnicode = [["064b", "064c", "064d", "064e", "064f", "0650", "0651", "0652", "0670"],
                                  [1, 2, 3, 4, 5, 6, 8, 7, 9]]
 sentenceCount = 0
@@ -78,7 +78,7 @@ def extract_and_clean_words_from_doc(data):
             word = re.sub(u'[-;}()/]', '', word)
             word = re.sub(u'[-;}()0123456789/]', '', word)
             word = re.sub(u'["{"]', '', word)
-            word = re.sub(u'[:]', ' :', word)
+            word = re.sub(u'[:]', '', word)
             word = re.sub(u'[_]', '', word)
             word = re.sub(u'[`]', '', word)
             word = re.sub(u'[[]', '', word)
@@ -97,6 +97,18 @@ def extract_and_clean_words_from_doc(data):
             word = re.sub(u'[t]', '', word)
             word = re.sub(u'ٰ', '', word)
             word = re.sub(u'ـ', '', word)
+            word = re.sub(u'،', '', word)
+            word = re.sub(u'؟', '', word)
+            word = re.sub(u',', '', word)
+
+            word = re.sub(u'=', '', word)
+            word = re.sub(u'>', '', word)
+            word = re.sub(u'[?]', '', word)
+            word = re.sub(u'%', '', word)
+            word = re.sub(u'T', '', word)
+            word = re.sub(u'M', '', word)
+            word = re.sub(u'A', '', word)
+
             if not (word == u''):
                 list_of_words.append(word)
 
@@ -112,6 +124,8 @@ def bind_words_with_sentence_number_in_this_doc(raw_data):
     wordCount = 0
     for eachVersus in raw_data:
         sentenceCount += 1
+        if sentenceCount == 288:
+            b = 1
         each_word_in_versus = extract_and_clean_words_from_doc((eachVersus))
         list_of_words_in_doc_and_corresponding_sentence_number.append(["bos", sentenceCount])
         for eachWord in each_word_in_versus:
@@ -131,7 +145,8 @@ def get_list_of_undiacritized_word_from_diacritized_word(list_of_extracted_words
     listOfUnDiacritizedWord = []
 
     for word in list_of_extracted_words_without_numbers:
-
+        if word[1] == 10:
+            j = 1
         if word[0] != "space" and word[0] != "bos" and word[0] != "eos":
             if not word[0] in listOfPunctuationSymbols:
 
@@ -145,7 +160,12 @@ def get_list_of_undiacritized_word_from_diacritized_word(list_of_extracted_words
                 listOfUnDiacritizedWord.append(word)
         else:
             listOfUnDiacritizedWord.append(word)
-
+    '''
+    rows = []
+    for i in range(0, len(listOfUnDiacritizedWord)):
+        if listOfUnDiacritizedWord[i][1] == 10:
+            rows.append(listOfUnDiacritizedWord[i][0])
+    '''
     return listOfUnDiacritizedWord
 
 
@@ -223,7 +243,8 @@ def extract_each_character_from_word_with_its_diacritization(list_of_extracted_w
         diacritizedWord = eachObject[0]
         sentenceNumber = eachObject[1]
         first_char_flag = True
-
+        if eachObject[1] == 13:
+            x = 1
         loopCount += 1
         if eachObject[0] != 'space' and eachObject[0] != 'bos' and eachObject[0] != 'eos':
 
@@ -296,6 +317,12 @@ def extract_each_character_from_word_with_its_diacritization(list_of_extracted_w
 
         DbList[-1].location = 'last'
 
+    '''
+    rows = []
+    for each_object in DbList:
+        if each_object.sentenceNumber == 10:
+            rows.append(each_object.undiacritizedWord)
+    '''
     return DbList
 
 
@@ -350,7 +377,7 @@ def push_data_into_db(doc, data_chars, list_of_words_and_corresponding_sentence_
              data_chars[x].encoded_input_in_hex_format,
              data_chars[x].encoded_output_in_hex_format,
              data_chars[x].diacritics))
-    '''
+
     for each_letter_object in data_chars:
                 cur.execute(
                     "INSERT INTO ParsedDocument("
@@ -360,34 +387,28 @@ def push_data_into_db(doc, data_chars, list_of_words_and_corresponding_sentence_
                     "LetterType,"
                     "SentenceNumber, "
                     "Word, "
-                    "InputSequenceEncodedWords,"
-                    "TargetSequenceEncodedWords, "
-                    "InputSequenceEncodedWordsInHexFormat,"
-                    "TargetSequenceEncodedWordsInHexFormat, "
+
                     "Diacritics, "
                     "UnDiacritizedWord, "
-                    "location) VALUES (%s,%s,%s,%s,%s,%s,%s,""%s,%s,%s,%s,%s,%s)",
+                    "location) VALUES (%s,%s,%s,%s,%s,%s,%s,""%s,%s)",
                     (doc,
                      each_letter_object.undiacritizedCharacter,
                      each_letter_object.diacritizedCharacter,
-                     'testing',
+                     'training',
                      each_letter_object.sentenceNumber,
                      each_letter_object.diacritizedWord,
-                     each_letter_object.encoded_input,
-                     each_letter_object.encoded_output,
-                     each_letter_object.encoded_input_in_hex_format,
-                     each_letter_object.encoded_output_in_hex_format,
                      each_letter_object.diacritics,
                      each_letter_object.undiacritizedWord,
                      each_letter_object.location))
-
+    '''
     for each_word in list_of_words_and_corresponding_sentence_number:
         cur.execute(
-            "INSERT INTO ListOfWordsAndSentencesInEachDoc(word,SentenceNumber,DocName) VALUES (%s,%s,%s)",
-            (each_word[0], each_word[1], doc))
+            "INSERT INTO ListOfWordsAndSentencesInEachDoc(word,SentenceNumber,DocName, wordtype) VALUES (%s,%s,%s,%s)",
+            (each_word[0], each_word[1], doc, 'testing'))
 
     db.commit()
     db.close()
+
 
 if __name__ == "__main__":
 
@@ -398,6 +419,7 @@ if __name__ == "__main__":
         selected_doc, raw_data = read_doc(eachDoc, listOfFilesPaths, ListOfDocs)
         # cleaned_data = extract_and_clean_words_from_doc(raw_data)
         listOfWordsAndCorrespondingSentenceNumber = bind_words_with_sentence_number_in_this_doc(raw_data)
+
         WordLetterProcessingHelperMethod.clean_data_from_shadda_only(listOfWordsAndCorrespondingSentenceNumber)
 
         listOfUndiacritizedWords = get_list_of_undiacritized_word_from_diacritized_word(

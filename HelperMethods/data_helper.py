@@ -139,6 +139,36 @@ def get_label_table():
     return labels_and_equiv_encoding
 
 
+def get_label_table_2():
+    start_time = datetime.datetime.now()
+    establish_db_connection()
+    query = "select * from diaconehotencoding"
+    cur.execute(query)
+
+    labels_and_equiv_encoding = cur.fetchall()
+    labels_and_equiv_encoding = np.array(labels_and_equiv_encoding)
+
+    end_time = datetime.datetime.now()
+    print("get_db_label_table takes : ", end_time - start_time)
+    cur.close()
+    return labels_and_equiv_encoding
+
+
+def get_label_table_diacritics_only():
+    start_time = datetime.datetime.now()
+    establish_db_connection()
+    query = "select * from distinctdiacritics"
+    cur.execute(query)
+
+    labels_and_equiv_encoding = cur.fetchall()
+    labels_and_equiv_encoding = np.array(labels_and_equiv_encoding)
+
+    end_time = datetime.datetime.now()
+    print("get_db_label_table takes : ", end_time - start_time)
+    cur.close()
+    return labels_and_equiv_encoding
+
+
 def load_nn_input_dataset_numpy(data_table):
     start_time = datetime.datetime.now()
     nn_input = []
@@ -220,6 +250,8 @@ def load_nn_input_dataset_string_space_only(data_table):
             one_hot_encoding = input_and_equiv_encoding[np.min(index_of_raw_input_data[0]), 1]
 
             nn_input.append(one_hot_encoding)
+        else:
+            x = 1
 
     end_time = datetime.datetime.now()
 
@@ -302,12 +334,84 @@ def load_nn_labels_dataset_string(data_table):
             label = list(map(int, label))
 
             nn_labels.append(label)
+        else:
+            x = 1
 
     end_time = datetime.datetime.now()
 
     print("load_nn_labels_dataset_string takes : ", end_time - start_time)
 
     return np.array(nn_labels)
+
+
+def load_nn_labels_dataset_string_2(data_table):
+    start_time = datetime.datetime.now()
+    nn_labels = []
+
+    labels_and_equiv_encoding = get_label_table_2()
+
+    for each_row in data_table:
+
+        index_of_raw_label_data = np.where(labels_and_equiv_encoding == each_row[0])
+
+        if np.size(index_of_raw_label_data) != 0:
+            label = labels_and_equiv_encoding[index_of_raw_label_data[0], 2][0]
+            label = label.replace('\n', "")
+            label = list(map(int, label))
+
+            nn_labels.append(label)
+        else:
+            x = 1
+
+    end_time = datetime.datetime.now()
+
+    print("load_nn_labels_dataset_string takes : ", end_time - start_time)
+
+    return np.array(nn_labels)
+
+
+def load_nn_labels_dataset_diacritics_only_string(data_table):
+    start_time = datetime.datetime.now()
+    nn_labels = []
+
+    labels_and_equiv_encoding = get_label_table_diacritics_only()
+
+    for each_row in data_table:
+        if each_row[0] != '':
+            raw_input_data = each_row[0]
+        else:
+            raw_input_data = ''
+
+        index_of_raw_label_data = np.where(labels_and_equiv_encoding == raw_input_data)
+
+        if np.size(index_of_raw_label_data) != 0:
+            label = labels_and_equiv_encoding[index_of_raw_label_data[0], 2][0]
+            label = label.replace('\n', "")
+            label = list(map(int, label))
+
+            nn_labels.append(label)
+
+    end_time = datetime.datetime.now()
+
+    print("load_nn_labels_dataset_string takes : ", end_time - start_time)
+
+    return np.array(nn_labels)
+
+
+def load_nn_labels(data_table):
+    start_time = datetime.datetime.now()
+    labels = []
+    for each_row in data_table:
+        if each_row[1] != '':
+            labels.append(each_row[1])
+        else:
+            labels.append(each_row[0])
+
+    end_time = datetime.datetime.now()
+
+    print("load_nn_labels_dataset_string takes : ", end_time - start_time)
+
+    return np.array(labels)
 
 
 def load_nn_seq_lengths(data_table):
@@ -347,6 +451,15 @@ def pad_sentences1(x, sent_len, req_char_index, window_size):
 
     return padded_sent, vocabulary, vocabulary_inv
 
+
+def build_one_to_one_input_data(x, sent_len, req_char_index, window_size):
+    start_time = datetime.datetime.now()
+
+    vocabulary, vocabulary_inv = build_vocab(x)
+
+    padded_sent = build_input_data_for_one_to_one(x, vocabulary)
+
+    return padded_sent, vocabulary, vocabulary_inv
 '''
 def pad_sentences1(x, sent_len, window_size):
     start_time = datetime.datetime.now()
@@ -410,6 +523,7 @@ def padding1(extracted_sent, req_char_index, window_size):
 
     return padded_sent
 '''
+
 
 def padding1(extracted_sent, req_char_index_non_zero_index, window_size):
 
@@ -588,6 +702,12 @@ def build_input_data_without_flattening(sentences, vocabulary):
     return x
 
 
+def build_input_data_for_one_to_one(chars, vocabulary):
+
+    x = [vocabulary[each_char] for each_char in chars]
+    return x
+
+
 def build_input_data2(sentences, vocabulary):
     x = ([[vocabulary[word] for word in sentence] for sentence in sentences])
     return x
@@ -613,6 +733,8 @@ def concatenate_char_and_diacritization(ip_letters, nn_labels):
 
         try:
             if each_nn_labels == 'space' or ip_each_letter == 'space':
+                nn_diacritized_letters.append(ip_each_letter)
+            elif each_nn_labels == 'pad' or ip_each_letter == 'pad':
                 nn_diacritized_letters.append(ip_each_letter)
             else:
 
