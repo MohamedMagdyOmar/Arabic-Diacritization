@@ -31,7 +31,7 @@
       <find>wher</find>
       <find>whe</find>
       <find>exp_diac_w</find>
-      <find>total error in this sentence</find>
+      <find />
       <find>space</find>
       <find>undiacritizedWord</find>
       <find>get_list_of_undiacritized_word_from_diacritized_word</find>
@@ -320,7 +320,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2578125" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -653,7 +653,7 @@
           <option name="timeStamp" value="867" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tfMST/CNN-BLSTM/17_atb3_space/4/force diacritics/Predictor_CNN_BLSTM.py</url>
+          <url />
           <line>238</line>
           <option name="timeStamp" value="873" />
         </line-breakpoint>
@@ -688,12 +688,12 @@
           <option name="timeStamp" value="902" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/How to Use the TimeDistributed Layer for Long Short-Term Memory Networks in Python/How to Use the TimeDistributed Layer for Long Short-Term Memory Networks in Python.py</url>
+          <url />
           <line>23</line>
           <option name="timeStamp" value="944" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/How to Use the TimeDistributed Layer for Long Short-Term Memory Networks in Python/How to Use the TimeDistributed Layer for Long Short-Term Memory Networks in Python.py</url>
+          <url />
           <line>27</line>
           <option name="timeStamp" value="945" />
         </line-breakpoint>
