@@ -14,8 +14,8 @@
       <file leaf-file-name="ManyToManyPadSentences.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/ManyToManyPadSentences.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="197">
+              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
               <folding>
                 <element signature="e#212#224#0" expanded="true" />
                 <element signature="e#4496#5234#0" />
@@ -40,7 +40,7 @@
       <find>wher</find>
       <find>whe</find>
       <find>exp_diac_w</find>
-      <find />
+      <find>total error in this sentence</find>
       <find>space</find>
       <find>get_list_of_undiacritized_word_from_diacritized_word</find>
       <find>extract_and_clean_words_from_doc</find>
@@ -393,7 +393,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26888022" />
@@ -1356,8 +1356,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/ManyToManyPadSentences.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        <state relative-caret-position="197">
+          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
           <folding>
             <element signature="e#212#224#0" expanded="true" />
             <element signature="e#4496#5234#0" />
