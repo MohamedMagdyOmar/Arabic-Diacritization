@@ -80,18 +80,21 @@ print(len(one_hot_list_for_diacritized))
 print(len(one_hot_list_for_diacritics_and_undiacritized_letters))
 
 
+for x in range(0, len(one_hot_list__for_un_diacritized_characters)):
+    cur.execute("insert into UnDiacOneHotEncoding (UnDiacritizedCharacter,UnDiacritizedCharacterOneHotEncoding, location)"
+                " VALUES (%s,%s,%s)",
+                (listOfUnDiacritizedCharacter[x], UnDiacritizedOneHotInNDimArrayForm[x], listOfUnDiacritizedCharacterLocation[x]))
 
 for x in range(0, len(one_hot_list_for_diacritics_and_undiacritized_letters)):
     cur.execute("insert into diacritics_and_undiacritized_letter_one_hot_encoding (label,OneHotEncoding)"
                 " VALUES (%s,%s)",
                 (listOfDiacritics_and_undiacritized_letters[x], Diacritics_and_letters_OneHotInNDimArrayForm[x]))
-
 '''
 
-for x in range(0, len(one_hot_list__for_un_diacritized_characters)):
-    cur.execute("insert into UnDiacOneHotEncoding (UnDiacritizedCharacter,UnDiacritizedCharacterOneHotEncoding, location)"
-                " VALUES (%s,%s,%s)",
-                (listOfUnDiacritizedCharacter[x], UnDiacritizedOneHotInNDimArrayForm[x], listOfUnDiacritizedCharacterLocation[x]))
+
+
+
+
 
 
 
@@ -104,17 +107,8 @@ for x in range(0, len(one_hot_list__for_diacritized_characters)):
     cur.execute("insert into DiacOneHotEncoding (DiacritizedCharacter,DiacritizedCharacterOneHotEncoding)"
                 " VALUES (%s,%s)",
                 (listOfDiacritizedCharacter[x], diacritizedOneHotInNDimArrayForm[x]))
-                
-
-                
-
-
-
-
-
-
-
 '''
+
 db.commit()
 
 db.close()

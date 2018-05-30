@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 import unicodedata
-import MySQLdb
-import MySQLdb.cursors
+import pymysql
+import pymysql.cursors
 import numpy as np
 import datetime
 
 
 def connect_to_db():
-    db = MySQLdb.connect(host="127.0.0.1",  # your host, usually localhost
+    db = pymysql.connect(host="127.0.0.1",  # your host, usually localhost
                          user="root",  # your username
                          passwd="Islammega88",  # your password
                          db="mstdb",  # name of the data base
-                         cursorclass=MySQLdb.cursors.SSCursor,
+                         cursorclass=pymysql.cursors.SSCursor,
                          use_unicode=True,
                          charset="utf8",
                          init_command='SET NAMES UTF8')

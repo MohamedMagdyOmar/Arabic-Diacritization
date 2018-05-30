@@ -1,12 +1,12 @@
-import MySQLdb
-import MySQLdb.cursors
+import pymysql
+import pymysql.cursors
 import numpy as np
 import datetime
 import matplotlib
 from collections import Counter
 from itertools import chain
 import unicodedata2
-
+import _mysql
 
 class LetterPosition:
     letter = "",
@@ -20,14 +20,16 @@ class LetterPosition:
 
 
 def establish_db_connection():
-    db = MySQLdb.connect(host="127.0.0.1",  # your host, usually localhost
-                         user="root",  # your username
-                         passwd="Islammega88",  # your password
-                         db="mstdb",  # name of the data base
-                         cursorclass=MySQLdb.cursors.SSCursor,
+    db = pymysql.connect(host='127.0.0.1',  # your host, usually localhost
+                         user='root',  # your username
+                         passwd='Islammega88',  # your password
+                         db='mstdb',  # name of the data base
+                         cursorclass=pymysql.cursors.SSCursor,
                          use_unicode=True,
-                         charset="utf8",
-                         init_command='SET NAMES UTF8')
+                         charset='utf8',
+                         port=3306,
+                         init_command='SET NAMES UTF8'
+                        )
     global cur
     cur = db.cursor()
 
@@ -829,7 +831,5 @@ def create_3d_output_y_tensor(y, sent_len, T):
 if __name__ == "__main__":
 
     establish_db_connection()
-    dataset = load_dataset_by_type('training')
-    load_nn_input_dataset_numpy(dataset[:, [0, 8]])
-    load_nn_labels_dataset_numpy(dataset[:, [0, 1]])
-    load_nn_seq_lengths(dataset[:, [3]])
+
+

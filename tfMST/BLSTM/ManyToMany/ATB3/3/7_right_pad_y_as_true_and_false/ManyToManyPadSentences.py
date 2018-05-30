@@ -50,9 +50,12 @@ def load_data():
     dp.establish_db_connection()
     training_sequence_list = []
     training_padded_output = []
+    training_sample_weight = []
 
     training_dataset = DBHelperMethod.load_dataset_by_type("training")
+    #training_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("training", 1)
     sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("training")
+    #sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("training")[0]
 
     labels_and_equiv_encoding = dp.get_label_table()
     input_one_hot_encoding = (dp.get_input_table())[:, 0]
@@ -62,8 +65,6 @@ def load_data():
     for each_sentence_number in sentence_numbers:
         selected_sentence = training_dataset[numpy.where(training_dataset[:, 3] == str(each_sentence_number))]
         input = selected_sentence[:, 0]
-        input = numpy.insert(input, 0, 'start')
-        input[-1] = 'end'
         input_vocabed, output = prepare_input_and_output(input, vocabulary, selected_sentence[:, [0, 1]],
                                                          labels_and_equiv_encoding)
 
@@ -75,23 +76,27 @@ def load_data():
 
     input_training_padded = pad_sequences(training_sequence_list, padding='pre')
 
-    output_training_padded = pad_sequences(training_padded_output, padding='pre')
+    output_training_padded = pad_sequences(training_padded_output, padding='pre').astype(float)
+    output_training_padded_bool = 0. < output_training_padded
 
-    training_sample_weight = output_training_padded.sum(axis=2)
+    training_sample_weight = output_training_padded.sum(axis=2).astype(float)
+
 
     # testing data
     testing_sequence_list = []
     testing_padded_output = []
+    testing_minor_sample_weight = []
+    testing_sample_weight = []
 
     testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    #testing_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("testing", 1)
     sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("testing")
+    #sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("testing")[0]
 
     start_time = datetime.datetime.now()
     for each_sentence_number in sentence_numbers:
         selected_sentence = testing_dataset[numpy.where(testing_dataset[:, 3] == str(each_sentence_number))]
         input = selected_sentence[:, 0]
-        input = numpy.insert(input, 0, 'start')
-        input[-1] = 'end'
         input_vocabed, output = prepare_input_and_output(input, vocabulary, selected_sentence[:, [0, 1]],
                                                          labels_and_equiv_encoding)
 
@@ -103,12 +108,13 @@ def load_data():
 
     input_testing_padded = pad_sequences(testing_sequence_list, padding='pre', maxlen=input_training_padded.shape[1])
 
-    output_testing_padded = pad_sequences(testing_padded_output, padding='pre', maxlen=output_training_padded.shape[1])
+    output_testing_padded = pad_sequences(testing_padded_output, padding='pre', maxlen=output_training_padded.shape[1]).astype(float)
+    output_testing_padded_bool = 0. < output_testing_padded
 
-    testing_sample_weight = output_testing_padded.sum(axis=2)
+    testing_sample_weight = output_testing_padded.sum(axis=2).astype(float)
 
-    return input_training_padded, output_training_padded, training_sample_weight, vocabulary, vocabulary_inv\
-        , input_testing_padded, output_testing_padded, testing_sample_weight
+    return input_training_padded, output_training_padded_bool, training_sample_weight, vocabulary, vocabulary_inv\
+        , input_testing_padded, output_testing_padded_bool, testing_sample_weight
 
 
 if __name__ == "__main__":
@@ -120,7 +126,7 @@ if __name__ == "__main__":
     vocabulary_size = len(vocabulary_inv_train) + 1  # (+1 because we have 0 for masking)
 
     # output dim
-    embedding_vector_length = 39
+    embedding_vector_length = 37
 
     model = Sequential()
 
@@ -130,7 +136,7 @@ if __name__ == "__main__":
     model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
 
-    model.add(TimeDistributed(Dense(52, activation='softmax')))
+    model.add(TimeDistributed(Dense(51, activation='softmax')))
 
     model.compile(loss='categorical_crossentropy', optimizer='adam',
                   metrics=['accuracy'], sample_weight_mode='temporal')
