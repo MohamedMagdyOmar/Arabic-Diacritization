@@ -23,7 +23,7 @@ window_size = 8
 def load_data():
     dp.establish_db_connection()
 
-    training_dataset = DBHelperMethod.load_dataset_by_type("training")
+    training_dataset = DBHelperMethod.load_dataset_by_type("testing")
     testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
 
     x_training = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])
