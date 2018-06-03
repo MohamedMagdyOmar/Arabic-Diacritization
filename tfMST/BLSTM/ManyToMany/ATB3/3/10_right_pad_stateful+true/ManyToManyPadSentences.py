@@ -11,8 +11,6 @@ from keras.layers import TimeDistributed
 from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
 from keras.preprocessing.sequence import pad_sequences
-from numpy import zeros, newaxis
-from itertools import chain
 import DBHelperMethod
 import os
 import datetime
@@ -20,8 +18,9 @@ from keras import backend as K
 # fix random seed for reproducibility
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+time_steps = 1277
+num_of_train_seqs = 10730
 batch_size = 32
-num_of_steps = 40
 
 
 def prepare_input_and_output(input, vocab, output, label_encoding):
@@ -51,13 +50,15 @@ def prepare_input_and_output(input, vocab, output, label_encoding):
 
 
 def load_data():
-    max_length = 1280
     dp.establish_db_connection()
     training_sequence_list = []
     training_padded_output = []
+    training_sample_weight = []
 
     training_dataset = DBHelperMethod.load_dataset_by_type("training")
+    #training_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("training", 1)
     sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("training")
+    #sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("training")[0]
 
     labels_and_equiv_encoding = dp.get_label_table()
     input_one_hot_encoding = (dp.get_input_table())[:, 0]
@@ -70,37 +71,28 @@ def load_data():
         input_vocabed, output = prepare_input_and_output(input, vocabulary, selected_sentence[:, [0, 1]],
                                                          labels_and_equiv_encoding)
 
-        input_vocabed = numpy.array(input_vocabed)
-        number_of_zeros = max_length - len(input_vocabed)
-        input_vocabed = numpy.pad(input_vocabed, (number_of_zeros, 0), 'constant', constant_values=0)
-        input_vocabed = numpy.reshape(input_vocabed, (-1, num_of_steps))
-
         training_sequence_list.append(input_vocabed)
-
-        output = numpy.array(output)
-        output = numpy.pad(output, ((number_of_zeros, 0), (0, 0)), 'constant', constant_values=0)
-        output = output.reshape(batch_size, num_of_steps, 50)
-
         training_padded_output.append(output)
 
     end_time = datetime.datetime.now()
     print("prepare data takes : ", end_time - start_time)
-    training_sequence_list = list(chain(*training_sequence_list))
-    training_sequence_list = numpy.array(training_sequence_list)
 
-    training_padded_output = list(chain(*training_padded_output))
-    training_padded_output = numpy.array(training_padded_output)
+    input_training_padded = pad_sequences(training_sequence_list, padding='pre')
 
-    input_training_padded = training_sequence_list
-    output_training_padded = training_padded_output
+    output_training_padded = pad_sequences(training_padded_output, padding='pre').astype(float)
     training_sample_weight = output_training_padded.sum(axis=2).astype(float)
+
 
     # testing data
     testing_sequence_list = []
     testing_padded_output = []
+    testing_minor_sample_weight = []
+    testing_sample_weight = []
 
     testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    #testing_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("testing", 1)
     sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("testing")
+    #sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("testing")[0]
 
     start_time = datetime.datetime.now()
     for each_sentence_number in sentence_numbers:
@@ -109,29 +101,15 @@ def load_data():
         input_vocabed, output = prepare_input_and_output(input, vocabulary, selected_sentence[:, [0, 1]],
                                                          labels_and_equiv_encoding)
 
-        input_vocabed = numpy.array(input_vocabed)
-        number_of_zeros = max_length - len(input_vocabed)
-        input_vocabed = numpy.pad(input_vocabed, (number_of_zeros, 0), 'constant', constant_values=0)
-        input_vocabed = numpy.reshape(input_vocabed, (-1, num_of_steps))
-
         testing_sequence_list.append(input_vocabed)
-
-        output = numpy.array(output)
-        output = numpy.pad(output, ((number_of_zeros, 0), (0, 0)), 'constant', constant_values=0)
-        output = output.reshape(batch_size, num_of_steps, 50)
         testing_padded_output.append(output)
 
     end_time = datetime.datetime.now()
     print("prepare data takes : ", end_time - start_time)
-    testing_sequence_list = list(chain(*testing_sequence_list))
-    testing_sequence_list = numpy.array(testing_sequence_list)
 
-    testing_padded_output = list(chain(*testing_padded_output))
-    testing_padded_output = numpy.array(testing_padded_output)
+    input_testing_padded = pad_sequences(testing_sequence_list, padding='pre', maxlen=input_training_padded.shape[1])
 
-    input_testing_padded = testing_sequence_list
-    output_testing_padded = testing_padded_output
-
+    output_testing_padded = pad_sequences(testing_padded_output, padding='pre', maxlen=output_training_padded.shape[1]).astype(float)
     testing_sample_weight = output_testing_padded.sum(axis=2).astype(float)
 
     return input_training_padded, output_training_padded, training_sample_weight, vocabulary, vocabulary_inv\
@@ -152,10 +130,11 @@ if __name__ == "__main__":
     model = Sequential()
 
     model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length,
+                        batch_input_shape=(batch_size, time_steps, 37),
                         input_length=X_train.shape[1], mask_zero=True))
 
-    model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
-    model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
+    model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True, stateful=True)))
+    model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True, stateful=True)))
 
     model.add(TimeDistributed(Dense(50, activation='softmax')))
 
@@ -173,8 +152,9 @@ if __name__ == "__main__":
 
     model.fit(X_train, y_train, validation_data=(X_test, y_test, test_sample_weight),
               callbacks=callbacks_list, epochs=15, batch_size=32,
-              verbose=1, sample_weight=train_sample_weight)
+              verbose=1, sample_weight=train_sample_weight, shuffle=False)
 
+    # Final evaluation of the model
     scores = model.evaluate(X_test, y_test, verbose=0)
     model.reset_states()
     print("Accuracy: %.2f%%" % (scores[1]*100))
