@@ -62,6 +62,8 @@ def load_data():
     for each_sentence_number in sentence_numbers:
         selected_sentence = training_dataset[numpy.where(training_dataset[:, 3] == str(each_sentence_number))]
         input = selected_sentence[:, 0]
+        input = numpy.insert(input, 0, 'start')
+        input[-1] = 'end'
         input_vocabed, output = prepare_input_and_output(input, vocabulary, selected_sentence[:, [0, 1]],
                                                          labels_and_equiv_encoding)
 
@@ -72,12 +74,11 @@ def load_data():
     print("prepare data takes : ", end_time - start_time)
 
     input_training_padded = pad_sequences(training_sequence_list, padding='pre')
-    #input_training_padded = numpy.array(training_sequence_list)
+
     output_training_padded = pad_sequences(training_padded_output, padding='pre')
-    #output_training_padded = numpy.array(training_padded_output)
 
     training_sample_weight = output_training_padded.sum(axis=2)
-    #training_sample_weight = 1
+
     # testing data
     testing_sequence_list = []
     testing_padded_output = []
@@ -89,25 +90,23 @@ def load_data():
     for each_sentence_number in sentence_numbers:
         selected_sentence = testing_dataset[numpy.where(testing_dataset[:, 3] == str(each_sentence_number))]
         input = selected_sentence[:, 0]
+        input = numpy.insert(input, 0, 'start')
+        input[-1] = 'end'
         input_vocabed, output = prepare_input_and_output(input, vocabulary, selected_sentence[:, [0, 1]],
                                                          labels_and_equiv_encoding)
 
-        #testing_sequence_list.append(numpy.array(input_vocabed))
         testing_sequence_list.append(input_vocabed)
-        #testing_padded_output.append(numpy.array(output))
         testing_padded_output.append(output)
 
     end_time = datetime.datetime.now()
     print("prepare data takes : ", end_time - start_time)
 
     input_testing_padded = pad_sequences(testing_sequence_list, padding='pre', maxlen=input_training_padded.shape[1])
-    #input_testing_padded = numpy.array(testing_sequence_list)
-    #input_testing_padded = pad_sequences(testing_sequence_list, padding='pre')
+
     output_testing_padded = pad_sequences(testing_padded_output, padding='pre', maxlen=output_training_padded.shape[1])
-    #output_testing_padded = numpy.array(testing_padded_output)
-    #output_testing_padded = pad_sequences(testing_padded_output, padding='pre')
+
     testing_sample_weight = output_testing_padded.sum(axis=2)
-    #testing_sample_weight = 1
+
     return input_training_padded, output_training_padded, training_sample_weight, vocabulary, vocabulary_inv\
         , input_testing_padded, output_testing_padded, testing_sample_weight
 
@@ -121,7 +120,7 @@ if __name__ == "__main__":
     vocabulary_size = len(vocabulary_inv_train) + 1  # (+1 because we have 0 for masking)
 
     # output dim
-    embedding_vector_length = 37
+    embedding_vector_length = 39
 
     model = Sequential()
 
@@ -131,10 +130,10 @@ if __name__ == "__main__":
     model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
 
-    model.add(TimeDistributed(Dense(50, activation='softmax')))
+    model.add(TimeDistributed(Dense(52, activation='softmax')))
 
     model.compile(loss='categorical_crossentropy', optimizer='adam',
-                  metrics=['accuracy'])
+                  metrics=['accuracy'], sample_weight_mode='temporal')
 
     print(model.summary())
 
@@ -145,10 +144,9 @@ if __name__ == "__main__":
     early_stop = EarlyStopping(monitor='val_acc', patience=5, mode='max')
     callbacks_list = [checkpoint, early_stop]
 
-    #for _ in range(10):
-    model.fit(X_train, y_train, validation_data=(X_test, y_test),
-              callbacks=callbacks_list, epochs=10, batch_size=1,
-              verbose=1)
+    model.fit(X_train, y_train, validation_data=(X_test, y_test, test_sample_weight),
+              callbacks=callbacks_list, epochs=15, batch_size=32,
+              verbose=1, sample_weight=train_sample_weight)
 
     # Final evaluation of the model
     scores = model.evaluate(X_test, y_test, verbose=0)
