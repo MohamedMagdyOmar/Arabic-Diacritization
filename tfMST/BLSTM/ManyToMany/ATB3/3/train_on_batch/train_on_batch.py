@@ -168,7 +168,7 @@ if __name__ == "__main__":
             loss = model.test_on_batch(x, y)
             losses_list.append(loss[0])
             print("epoch number: ", each_epoch, ", testing_batch_num: ", testing_batch_counter, " loss: ", loss)
-        c = sum(losses_list)
+
         mean_loss = sum(losses_list) / len(losses_list)
 
         if mean_loss < best_loss:
@@ -177,7 +177,7 @@ if __name__ == "__main__":
             _, fname = tempfile.mkstemp('.h5')
             save_model(model, fname)
 
-            print("loss improved")
+            print("loss improved: ", mean_loss)
         else:
             rounds_without_improvement += 1
             print("No Improvement")
