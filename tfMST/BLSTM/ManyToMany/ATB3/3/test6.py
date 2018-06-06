@@ -8,16 +8,16 @@ from keras.layers import Dense
 from keras.layers import LSTM, Bidirectional
 from keras.layers.embeddings import Embedding
 from keras.layers import TimeDistributed
-from keras.models import save_model, load_model
+from keras.callbacks import EarlyStopping
+from keras.callbacks import ModelCheckpoint
+from keras.preprocessing.sequence import pad_sequences
 import DBHelperMethod
 import os
 import datetime
-import tempfile
 from keras import backend as K
 # fix random seed for reproducibility
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-num_epochs = 25
 
 
 def prepare_input_and_output(input, vocab, output, label_encoding):
@@ -50,9 +50,12 @@ def load_data():
     dp.establish_db_connection()
     training_sequence_list = []
     training_padded_output = []
+    training_sample_weight = []
 
     training_dataset = DBHelperMethod.load_dataset_by_type("training")
+    #training_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("training", 1)
     sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("training")
+    #sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("training")[0]
 
     labels_and_equiv_encoding = dp.get_label_table()
     input_one_hot_encoding = (dp.get_input_table())[:, 0]
@@ -65,26 +68,28 @@ def load_data():
         input_vocabed, output = prepare_input_and_output(input, vocabulary, selected_sentence[:, [0, 1]],
                                                          labels_and_equiv_encoding)
 
-        training_sequence_list.append(numpy.array(input_vocabed))
-        training_padded_output.append(numpy.array(output))
+        training_sequence_list.append(input_vocabed)
+        training_padded_output.append(output)
 
     end_time = datetime.datetime.now()
     print("prepare data takes : ", end_time - start_time)
-    '''
+
     input_training_padded = pad_sequences(training_sequence_list, padding='pre')
+
     output_training_padded = pad_sequences(training_padded_output, padding='pre').astype(float)
     training_sample_weight = output_training_padded.sum(axis=2).astype(float)
-    '''
-    input_training_padded = training_sequence_list
-    output_training_padded = training_padded_output
-    training_sample_weight = 1
+
 
     # testing data
     testing_sequence_list = []
     testing_padded_output = []
+    testing_minor_sample_weight = []
+    testing_sample_weight = []
 
     testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    #testing_dataset = DBHelperMethod.load_dataset_by_type_and_sentence_number_for_testing_purpose("testing", 1)
     sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("testing")
+    #sentence_numbers = DBHelperMethod.get_list_of_sentence_numbers_by("testing")[0]
 
     start_time = datetime.datetime.now()
     for each_sentence_number in sentence_numbers:
@@ -93,21 +98,16 @@ def load_data():
         input_vocabed, output = prepare_input_and_output(input, vocabulary, selected_sentence[:, [0, 1]],
                                                          labels_and_equiv_encoding)
 
-        testing_sequence_list.append(numpy.array(input_vocabed))
-        testing_padded_output.append(numpy.array(output))
+        testing_sequence_list.append(input_vocabed)
+        testing_padded_output.append(output)
 
     end_time = datetime.datetime.now()
     print("prepare data takes : ", end_time - start_time)
 
-    '''
     input_testing_padded = pad_sequences(testing_sequence_list, padding='pre', maxlen=input_training_padded.shape[1])
-    output_testing_padded = pad_sequences(testing_padded_output, padding='pre', maxlen=output_training_padded.shape[1]).astype(float)    
-    testing_sample_weight = output_testing_padded.sum(axis=2).astype(float)
-    '''
 
-    input_testing_padded = testing_sequence_list
-    output_testing_padded = testing_padded_output
-    testing_sample_weight = 1
+    output_testing_padded = pad_sequences(testing_padded_output, padding='pre', maxlen=output_training_padded.shape[1]).astype(float)
+    testing_sample_weight = output_testing_padded.sum(axis=2).astype(float)
 
     return input_training_padded, output_training_padded, training_sample_weight, vocabulary, vocabulary_inv\
         , input_testing_padded, output_testing_padded, testing_sample_weight
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     model = Sequential()
 
     model.add(Embedding(input_dim=vocabulary_size, output_dim=embedding_vector_length,
-                        input_length=None))
+                        input_length=X_train.shape[1], mask_zero=True))
 
     model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
     model.add(Bidirectional(LSTM(64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
@@ -135,65 +135,22 @@ if __name__ == "__main__":
     model.add(TimeDistributed(Dense(50, activation='softmax')))
 
     model.compile(loss='categorical_crossentropy', optimizer='adam',
-                  metrics=['accuracy'])
+                  metrics=['accuracy'], sample_weight_mode='temporal')
 
     print(model.summary())
 
-    patience = 5
-    best_loss = 1e6
-    rounds_without_improvement = 0
-    training_batch_counter = 0
-    testing_batch_counter = 0
-    old_loss = "-inf"
+    checkpoint = ModelCheckpoint('weights.{epoch:03d}-{val_acc:.4f}.hdf5', monitor='val_acc', verbose=1,
+                                 save_best_only=True, mode='max')
 
-    for each_epoch in range(0, num_epochs):
-        print("")
-        print("================================== New Epoch ==================================")
-        print("Epoch", str(each_epoch), "/", num_epochs)
-        print("")
+    # check 5 epochs
+    early_stop = EarlyStopping(monitor='val_acc', patience=5, mode='max')
+    callbacks_list = [checkpoint, early_stop]
+    g = []
+    g.append(model.fit(X_train, y_train, validation_data=(X_test, y_test, test_sample_weight),
+              callbacks=callbacks_list, epochs=15, batch_size=32,
+              verbose=1, sample_weight=train_sample_weight))
 
-        losses_list = list()
-        training_batch_counter = 0
-        testing_batch_counter = 0
-
-        for x, y in zip(X_train, y_train):
-            training_batch_counter += 1
-            x = x[numpy.newaxis, :]
-            y = y[numpy.newaxis, :, :]
-
-            loss = model.train_on_batch(x, y)
-            print("epoch number: ", each_epoch, "/", num_epochs, ", training_batch_num: ", training_batch_counter, "/", 10730," loss: ", loss[0], "acc: ", loss[1])
-
-        print("")
-        print("================================== Validation ==================================")
-        for x, y in zip(X_test, y_test):
-            testing_batch_counter += 1
-            x = x[numpy.newaxis, :]
-            y = y[numpy.newaxis, :, :]
-            loss = model.test_on_batch(x, y)
-            losses_list.append(loss[0])
-            print("epoch number: ", each_epoch, "/", num_epochs, ", testing_batch_num: ", testing_batch_counter, "/", 3777, " loss: ", loss[0], "acc: ", loss[1])
-
-        mean_loss = sum(losses_list) / len(losses_list)
-
-        if mean_loss < best_loss:
-            old_loss = best_loss
-            best_loss = mean_loss
-            rounds_without_improvement = 0
-            _, fname = tempfile.mkstemp('.h5')
-            save_model(model, fname)
-
-            print("")
-            print("val_loss improved from", old_loss, "to ", best_loss)
-        else:
-            rounds_without_improvement += 1
-            print("")
-            print("*** No Improvement ***")
-
-        if rounds_without_improvement == patience:
-            print("")
-            print("patience finished !!")
-            break
-
+    # Final evaluation of the model
+    scores = model.evaluate(X_test, y_test, verbose=0)
     model.reset_states()
-
+    print("Accuracy: %.2f%%" % (scores[1]*100))

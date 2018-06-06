@@ -14,8 +14,8 @@
       <file leaf-file-name="train_on_batch.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/train_on_batch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
+            <state relative-caret-position="202">
+              <caret line="187" column="21" lean-forward="true" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="21" />
               <folding>
                 <element signature="e#212#224#0" expanded="true" />
               </folding>
@@ -23,20 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://D:/anaconda3/Lib/site-packages/keras/models.py">
+      <file leaf-file-name="test6.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManyToManyPadSentences.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad/ManyToManyPadSentences.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="141" column="23" lean-forward="true" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="23" />
+            <state relative-caret-position="322">
+              <caret line="153" selection-start-line="153" selection-end-line="153" />
               <folding>
                 <element signature="e#212#224#0" expanded="true" />
                 <element signature="e#823#1582#0" />
@@ -56,8 +47,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>listOfPunctuationSymbols</find>
-      <find>iter</find>
       <find>chain</find>
       <find>ip_letters</find>
       <find>db</find>
@@ -86,6 +75,8 @@
       <find>nn_op_letters</find>
       <find>testing_padded_output</find>
       <find>51</find>
+      <find>prediction</find>
+      <find>filepath</find>
     </findStrings>
     <replaceStrings>
       <replace>and_last_letter_ok</replace>
@@ -97,9 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py" />
-        <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToOne/Quran/1/Predictor_CNN_BLSTM.py" />
-        <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/Quran/3/ManyToManyPadSentences.py" />
         <option value="$PROJECT_DIR$/tfMST/CNN-BLSTM/ManyToOne/Quran/1_7/ArabicDiacritizer_CNN_BLSTM.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrectionUpdated.py" />
@@ -147,14 +135,17 @@
         <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test3.py" />
         <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test4.py" />
         <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test.py" />
+        <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/test.py" />
+        <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad/ManyToManyPadSentences.py" />
+        <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test6.py" />
         <option value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/train_on_batch.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="398" />
-    <option name="y" value="-9" />
-    <option name="width" value="504" />
+    <option name="x" value="397" />
+    <option name="y" value="-10" />
+    <option name="width" value="505" />
     <option name="height" value="380" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -163,6 +154,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -173,17 +165,6 @@
             <path>
               <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
               <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
-              <item name="MST" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
-              <item name="MST" type="462c0819:PsiDirectoryNode" />
-              <item name="3-PreprocessingAndEncoding" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
               <item name="tfMST" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -215,16 +196,6 @@
               <item name="ManyToMany" type="462c0819:PsiDirectoryNode" />
               <item name="ATB3" type="462c0819:PsiDirectoryNode" />
               <item name="3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TensorFlowRepo" type="462c0819:PsiDirectoryNode" />
-              <item name="tfMST" type="462c0819:PsiDirectoryNode" />
-              <item name="BLSTM" type="462c0819:PsiDirectoryNode" />
-              <item name="ManyToMany" type="462c0819:PsiDirectoryNode" />
-              <item name="ATB3" type="462c0819:PsiDirectoryNode" />
-              <item name="3" type="462c0819:PsiDirectoryNode" />
-              <item name="6_right_pad" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TensorFlowRepo" type="b2602c69:ProjectViewProjectNode" />
@@ -240,7 +211,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -276,6 +246,24 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.train_on_batch">
+    <configuration name="DER_Analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TensorFlowRepo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/DER_Analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="ManyToManyPadSentences" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TensorFlowRepo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -284,11 +272,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/10_right_pad_stateful+true" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/10_right_pad_stateful+true/ManyToManyPadSentences.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad/ManyToManyPadSentences.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -312,7 +300,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TensorFlowRepo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -320,17 +308,17 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test6" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TensorFlowRepo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -342,25 +330,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="test4" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TensorFlowRepo" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test6.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -386,19 +356,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.Predictor_CNN_LSTM" />
-      <item itemvalue="Python.ManyToManyPadSentences" />
-      <item itemvalue="Python.test3" />
-      <item itemvalue="Python.test" />
-      <item itemvalue="Python.test4" />
       <item itemvalue="Python.train_on_batch" />
+      <item itemvalue="Python.test (1)" />
+      <item itemvalue="Python.DER_Analysis" />
+      <item itemvalue="Python.ManyToManyPadSentences" />
+      <item itemvalue="Python.test6" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.train_on_batch" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.test4" />
-        <item itemvalue="Python.test3" />
+        <item itemvalue="Python.test6" />
         <item itemvalue="Python.ManyToManyPadSentences" />
+        <item itemvalue="Python.DER_Analysis" />
+        <item itemvalue="Python.test (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -425,18 +395,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4985755" visible="true" weight="0.24804688" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4985755" visible="true" weight="0.24804688" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.503125" side_tool="true" weight="0.3324138" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32905984" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.32905984" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49791667" weight="0.3034483" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49791667" visible="true" weight="0.31310344" />
       <window_info id="Structure" order="1" sideWeight="0.5014245" side_tool="true" weight="0.3106411" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.34045583" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.496875" weight="0.33655173" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.496875" weight="0.2662069" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -978,9 +949,19 @@
           <option name="timeStamp" value="1227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/train_on_batch.py</url>
-          <line>177</line>
-          <option name="timeStamp" value="1237" />
+          <url>file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/test.py</url>
+          <line>317</line>
+          <option name="timeStamp" value="1248" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad/ManyToManyPadSentences.py</url>
+          <line>153</line>
+          <option name="timeStamp" value="1255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test6.py</url>
+          <line>153</line>
+          <option name="timeStamp" value="1256" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -993,7 +974,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1238" />
+      <option name="time" value="1257" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -1052,15 +1033,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/anaconda/envs/py35env/Lib/codecs.py" />
-    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/reload.py" />
-    <entry file="file://$PROJECT_DIR$/CNN-text-classification-keras/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/Others/CheckGPU.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -1260,17 +1232,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/10_right_pad_stateful+true/ManyToManyPadSentences.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="131" column="86" selection-start-line="131" selection-start-column="86" selection-end-line="131" selection-end-column="86" />
-          <folding>
-            <element signature="e#823#1582#0" />
-            <element signature="e#1606#4802#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/10_right_pad_stateful+true/ManyToManyPadSentences.py" />
     <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/yarab.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
@@ -1311,17 +1273,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad/Predictor_BLSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="301" selection-start-line="300" selection-end-line="301" />
-          <folding>
-            <element signature="e#469#1239#0" />
-            <element signature="e#5891#9631#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -1339,45 +1290,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/anaconda3/Lib/site-packages/keras/engine/training.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="689">
-          <caret line="185" lean-forward="true" selection-start-line="185" selection-end-line="185" />
-          <folding>
-            <element signature="e#823#1582#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad/ManyToManyPadSentences.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="141" column="23" lean-forward="true" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="23" />
-          <folding>
-            <element signature="e#212#224#0" expanded="true" />
-            <element signature="e#823#1582#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test.py" />
     <entry file="file://D:/anaconda3/Lib/site-packages/keras/callbacks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="431" column="30" selection-start-line="431" selection-start-column="26" selection-end-line="431" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/anaconda3/Lib/site-packages/keras/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1392,10 +1309,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/anaconda3/Lib/site-packages/keras/engine/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad/Predictor_BLSTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="292" column="4" selection-start-line="292" selection-start-column="4" selection-end-line="292" selection-end-column="16" />
+          <folding>
+            <element signature="e#469#1239#0" />
+            <element signature="e#5891#9631#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="325" column="36" selection-start-line="325" selection-start-column="36" selection-end-line="325" selection-end-column="36" />
+          <folding>
+            <element signature="e#469#1239#0" />
+            <element signature="e#5038#5797#0" />
+            <element signature="e#5891#9631#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/DER_Analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/6_right_pad/ManyToManyPadSentences.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="148" column="4" lean-forward="true" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
+          <folding>
+            <element signature="e#212#224#0" expanded="true" />
+            <element signature="e#823#1582#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
+          <folding>
+            <element signature="e#212#224#0" expanded="true" />
+            <element signature="e#823#1582#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/anaconda3/Lib/site-packages/keras/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/train_on_batch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
+        <state relative-caret-position="202">
+          <caret line="187" column="21" lean-forward="true" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="21" />
           <folding>
             <element signature="e#212#224#0" expanded="true" />
           </folding>
