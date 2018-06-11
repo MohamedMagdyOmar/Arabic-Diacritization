@@ -14,23 +14,10 @@
       <file leaf-file-name="train_on_batch.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/train_on_batch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="187" column="21" lean-forward="true" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="21" />
+            <state relative-caret-position="81">
+              <caret line="137" column="39" selection-start-line="137" selection-start-column="39" selection-end-line="137" selection-end-column="39" />
               <folding>
                 <element signature="e#212#224#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test6.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/test6.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="153" selection-start-line="153" selection-end-line="153" />
-              <folding>
-                <element signature="e#212#224#0" expanded="true" />
-                <element signature="e#823#1582#0" />
               </folding>
             </state>
           </provider>
@@ -395,15 +382,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4985755" visible="true" weight="0.24804688" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.503125" side_tool="true" weight="0.3324138" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5032552" side_tool="true" weight="0.31172413" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32905984" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.32905984" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49791667" visible="true" weight="0.31310344" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49674478" weight="0.31172413" />
       <window_info id="Structure" order="1" sideWeight="0.5014245" side_tool="true" weight="0.3106411" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.34045583" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -1380,8 +1366,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/ManyToMany/ATB3/3/train_on_batch/train_on_batch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="187" column="21" lean-forward="true" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="21" />
+        <state relative-caret-position="81">
+          <caret line="137" column="39" selection-start-line="137" selection-start-column="39" selection-end-line="137" selection-end-column="39" />
           <folding>
             <element signature="e#212#224#0" expanded="true" />
           </folding>
