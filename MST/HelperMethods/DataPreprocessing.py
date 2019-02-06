@@ -21,8 +21,8 @@ def load_dataset_table(data_type):
 
     start_time = datetime.datetime.now()
 
-    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word, InputSequenceEncodedWords, " \
-            "TargetSequenceEncodedWords, DiacritizedCharacter, location from ParsedDocument where LetterType=" + \
+    query = "select UnDiacritizedCharacter, Diacritics, LetterType, SentenceNumber,Word " \
+            ", DiacritizedCharacter, location from ParsedDocument where LetterType=" + \
             "'%s'" % data_type
 
     cur.execute(query)

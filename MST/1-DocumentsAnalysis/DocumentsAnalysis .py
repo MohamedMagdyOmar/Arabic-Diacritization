@@ -104,19 +104,19 @@ for word in listOfWords:
         for eachLetter in unDiacritizedWord:
             letterCount += 1
 
-print 'letter count:', letterCount
-print 'word count: ', wordCount
-print 'sentence count:', sentenceCount
+print ('letter count:', letterCount)
+print ('word count: ', wordCount)
+print ('sentence count:', sentenceCount)
 
-print 'number of letters with no diac', float(lettersWithNoDiac)
-print 'number of letters with One diac', float(lettersWithOneDiac)
-print 'number of letters with Two diac', float(lettersWithTwoDiac)
+print ('number of letters with no diac', float(lettersWithNoDiac))
+print ('number of letters with One diac', float(lettersWithOneDiac))
+print ('number of letters with Two diac', float(lettersWithTwoDiac))
 
-print 'letters per word:', (float(letterCount) / float(wordCount))
-print 'words per sentence:', float(wordCount) / float(sentenceCount)
-print 'letters without diac:', (float(lettersWithNoDiac) / float(letterCount)) * 100
-print 'letters with One diac:', (float(lettersWithOneDiac) / float(letterCount)) * 100
-print 'letters with Two diac:', (float(lettersWithTwoDiac) / float(letterCount)) * 100
+print ('letters per word:', (float(letterCount) / float(wordCount)))
+print ('words per sentence:', float(wordCount) / float(sentenceCount))
+print ('letters without diac:', (float(lettersWithNoDiac) / float(letterCount)) * 100)
+print ('letters with One diac:', (float(lettersWithOneDiac) / float(letterCount)) * 100)
+print ('letters with Two diac:', (float(lettersWithTwoDiac) / float(letterCount)) * 100)
 
 finalWordList = []
 for word in listOfWordsInSent:

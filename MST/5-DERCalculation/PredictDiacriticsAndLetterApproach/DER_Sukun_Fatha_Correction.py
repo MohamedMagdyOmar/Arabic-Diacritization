@@ -316,8 +316,8 @@ def get_diacritization_error(actual_letters, expected_letters, sentence):
 
     total_error += number_of_diacritization_errors
 
-    print 'total error in this sentence', number_of_diacritization_errors
-    print 'total error in all sentences: ', total_error
+    print ('total error in this sentence', number_of_diacritization_errors)
+    print ('total error in all sentences: ', total_error)
 
     return list_of_object_error
 
@@ -353,8 +353,8 @@ def get_diacritization_error_without_counting_last_letter(actual_letters, expect
 
     total_error_without_last_letter += number_of_diacritization_errors
 
-    print 'total error in this sentence (without Last Letter):', number_of_diacritization_errors
-    print 'total error in all sentences (without Last Letter): ', total_error_without_last_letter
+    print ('total error in this sentence (without Last Letter):', number_of_diacritization_errors)
+    print ('total error in all sentences (without Last Letter): ', total_error_without_last_letter)
 
     return list_of_object_error
 
@@ -491,7 +491,7 @@ if __name__ == "__main__":
                                                          excel2)
 
         current_sentence_counter += 1
-        print 'sentence number: ', current_sentence_counter
+        print ('sentence number: ', current_sentence_counter)
 
-    print "Total Chars Not Including Undiacritized Target Letter: ", total_chars_not_including_un_diacritized_target_letter
-    print "Total Chars Including Undiacritized Target Letter: ", total_chars_including_un_diacritized_target_letter
+    print ("Total Chars Not Including Undiacritized Target Letter: ", total_chars_not_including_un_diacritized_target_letter)
+    print ("Total Chars Including Undiacritized Target Letter: ", total_chars_including_un_diacritized_target_letter)
