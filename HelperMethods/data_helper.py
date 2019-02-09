@@ -251,7 +251,8 @@ def load_nn_input_dataset_string_space_only(data_table):
 
             nn_input.append(one_hot_encoding)
         else:
-            raise Exception("Method Name: data_helper, no encoding found for input input letter")
+            pass
+            #raise Exception("Method Name: data_helper, no encoding found for input input letter")
 
     end_time = datetime.datetime.now()
 

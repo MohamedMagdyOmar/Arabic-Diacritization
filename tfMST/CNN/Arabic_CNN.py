@@ -5,10 +5,7 @@ import numpy
 import data_helper as dp
 from keras.models import Sequential
 from keras.layers import Dense
-from keras.layers import LSTM, Bidirectional
-from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Conv1D
-from keras.layers.convolutional import MaxPooling1D
 from keras.callbacks import TensorBoard
 from keras.layers import Flatten
 from keras.layers import Dropout
@@ -16,6 +13,7 @@ from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
 import DBHelperMethod
 import os
+import RepositoryLayer.Repository as Repository
 # fix random seed for reproducibility
 numpy.random.seed(7)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -24,8 +22,8 @@ window_size = 17
 
 
 def load_training_data():
-    dp.establish_db_connection()
-    training_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    repo = Repository.Repository()
+    training_dataset = repo.get_dataset_by_category("testing")
 
     # x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
     x = dp.load_nn_input_dataset_string_space_only(training_dataset[:, [0, 6]])

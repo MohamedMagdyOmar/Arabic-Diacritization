@@ -11,26 +11,75 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py">
+        <entry file="file://$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="348" column="24" selection-start-line="348" selection-start-column="4" selection-end-line="348" selection-end-column="24" />
+            <state relative-caret-position="247">
+              <caret line="32" column="59" lean-forward="true" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
               <folding>
-                <element signature="e#24#42#0" expanded="true" />
-                <element signature="e#143#634#0" />
-                <element signature="e#10135#10703#0" />
+                <element signature="e#167#179#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MST/HelperMethods/Repository.py">
+        <entry file="file://$PROJECT_DIR$/ServiceLayer/Arabic_CNN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+            <state relative-caret-position="462">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+              <folding>
+                <element signature="e#167#179#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ServiceLayer/PreprocessingServices.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="74">
+              <caret line="133" column="31" selection-start-line="133" selection-start-column="31" selection-end-line="133" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#235#349#0" />
+                <element signature="e#1074#4245#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="441" column="19" selection-start-line="441" selection-start-column="8" selection-end-line="441" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#199#346#0" />
+                <element signature="e#384#875#0" />
+                <element signature="e#877#1343#1" />
+                <element signature="e#1344#1939#1" />
+                <element signature="e#1940#2493#1" />
+                <element signature="e#2537#2928#0" />
+                <element signature="e#3454#3897#0" />
+                <element signature="e#3929#4338#0" />
+                <element signature="e#4384#4793#0" />
+                <element signature="e#4845#5869#0" />
+                <element signature="e#5922#6828#0" />
+                <element signature="e#21339#21854#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RepositoryLayer/Repository.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="e#24#42#0" expanded="true" />
+                <element signature="e#867#1516#0" />
               </folding>
             </state>
           </provider>
@@ -47,16 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reform_word_from_version_2</find>
-      <find>itertools</find>
-      <find>wher</find>
-      <find>whe</find>
-      <find>exp_diac_w</find>
-      <find />
-      <find>space</find>
-      <find>undiacritizedWord</find>
-      <find>get_list_of_undiacritized_word_from_diacritized_word</find>
-      <find>extract_each_character_from_word_with_its_diacritization</find>
       <find>extract_and_clean_words_from_doc</find>
       <find>listOfPunctuationSymbols</find>
       <find>get_label_table</find>
@@ -74,9 +113,19 @@
       <find>get_undiac_words_for_selected_sentence</find>
       <find>load_dataset_table</find>
       <find>cur</find>
-      <find>listofwordsandsentencesineachdoc</find>
+      <find>parsed</find>
+      <find>parseddocument</find>
+      <find>from data</find>
+      <find>UnDiacOneHotEncoding</find>
       <find>diacritics_and_undiacritized_letter_one_hot_encoding</find>
+      <find>diaconehotencoding</find>
+      <find>listofwordsandsentencesineachdoc</find>
       <find>unicodedata</find>
+      <find>arabic_letters_without_diacritics</find>
+      <find>load_dataset_by_type</find>
+      <find>build_vocab</find>
+      <find>build_input_data</find>
+      <find>load_nn_seq_lengths</find>
     </findStrings>
     <replaceStrings>
       <replace>and_last_letter_ok</replace>
@@ -88,11 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MST/HelperMethods/SukunCorrection.py" />
-        <option value="$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py" />
-        <option value="$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py" />
-        <option value="$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py" />
-        <option value="$PROJECT_DIR$/tfMST/CNN-BLSTM/17_atb3_space/1/Predictor_CNN_BLSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/CNN-BLSTM/17_atb3_space/1/DER_Analysis.py" />
         <option value="$PROJECT_DIR$/tfMST/CNN-BLSTM/17_atb3_space/3/ArabicDiacritizer_CNN_BLSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/BLSTM/ArabicDiacritizer_BLSTM.py" />
@@ -105,7 +149,6 @@
         <option value="$PROJECT_DIR$/tfMST/CNN-BLSTM/OneHotEncodingTest/ArabicDiacritizer_CNN_BLSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/CNN-BLSTM/17_atb3_space/ArabicDiacritizer_CNN_BLSTM.py" />
         <option value="$PROJECT_DIR$/tfMST/CNN-BLSTM/ArabicDiacritizer_CNN_BLSTM.py" />
-        <option value="$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py" />
         <option value="$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/CreatingOneHot.py" />
         <option value="$PROJECT_DIR$/tfMST/ManyToMany/ManyToManyPadSentences.py" />
         <option value="$PROJECT_DIR$/tfMST/ManyToMany/DER_Analysis.py" />
@@ -135,10 +178,16 @@
         <option value="$PROJECT_DIR$/MST/1-DocumentsAnalysis/DocumentsAnalysis .py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/DataPreprocessing.py" />
         <option value="$PROJECT_DIR$/tfMST/CNN/test.py" />
-        <option value="$PROJECT_DIR$/HelperMethods/data_helper.py" />
         <option value="$PROJECT_DIR$/HelperMethods/DataSetHelper.py" />
         <option value="$PROJECT_DIR$/HelperMethods/Repository.py" />
         <option value="$PROJECT_DIR$/MST/HelperMethods/Repository.py" />
+        <option value="$PROJECT_DIR$/MST/HelperMethods/Repository/DataSetRepository.py" />
+        <option value="$PROJECT_DIR$/MST/HelperMethods/Repository/Repository.py" />
+        <option value="$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py" />
+        <option value="$PROJECT_DIR$/HelperMethods/data_helper.py" />
+        <option value="$PROJECT_DIR$/ServiceLayer/Services.py" />
+        <option value="$PROJECT_DIR$/ServiceLayer/PreprocessingServices.py" />
+        <option value="$PROJECT_DIR$/ServiceLayer/Arabic_CNN.py" />
       </list>
     </option>
   </component>
@@ -170,12 +219,17 @@
             <path>
               <item name="Arabic-Diacritization" type="b2602c69:ProjectViewProjectNode" />
               <item name="Arabic-Diacritization" type="462c0819:PsiDirectoryNode" />
-              <item name="MST" type="462c0819:PsiDirectoryNode" />
+              <item name="ServiceLayer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Arabic-Diacritization" type="b2602c69:ProjectViewProjectNode" />
               <item name="Arabic-Diacritization" type="462c0819:PsiDirectoryNode" />
-              <item name="MST" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Arabic-Diacritization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Arabic-Diacritization" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
               <item name="HelperMethods" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -201,18 +255,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Repos\Arabic-Diacritization\RepositoryLayer" />
+      <recent name="D:\Repos\Arabic-Diacritization\MST\HelperMethods\Repository" />
       <recent name="D:\Repos\Arabic-Diacritization\MST\HelperMethods" />
       <recent name="D:\Repos\TensorFlowRepo\tfMST" />
       <recent name="D:\Repos\TensorFlowRepo\tfMST\One-To-One-Model" />
-      <recent name="D:\Repos\TensorFlowRepo\HelperMethods" />
-      <recent name="D:\Repos\TensorFlowRepo\How to Use the TimeDistributed Layer for Long Short-Term Memory Networks in Python\ManyToMany" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Repos\Arabic-Diacritization\ServiceLayer" />
       <recent name="D:\Repos\TensorFlowRepo\How to Use the TimeDistributed Layer for Long Short-Term Memory Networks in Python\ManyToMany" />
       <recent name="D:\Repos\TensorFlowRepo\tfMST\CNN-NLSTM" />
       <recent name="D:\Repos\TensorFlowRepo\HelperMethods" />
       <recent name="D:\Repos\TensorFlowRepo\tfMST\NLSTM" />
-      <recent name="D:\Repos\TensorFlowRepo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -227,7 +281,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Arabic_CNN">
+  <component name="RunManager" selected="Python.Arabic_CNN (1)">
+    <configuration name="Arabic_CNN (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TensorFlowRepo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ServiceLayer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ServiceLayer/Arabic_CNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Arabic_CNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TensorFlowRepo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -291,27 +366,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Predictor_CNN_BLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TensorFlowRepo" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tfMST/CNN-BLSTM/5" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tfMST/CNN-BLSTM/5/Predictor_CNN_BLSTM.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="Predictor_CNN_LSTM" type="PythonConfigurationType" factoryName="Python">
       <module name="TensorFlowRepo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -356,19 +410,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.Predictor_CNN_LSTM" />
-      <item itemvalue="Python.Predictor_CNN_BLSTM" />
       <item itemvalue="Python.DER_Analysis" />
       <item itemvalue="Python.DataPreprocessing" />
       <item itemvalue="Python.Arabic_CNN" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.Arabic_CNN (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Arabic_CNN (1)" />
         <item itemvalue="Python.Arabic_CNN" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.DataPreprocessing" />
         <item itemvalue="Python.DER_Analysis" />
-        <item itemvalue="Python.Predictor_CNN_BLSTM" />
       </list>
     </recent_temporary>
   </component>
@@ -387,25 +441,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18307997" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49902153" visible="true" weight="0.2333113" />
+      <window_info id="Structure" order="1" sideWeight="0.50097847" side_tool="true" weight="0.18590604" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32928178" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49791667" weight="0.36685553" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.496875" visible="true" weight="0.27620396" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49597314" weight="0.49858356" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.503125" side_tool="true" weight="0.3325967" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.504957" side_tool="true" weight="0.27620396" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.32965517" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32965517" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
     </layout>
   </component>
   <component name="XDebuggerManager">
@@ -432,7 +485,7 @@
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/7-TensorFlowTraining/CNNKeras.py</url>
+          <url>file://$PROJECT_DIR$/Services/7-TensorFlowTraining/CNNKeras.py</url>
           <line>45</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
@@ -467,17 +520,17 @@
           <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
+          <url>file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
           <line>35</line>
           <option name="timeStamp" value="252" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
+          <url>file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
           <line>46</line>
           <option name="timeStamp" value="254" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
+          <url>file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py</url>
           <line>69</line>
           <option name="timeStamp" value="255" />
         </line-breakpoint>
@@ -632,22 +685,22 @@
           <option name="timeStamp" value="700" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py</url>
+          <url>file://$PROJECT_DIR$/Services/HelperMethods/FathaCorrection.py</url>
           <line>17</line>
           <option name="timeStamp" value="726" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py</url>
+          <url>file://$PROJECT_DIR$/Services/HelperMethods/ExcelHelperMethod.py</url>
           <line>195</line>
           <option name="timeStamp" value="803" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py</url>
+          <url>file://$PROJECT_DIR$/Services/HelperMethods/ExcelHelperMethod.py</url>
           <line>198</line>
           <option name="timeStamp" value="814" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py</url>
+          <url>file://$PROJECT_DIR$/Services/HelperMethods/ExcelHelperMethod.py</url>
           <line>138</line>
           <option name="timeStamp" value="816" />
         </line-breakpoint>
@@ -697,12 +750,12 @@
           <option name="timeStamp" value="850" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
+          <url>file://$PROJECT_DIR$/Services/HelperMethods/DictionaryCorrection.py</url>
           <line>249</line>
           <option name="timeStamp" value="859" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/Atb3_PreprocessingAndEncoding.py</url>
+          <url>file://$PROJECT_DIR$/Services/3-PreprocessingAndEncoding/Atb3_PreprocessingAndEncoding.py</url>
           <line>380</line>
           <option name="timeStamp" value="866" />
         </line-breakpoint>
@@ -728,7 +781,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/HelperMethods/data_helper.py</url>
-          <line>363</line>
+          <line>364</line>
           <option name="timeStamp" value="889" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -743,7 +796,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py</url>
-          <line>36</line>
+          <line>34</line>
           <option name="timeStamp" value="902" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -762,7 +815,7 @@
           <option name="timeStamp" value="974" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py</url>
+          <url>file://$PROJECT_DIR$/Services/HelperMethods/DictionaryCorrection.py</url>
           <line>178</line>
           <option name="timeStamp" value="1015" />
         </line-breakpoint>
@@ -792,34 +845,54 @@
           <option name="timeStamp" value="1028" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/Docs_PreprocessingAndEncoding.py</url>
+          <url>file://$PROJECT_DIR$/Services/3-PreprocessingAndEncoding/Docs_PreprocessingAndEncoding.py</url>
           <line>1</line>
           <option name="timeStamp" value="1029" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Fatha_Correction.py</url>
+          <url>file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Fatha_Correction.py</url>
           <line>2</line>
           <option name="timeStamp" value="1030" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MST/HelperMethods/DataPreprocessing.py</url>
+          <url>file://$PROJECT_DIR$/Services/HelperMethods/DataPreprocessing.py</url>
           <line>147</line>
           <option name="timeStamp" value="1037" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py</url>
-          <line>69</line>
+          <line>67</line>
           <option name="timeStamp" value="1038" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py</url>
-          <line>27</line>
-          <option name="timeStamp" value="1039" />
+          <line>61</line>
+          <option name="timeStamp" value="1040" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="1040" />
+          <line>28</line>
+          <option name="timeStamp" value="1051" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HelperMethods/data_helper.py</url>
+          <line>260</line>
+          <option name="timeStamp" value="1052" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HelperMethods/data_helper.py</url>
+          <line>442</line>
+          <option name="timeStamp" value="1056" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ServiceLayer/PreprocessingServices.py</url>
+          <line>127</line>
+          <option name="timeStamp" value="1068" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ServiceLayer/PreprocessingServices.py</url>
+          <line>137</line>
+          <option name="timeStamp" value="1069" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -886,11 +959,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tfMST/CNN-BLSTM/17_atb3_space/3/ArabicDiacritizer_CNN_BLSTM.py" />
-    <entry file="file://$PROJECT_DIR$/tfMST/CNN-BLSTM/17_atb3_space/4/ArabicDiacritizer_CNN_BLSTM.py" />
-    <entry file="file://$PROJECT_DIR$/tfMST/CNN-BLSTM/5/Predictor_CNN_BLSTM.py" />
-    <entry file="file://$PROJECT_DIR$/tfMST/CNN-BLSTM/5/DER_Analysis.py" />
-    <entry file="file://$PROJECT_DIR$/tfMST/ManyToMany/test.py" />
     <entry file="file://$PROJECT_DIR$/tfMST/ManyToMany/1/ManyToManyPadSentences.py" />
     <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/1/ArabicDiacritizer_BLSTM.py" />
     <entry file="file://$PROJECT_DIR$/tfMST/BLSTM/2/ArabicDiacritizer_BLSTM.py" />
@@ -902,7 +970,7 @@
     <entry file="file://$PROJECT_DIR$/tfMST/CNN/2/Arabic_CNN.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1414931307/numpy/core/multiarray.py" />
     <entry file="file://$PROJECT_DIR$/tfMST/One-To-One-Model/One-To-One-Model.py" />
-    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/Atb3_PreprocessingAndEncoding.py">
+    <entry file="file://$PROJECT_DIR$/Services/3-PreprocessingAndEncoding/Atb3_PreprocessingAndEncoding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4913">
           <caret line="407" selection-start-line="407" selection-end-line="407" />
@@ -917,12 +985,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/CreatingOneHot.py">
+    <entry file="file://$PROJECT_DIR$/Services/3-PreprocessingAndEncoding/CreatingOneHot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-867" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/Docs_PreprocessingAndEncoding.py">
+    <entry file="file://$PROJECT_DIR$/Services/3-PreprocessingAndEncoding/Docs_PreprocessingAndEncoding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
@@ -932,7 +1000,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/Docs_PreprocessingAndEncoding_With_Randomization.py">
+    <entry file="file://$PROJECT_DIR$/Services/3-PreprocessingAndEncoding/Docs_PreprocessingAndEncoding_With_Randomization.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7958">
           <folding>
@@ -941,10 +1009,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/NumpyOneHotEncoding.py">
+    <entry file="file://$PROJECT_DIR$/Services/3-PreprocessingAndEncoding/NumpyOneHotEncoding.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/3-PreprocessingAndEncoding/ExtractingAllDiacritics.py">
+    <entry file="file://$PROJECT_DIR$/Services/3-PreprocessingAndEncoding/ExtractingAllDiacritics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -979,7 +1047,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsOnlyApproach/DER.py">
+    <entry file="file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsOnlyApproach/DER.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="80" column="15" selection-start-line="80" selection-start-column="15" selection-end-line="80" selection-end-column="15" />
@@ -989,7 +1057,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER.py">
+    <entry file="file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
           <caret line="81" column="15" selection-start-line="81" selection-start-column="15" selection-end-line="81" selection-end-column="15" />
@@ -999,14 +1067,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Dictionary_Correction.py">
+    <entry file="file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Dictionary_Correction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Fatha_Correction.py">
+    <entry file="file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Fatha_Correction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
@@ -1016,7 +1084,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Fatha_Dictionary_Correction.py">
+    <entry file="file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Fatha_Dictionary_Correction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
           <caret line="718" column="11" selection-start-line="718" selection-start-column="11" selection-end-line="718" selection-end-column="11" />
@@ -1026,7 +1094,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py">
+    <entry file="file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndUndiacritizedLetterApproach/DER.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
@@ -1036,14 +1104,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Correction.py">
+    <entry file="file://$PROJECT_DIR$/Services/5-DERCalculation/PredictDiacriticsAndLetterApproach/DER_Sukun_Correction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="539">
           <caret line="438" column="11" selection-start-line="438" selection-start-column="11" selection-end-line="438" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/1-DocumentsAnalysis/DocumentsAnalysis .py">
+    <entry file="file://$PROJECT_DIR$/Services/1-DocumentsAnalysis/DocumentsAnalysis .py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
@@ -1053,7 +1121,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DERCalculationHelperMethod.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/DERCalculationHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -1070,7 +1138,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrection.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/DictionaryCorrection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="20" column="74" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
@@ -1086,7 +1154,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DictionaryCorrectionWithoutSentNum.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/DictionaryCorrectionWithoutSentNum.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -1097,7 +1165,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/ExcelHelperMethod.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/ExcelHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
           <caret line="283" column="35" selection-start-line="283" selection-start-column="35" selection-end-line="283" selection-end-column="35" />
@@ -1112,7 +1180,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/FathaCorrection.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/FathaCorrection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -1137,7 +1205,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/RNNOPProcessingHelperMethod.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/RNNOPProcessingHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -1147,7 +1215,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/WordLetterProcessingHelperMethod.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/WordLetterProcessingHelperMethod.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-26">
           <caret line="141" selection-start-line="141" selection-end-line="141" />
@@ -1174,7 +1242,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/SukunCorrection.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/SukunCorrection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -1185,14 +1253,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Anaconda/envs/PythonProjects/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-175">
-          <caret line="310" selection-start-line="310" selection-end-line="310" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DataPreprocessing.py">
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/DataPreprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
@@ -1214,50 +1275,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HelperMethods/DataSetHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#199#346#0" />
-            <element signature="e#4845#5869#0" />
-            <element signature="e#5922#6828#0" />
-            <element signature="e#6892#7605#0" />
-            <element signature="e#7662#8329#0" />
-            <element signature="e#8382#9128#0" />
-            <element signature="e#9182#9970#0" />
-            <element signature="e#10026#10687#0" />
-            <element signature="e#10757#11520#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="71" column="3" lean-forward="true" selection-start-line="71" selection-start-column="3" selection-end-line="71" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#199#346#0" />
-            <element signature="e#384#875#0" />
-            <element signature="e#877#1343#1" />
-            <element signature="e#1344#1939#1" />
-            <element signature="e#1940#2493#1" />
-            <element signature="e#2537#2928#0" />
-            <element signature="e#2958#3424#0" />
-            <element signature="e#3454#3897#0" />
-            <element signature="e#3929#4338#0" />
-            <element signature="e#4384#4793#0" />
-            <element signature="e#4845#5869#0" />
-            <element signature="e#5922#6828#0" />
-            <element signature="e#6892#7525#0" />
-            <element signature="e#7582#8249#0" />
-            <element signature="e#8302#9048#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/HelperMethods/DataSetHelper.py" />
     <entry file="file://$PROJECT_DIR$/HelperMethods/SequenceProcessing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1270,6 +1288,8 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/Repository/DataSetRepository.py" />
+    <entry file="file://$PROJECT_DIR$/HelperMethods/__init__.py" />
     <entry file="file://$PROJECT_DIR$/HelperMethods/NumpyOneHotEncoding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1277,22 +1297,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py">
+    <entry file="file://D:/Anaconda/envs/PythonProjects/Lib/datetime.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        <state relative-caret-position="162">
+          <caret line="1513" column="8" selection-start-line="1513" selection-start-column="8" selection-end-line="1513" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RepositoryLayer/Repository.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
-            <element signature="e#167#179#0" expanded="true" />
-            <element signature="e#1450#2009#0" />
-            <element signature="e#2069#2191#0" />
+            <element signature="e#24#42#0" expanded="true" />
+            <element signature="e#867#1516#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/DBHelperMethod.py">
+    <entry file="file://D:/Anaconda/envs/PythonProjects/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="348" column="24" selection-start-line="348" selection-start-column="4" selection-end-line="348" selection-end-column="24" />
+        <state relative-caret-position="162">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/HelperMethods/DBHelperMethod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="290" column="24" selection-start-line="290" selection-start-column="4" selection-end-line="290" selection-end-column="24" />
           <folding>
             <element signature="e#24#42#0" expanded="true" />
             <element signature="e#143#634#0" />
@@ -1301,12 +1334,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MST/HelperMethods/Repository.py">
+    <entry file="file://$PROJECT_DIR$/tfMST/CNN/Arabic_CNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        <state relative-caret-position="247">
+          <caret line="32" column="59" lean-forward="true" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
           <folding>
-            <element signature="e#24#42#0" expanded="true" />
+            <element signature="e#167#179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HelperMethods/data_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="441" column="19" selection-start-line="441" selection-start-column="8" selection-end-line="441" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#199#346#0" />
+            <element signature="e#384#875#0" />
+            <element signature="e#877#1343#1" />
+            <element signature="e#1344#1939#1" />
+            <element signature="e#1940#2493#1" />
+            <element signature="e#2537#2928#0" />
+            <element signature="e#3454#3897#0" />
+            <element signature="e#3929#4338#0" />
+            <element signature="e#4384#4793#0" />
+            <element signature="e#4845#5869#0" />
+            <element signature="e#5922#6828#0" />
+            <element signature="e#21339#21854#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ServiceLayer/PreprocessingServices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="133" column="31" selection-start-line="133" selection-start-column="31" selection-end-line="133" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#235#349#0" />
+            <element signature="e#1074#4245#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ServiceLayer/Arabic_CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="e#167#179#0" expanded="true" />
           </folding>
         </state>
       </provider>
