@@ -2,7 +2,6 @@
 # https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/
 
 import numpy
-import data_helper as dp
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers.convolutional import Conv1D
@@ -12,7 +11,6 @@ from keras.layers import Dropout
 from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
 import os
-import RepositoryLayer.Repository as Repository
 import ServiceLayer.PreprocessingServices as PreprocessService
 # fix random seed for reproducibility
 numpy.random.seed(7)
@@ -23,7 +21,7 @@ class Arabic_CNN:
     def __init__(self):
         self.req_char_index = 13
         self.window_size = 17
-        self.repo = Repository.Repository()
+        self.repo = repository.Repository()
         self.service = PreprocessService.Services()
         self.x = ''
         self.y = ''
@@ -56,10 +54,12 @@ class Arabic_CNN:
 if __name__ == "__main__":
     Arabic_CNN = Arabic_CNN()
 
-    X_train, y_train, vocabulary_train, vocabulary_inv_train = Arabic_CNN.preprocess_dataset('training')
+    # Arabic_CNN.get_data_from_db('training')
+    Arabic_CNN.get_data_from_db('testing')
+    X_train, y_train, vocabulary_train, vocabulary_inv_train = Arabic_CNN.preprocess_dataset()
     X_train = (numpy.arange(X_train.max()) == X_train[..., None] - 1).astype(int)
 
-    X_test, y_test, vocabulary_test, vocabulary_inv_test = Arabic_CNN.preprocess_dataset('testing')
+    X_test, y_test, vocabulary_test, vocabulary_inv_test = Arabic_CNN.preprocess_dataset()
     X_test = (numpy.arange(X_test.max()) == X_test[..., None] - 1).astype(int)
 
     Arabic_CNN.check_key_exist(vocabulary_train, vocabulary_test)

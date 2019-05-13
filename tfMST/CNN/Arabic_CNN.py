@@ -13,7 +13,7 @@ from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
 import DBHelperMethod
 import os
-import RepositoryLayer.Repository as Repository
+
 # fix random seed for reproducibility
 numpy.random.seed(7)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -22,7 +22,7 @@ window_size = 17
 
 
 def load_training_data():
-    repo = Repository.Repository()
+    repo = repository.Repository()
     training_dataset = repo.get_dataset_by_category("testing")
 
     # x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])

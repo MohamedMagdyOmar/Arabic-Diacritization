@@ -121,6 +121,7 @@ def cnn_model_fn(features, labels, mode):
 
 
 def main(unused_argv):
+
   # Load training and eval data
   mnist = tf.contrib.learn.datasets.load_dataset("mnist")
   train_data = mnist.train.images  # Returns np.array

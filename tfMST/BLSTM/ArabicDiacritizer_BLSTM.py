@@ -1,42 +1,53 @@
 # this code comes from below website with some modification
 # https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/
 
-import numpy
+import numpy as np
 import data_helper as dp
-import DBHelperMethod
+import src.repository as repository
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM, Bidirectional
 from keras.layers import Dropout
 from keras.layers.embeddings import Embedding
-from keras.layers.convolutional import Conv1D
-from keras.layers.convolutional import MaxPooling1D
 from keras.callbacks import EarlyStopping
 from keras.callbacks import ModelCheckpoint
 import os
-# fix random seed for reproducibility
-numpy.random.seed(7)
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 def get_training_data():
-    DBHelperMethod.connect_to_db()
-    training_dataset = DBHelperMethod.load_dataset_by_type("training")
 
-    x = dp.load_nn_input_dataset_string(training_dataset[:, [0, 6]])
-    #y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
-    y = dp.load_nn_labels_dataset_diacritics_only_string(training_dataset[:, [1]])
+    repo = repository.Repository()
+    data = repo.get_data_set()
+    number_of_training_data = len(data[np.where(data[:, 2] == 'training')])
+    number_of_testing_data = len(data[np.where(data[:, 2] == 'testing')])
 
-    return x, y
+    undiacritized_char_set = data[:, 0]
+    input_encoder = LabelEncoder()
+    integer_encoded = input_encoder.fit_transform(undiacritized_char_set)
 
+    one_hot_encoder = OneHotEncoder(sparse=False)
+    integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
+    input_onehot_encoded = one_hot_encoder.fit_transform(integer_encoded)
 
-def get_testing_data():
-    DBHelperMethod.connect_to_db()
-    testing_dataset = DBHelperMethod.load_dataset_by_type("testing")
+    diacritization_symbols = data[:, 1]
+    label_encoder = LabelEncoder()
+    integer_encoded = label_encoder.fit_transform(diacritization_symbols)
 
-    x = dp.load_nn_input_dataset_string(testing_dataset[:, [0, 6]])
-    #y = dp.load_nn_labels_dataset_string(training_dataset[:, [0, 1]])
-    y = dp.load_nn_labels_dataset_diacritics_only_string(testing_dataset[:, [1]])
+    one_hot_encoder = OneHotEncoder(sparse=False)
+    integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
+    label_onehot_encoded = one_hot_encoder.fit_transform(integer_encoded)
+
+    x_training = input_onehot_encoded[0: (number_of_training_data - 1):]
+    x_testing = input_onehot_encoded[number_of_training_data::]
+
+    y_training = label_onehot_encoded[0: (number_of_training_data - 1):]
+    y_testing = label_onehot_encoded[number_of_training_data::]
+    #y = dp.load_nn_labels_dataset_diacritics_only_string(training_dataset[:, [1]])
 
     return x, y
 

@@ -176,7 +176,11 @@ class Repository:
 
     ''' End Of DataSet Queries'''
 
-    def get_input_data(self):
+    def get_dataset_undiacritized_chars(self):
+        """
+        old name: get_input_data
+        """
+
         start_time = datetime.datetime.now()
 
         self.query = "select UnDiacritizedCharacter, UnDiacritizedCharacterOneHotEncoding from UnDiacOneHotEncoding"
@@ -208,6 +212,9 @@ class Repository:
         return self.query_result
 
     def get_label_data_diacritics_only(self):
+        """
+        old name: load_dataset_by_type
+        """
         start_time = datetime.datetime.now()
 
         self.query = "select * from distinctdiacritics"

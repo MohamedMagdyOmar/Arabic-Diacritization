@@ -35,7 +35,7 @@ class Services:
 
         self.end_time = datetime.datetime.now()
 
-        print('Padding Sentence takes: ', self.start_time - self.end_time)
+        print('Padding Sentence takes: ', self.end_time - self.start_time)
 
         return self.padded_sentence
 

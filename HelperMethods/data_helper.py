@@ -3,6 +3,7 @@ import MySQLdb.cursors
 import numpy as np
 import datetime
 import matplotlib
+import src.repository as repository
 from collections import Counter
 from itertools import chain
 import unicodedata2
@@ -109,21 +110,6 @@ def load_cnn_blstm_table(data_type):
     return data
 
 
-def get_input_table():
-    start_time = datetime.datetime.now()
-    establish_db_connection()
-    query = "select UnDiacritizedCharacter, UnDiacritizedCharacterOneHotEncoding from UnDiacOneHotEncoding"
-    cur.execute(query)
-
-    input_and_equiv_encoding = cur.fetchall()
-    input_and_equiv_encoding = np.array(input_and_equiv_encoding)
-
-    end_time = datetime.datetime.now()
-    print("get_db_input_table takes : ", end_time - start_time)
-    cur.close()
-    return input_and_equiv_encoding
-
-
 def get_label_table():
     start_time = datetime.datetime.now()
     establish_db_connection()
@@ -173,7 +159,8 @@ def load_nn_input_dataset_numpy(data_table):
     start_time = datetime.datetime.now()
     nn_input = []
 
-    input_and_equiv_encoding = get_input_table()
+    repo = repository.Repository()
+    input_and_equiv_encoding = repo.get_dataset_undiacritized_chars()
 
     for each_row in data_table:
         raw_input_data = each_row[0]
@@ -205,10 +192,13 @@ def load_nn_input_dataset_numpy(data_table):
 
 
 def load_nn_input_dataset_string(data_table):
-    start_time = datetime.datetime.now()
-    nn_input = []
 
-    input_and_equiv_encoding = get_input_table()
+    start_time = datetime.datetime.now()
+
+    repo = repository.Repository()
+    input_and_equiv_encoding = repo.get_dataset_undiacritized_chars()
+
+    nn_input = []
 
     for each_row in data_table:
         raw_input_data = each_row[0]
@@ -239,7 +229,8 @@ def load_nn_input_dataset_string_space_only(data_table):
     start_time = datetime.datetime.now()
     nn_input = []
 
-    input_and_equiv_encoding = get_input_table()
+    repo = repository.Repository()
+    input_and_equiv_encoding = repo.get_dataset_undiacritized_chars()
 
     for each_row in data_table:
         raw_input_data = each_row[0]
@@ -265,15 +256,16 @@ def load_nn_input_dataset_one_to_one(data_table):
     start_time = datetime.datetime.now()
     nn_input = []
 
-    inputs_and_equiv_encoding = get_input_table()
+    repo = repository.Repository()
+    input_and_equiv_encoding = repo.get_dataset_undiacritized_chars()
 
     for each_row in data_table:
         raw_input_data = each_row[0]
 
-        index_of_raw_label_data = np.where(inputs_and_equiv_encoding == raw_input_data)
+        index_of_raw_label_data = np.where(input_and_equiv_encoding == raw_input_data)
 
         if np.size(index_of_raw_label_data) != 0:
-            input = inputs_and_equiv_encoding[index_of_raw_label_data[0], 1][0]
+            input = input_and_equiv_encoding[index_of_raw_label_data[0], 1][0]
             input = input.replace('\n', "")
             input = list(map(int, input))
 
@@ -373,9 +365,11 @@ def load_nn_labels_dataset_string_2(data_table):
 
 def load_nn_labels_dataset_diacritics_only_string(data_table):
     start_time = datetime.datetime.now()
+
     nn_labels = []
 
-    labels_and_equiv_encoding = get_label_table_diacritics_only()
+    repo = repository.Repository()
+    labels_and_equiv_encoding = repo.get_dataset_undiacritized_chars()
 
     for each_row in data_table:
         if each_row[0] != '':
@@ -772,7 +766,9 @@ def create_3d_output_y_tensor(y, sent_len, T):
 if __name__ == "__main__":
 
     establish_db_connection()
+    '''
     dataset = load_dataset_by_type('training')
     load_nn_input_dataset_numpy(dataset[:, [0, 8]])
     load_nn_labels_dataset_numpy(dataset[:, [0, 1]])
     load_nn_seq_lengths(dataset[:, [3]])
+    '''
